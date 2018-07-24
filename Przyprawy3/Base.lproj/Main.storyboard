@@ -82,32 +82,55 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Yx1-YX-pRw"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dostępne w domu" id="5gn-qC-3HH">
-                        <barButtonItem key="rightBarButtonItem" title="szczegóły" id="aCJ-6l-Oq5">
-                            <connections>
-                                <segue destination="enE-9m-W5Y" kind="show" id="Knm-ab-v3e"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Dostępne w domu" id="5gn-qC-3HH"/>
+                    <connections>
+                        <segue destination="enE-9m-W5Y" kind="show" identifier="goToAtHome" id="uW3-LN-Asc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZI7-30-heQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2279.1999999999998" y="2234.9325337331338"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail At HomeView Controller-->
         <scene sceneID="Wt5-z7-voZ">
             <objects>
-                <viewController id="enE-9m-W5Y" sceneMemberID="viewController">
+                <viewController id="enE-9m-W5Y" userLabel="Detail At HomeView Controller" customClass="DetailAtHomeViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3M5-ig-jKk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CvG-5F-WTL">
+                                <rect key="frame" x="67" y="97" width="240" height="335"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOd-g6-UKk">
+                                <rect key="frame" x="166" y="476" width="59" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Produkt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBJ-xh-5lI">
+                                <rect key="frame" x="16" y="543" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hCi-6f-2wM"/>
                     </view>
+                    <connections>
+                        <outlet property="productImageView" destination="CvG-5F-WTL" id="BNV-uo-9YZ"/>
+                        <outlet property="productSubtitleLabel" destination="vBJ-xh-5lI" id="2v0-UH-gwD"/>
+                        <outlet property="productTitleLabel" destination="kOd-g6-UKk" id="NwJ-5V-OoU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxW-Si-OEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3010" y="2237"/>
+            <point key="canvasLocation" x="3008.8000000000002" y="2236.7316341829087"/>
         </scene>
         <!--Lista zakupów -->
         <scene sceneID="dDu-HT-hDr">

@@ -10,9 +10,20 @@ import UIKit
 
 
 class AtHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //tableView.delegate=self
-    //tableView.dataSource=self
     
+    var rowNumber: Int  = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    // MARK - tableView function
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return picturesArray.count
     }
@@ -25,28 +36,26 @@ class AtHomeViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rowNumber = indexPath.row
+        performSegue(withIdentifier: "goToAtHome", sender: self)
+        //let mySegue = UIStoryboardSegue(identifier: "goToAtHome", source: self, destination: DetailAtHomeViewController)
     }
     
-
-    /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+            if segue.identifier == "goToAtHome" {
+                if let nextViewControler  =  segue.destination as? DetailAtHomeViewController {
+                    nextViewControler.productTitle = "AAAAA"
+                    nextViewControler.productSubtitle = picturesArray[rowNumber]
+                    nextViewControler.productImageName = picturesArray[rowNumber]
+                    print("Segue")
+                }
+            }
     }
-    */
-
 }
+
+
