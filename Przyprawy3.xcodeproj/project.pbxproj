@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
-		2CC981F02107726200B23EF2 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC981EE2107726200B23EF2 /* AtHomeViewController.swift */; };
-		2CC981F12107726200B23EF2 /* AtHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CC981EF2107726200B23EF2 /* AtHomeViewController.xib */; };
+		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
+		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
 		2CE27567210237AF001C046B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27566210237AF001C046B /* AppDelegate.swift */; };
 		2CE27569210237AF001C046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27568210237AF001C046B /* ViewController.swift */; };
 		2CE2756C210237AF001C046B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE2756A210237AF001C046B /* Main.storyboard */; };
@@ -39,8 +39,8 @@
 
 /* Begin PBXFileReference section */
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
-		2CC981EE2107726200B23EF2 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
-		2CC981EF2107726200B23EF2 /* AtHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtHomeViewController.xib; sourceTree = "<group>"; };
+		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
+		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
 		2CE27563210237AF001C046B /* Przyprawy3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Przyprawy3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE27566210237AF001C046B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE27568210237AF001C046B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +85,9 @@
 		2CE2755A210237AF001C046B = {
 			isa = PBXGroup;
 			children = (
+				2CE2756A210237AF001C046B /* Main.storyboard */,
+				2C38921F2122FE5300257476 /* AtHomeCell.swift */,
+				2C8C528C2122E135006D8099 /* AtHomeViewController.swift */,
 				2CE27565210237AF001C046B /* Przyprawy3 */,
 				2CE2757D210237B1001C046B /* Przyprawy3Tests */,
 				2CE27588210237B1001C046B /* Przyprawy3UITests */,
@@ -107,10 +110,7 @@
 			children = (
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CE27568210237AF001C046B /* ViewController.swift */,
-				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */,
-				2CC981EE2107726200B23EF2 /* AtHomeViewController.swift */,
-				2CC981EF2107726200B23EF2 /* AtHomeViewController.xib */,
 				2CE27570210237B1001C046B /* Assets.xcassets */,
 				2CE27572210237B1001C046B /* LaunchScreen.storyboard */,
 				2CE27575210237B1001C046B /* Info.plist */,
@@ -243,7 +243,6 @@
 			files = (
 				2CE27574210237B1001C046B /* LaunchScreen.storyboard in Resources */,
 				2CE27571210237B1001C046B /* Assets.xcassets in Resources */,
-				2CC981F12107726200B23EF2 /* AtHomeViewController.xib in Resources */,
 				2CE2756C210237AF001C046B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,10 +269,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
+				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
-				2CC981F02107726200B23EF2 /* AtHomeViewController.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* Przyprawy3.xcdatamodeld in Sources */,
+				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

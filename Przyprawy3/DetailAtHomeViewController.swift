@@ -17,6 +17,7 @@ class DetailAtHomeViewController: UIViewController {
     var productImageName = ""
     var productTitle = ""
     var productSubtitle = ""
+    var numberOfRow = 0
     
     
     override func viewDidLoad() {
