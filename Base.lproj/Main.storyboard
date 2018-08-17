@@ -142,12 +142,13 @@
                                     <outlet property="delegate" destination="kmI-pv-7KX" id="dxo-QJ-Jse"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Find your product" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Ae-YFt">
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="prominent" placeholder="Find your product" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Ae-YFt">
                                 <rect key="frame" x="0.0" y="58" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
+                                    <string>Title</string>
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
@@ -161,6 +162,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dostępne w domu" id="5gn-qC-3HH"/>
                     <connections>
+                        <outlet property="searchedBar" destination="jtr-Ae-YFt" id="umI-sJ-Nhh"/>
+                        <outlet property="table" destination="dFK-ia-k0b" id="EDb-KG-6Um"/>
                         <segue destination="enE-9m-W5Y" kind="show" identifier="goToAtHome" id="uW3-LN-Asc"/>
                     </connections>
                 </viewController>

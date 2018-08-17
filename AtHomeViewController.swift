@@ -11,11 +11,13 @@ import UIKit
 class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var numberOfRow = 0
     var instantSearch = true
+    
+    @IBOutlet var searchedBar: UISearchBar!
+    @IBOutlet var table: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+         initSearchBar(self.searchedBar)
         // Do any additional setup after loading the view.
     }
     
@@ -63,12 +65,34 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("changed \(searchBar.text!)")
         changeMyView()
     }
+    
+    // MARK: - My own methods
     func changeMyView()
     {
         if(instantSearch)
         {
             print("Now refresh UI")
         }
+    }
+    func initSearchBar(_ searchBar: UISearchBar)
+    {
+        let searchBarrr=UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
+        searchBarrr.showsScopeBar=true
+        searchBarrr.scopeButtonTitles=["aaa","bbb","ccc"]
+        searchBar.selectedScopeButtonIndex=0
+        searchBarrr.delegate=self
+        
+        let segment=UISegmentedControl(items: ["Pierwszy","drugi","trzeci","🌶"])
+        //self.searchedBar=segment
+        self.table.tableHeaderView=segment
+        table.sectionHeaderHeight=100
+       
+        
+        //        searchBar.showsScopeBar=true
+//        searchBar.scopeButtonTitles=["name", "Producenr","gggg"]
+//        searchBar.selectedScopeButtonIndex=0
+        
+    
     }
 
     /*
