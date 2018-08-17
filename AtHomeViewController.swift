@@ -8,10 +8,13 @@
 
 import UIKit
 
-class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var numberOfRow=0
+class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    var numberOfRow = 0
+    var instantSearch = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -51,6 +54,22 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: SearchBar metod
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("clicked \(searchBar.text!)")
+        changeMyView()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("changed \(searchBar.text!)")
+        changeMyView()
+    }
+    func changeMyView()
+    {
+        if(instantSearch)
+        {
+            print("Now refresh UI")
+        }
+    }
 
     /*
     // MARK: - Navigation
