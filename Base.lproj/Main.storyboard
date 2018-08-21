@@ -142,7 +142,7 @@
                                     <outlet property="delegate" destination="kmI-pv-7KX" id="dxo-QJ-Jse"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="prominent" placeholder="Find your product" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Ae-YFt">
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="prominent" placeholder="Find your product 🌶" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtr-Ae-YFt">
                                 <rect key="frame" x="0.0" y="58" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

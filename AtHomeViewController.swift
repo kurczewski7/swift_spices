@@ -11,6 +11,10 @@ import UIKit
 class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var numberOfRow = 0
     var instantSearch = true
+    var productMode = true
+    
+    
+    let sg = UISegmentedControl(items: segmentValues)
     
     @IBOutlet var searchedBar: UISearchBar!
     @IBOutlet var table: UITableView!
@@ -18,7 +22,6 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
-        // Do any additional setup after loading the view.
     }
     
     // MARK - TableView metod
@@ -76,24 +79,52 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func initSearchBar(_ searchBar: UISearchBar)
     {
-        let searchBarrr=UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
-        searchBarrr.showsScopeBar=true
-        searchBarrr.scopeButtonTitles=["aaa","bbb","ccc"]
-        searchBar.selectedScopeButtonIndex=0
-        searchBarrr.delegate=self
+        searchBar.placeholder=self.giveProductPrompt(with: true)[0]
+
+        sg.removeAllSegments()
+        sg.insertSegment(withTitle: giveProductPrompt(with: false)[0], at: 0, animated: false)
+        sg.insertSegment(withTitle: giveProductPrompt(with: false)[1], at: 1, animated: false)
+        sg.selectedSegmentIndex = 0
+        //segmetedControl.addTarget(self, action: "segmentedControlValueChanged:", forControlEvents:)
+        //addTarget(self, action: #selector(changeWebView), for: .valueChanged)
+        sg.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         
-        let segment=UISegmentedControl(items: ["Pierwszy","drugi","trzeci","🌶"])
-        //self.searchedBar=segment
-        self.table.tableHeaderView=segment
-        table.sectionHeaderHeight=100
-       
+        self.table.tableHeaderView = sg
         
-        //        searchBar.showsScopeBar=true
+        table.sectionHeaderHeight = 100
+        
+        //self.table.tableHeaderView?.backgroundColor=UIColor.yellow
+        //let ssgg = self.table.tableHeaderView as! UISegmentedControl
+    }
+    @objc func segmentedControlValueChanged(segment: UISegmentedControl)
+    {
+        print("segment changed \(segment.selectedSegmentIndex)")
+        if (searchedBar.text?.isEmpty)!
+        {
+            searchedBar.placeholder =  giveProductPrompt(with: true)[segment.selectedSegmentIndex]
+        }
+    }    
+    func giveProductPrompt(with isPlaceholder:Bool) -> [String]
+    {
+        var myPrompt = [String]()
+        if(polishLanguage)
+        {
+           myPrompt = (isPlaceholder ? ["Wyszukaj produkt 🌶","Wyszukaj producenta 🔧"] : ["🌶 Produkt ","🔧 Producent "] )
+        }
+        else
+        {
+            myPrompt = (isPlaceholder ? ["Find your product 🌶","Find your producent 🔧"] : ["🌶 Product ","🔧 Producent "] )
+        }
+        return myPrompt
+    }
+
+        
+//        searchBar.showsScopeBar=true
 //        searchBar.scopeButtonTitles=["name", "Producenr","gggg"]
 //        searchBar.selectedScopeButtonIndex=0
         
     
-    }
+
 
     /*
     // MARK: - Navigation
