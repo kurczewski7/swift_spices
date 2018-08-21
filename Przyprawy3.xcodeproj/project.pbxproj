@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
+		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
+		2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */; };
 		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
 		2CE27567210237AF001C046B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27566210237AF001C046B /* AppDelegate.swift */; };
 		2CE27569210237AF001C046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27568210237AF001C046B /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
+		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
+		2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListCellView.swift; sourceTree = "<group>"; };
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
 		2CE27563210237AF001C046B /* Przyprawy3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Przyprawy3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE27566210237AF001C046B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
+				2C7888DC212C492D00225A52 /* ShopingListViewController.swift */,
+				2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */,
 				2C38921F2122FE5300257476 /* AtHomeCell.swift */,
 				2C8C528C2122E135006D8099 /* AtHomeViewController.swift */,
 				2CE27565210237AF001C046B /* Przyprawy3 */,
@@ -271,7 +277,9 @@
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
+				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,
+				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* Przyprawy3.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
 			);
