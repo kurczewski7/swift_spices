@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */; };
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
 		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsViewController.swift; sourceTree = "<group>"; };
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
 		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
+				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
 				2C7CB577212FEB57005F6304 /* Contacts.swift */,
 				2C7888DC212C492D00225A52 /* ShopingListViewController.swift */,
 				2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */,
@@ -279,6 +282,7 @@
 			files = (
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
+				2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */,
 				2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
 				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,

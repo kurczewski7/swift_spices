@@ -26,9 +26,19 @@ class Contacts: UIViewController {
      }
     
     @IBAction func emailAction(_ sender: UIButton) {
-        let email="kurczewski7@gmail.com"
-        print(email)
-        openMyUrl(with: "mailto://\(email)")
+        // let email2 = "mailto:kurczewski7@gmail.com?cc=kurczewsscy@gmail.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!"
+        
+        let email = "kurczewski7@gmail.com"
+        let cc = "kurczewscy@gmail.com"
+        let subject = "E-mail test from iphone"
+        let body = "Test sending e-mail by Sławomir Kurczewski, łódź, śróba, żywiec"
+        
+        let orginalEmail = "mailto://\(email)?cc=\(cc)&subject=\(subject)&body=\(body)"
+        if  let encodedEmail = orginalEmail.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+        {
+            print(encodedEmail)
+            openMyUrl(with: encodedEmail)
+        }
     }
     @IBAction func smsButton(_ sender: Any) {
         let sms=512589528

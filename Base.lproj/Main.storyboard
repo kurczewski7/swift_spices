@@ -331,6 +331,7 @@
                                 </state>
                                 <connections>
                                     <action selector="contactsActions:" destination="PRb-pf-nmK" eventType="touchUpInside" id="lEi-HR-P9V"/>
+                                    <segue destination="Hn3-iw-zDm" kind="show" id="t1G-ky-lh7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -342,6 +343,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gca-Pb-Ugr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2261.5999999999999" y="3709.2953523238384"/>
+        </scene>
+        <!--Phone Contacts View Controller-->
+        <scene sceneID="IpI-0c-vLJ">
+            <objects>
+                <viewController id="Hn3-iw-zDm" userLabel="Phone Contacts View Controller" customClass="PhoneContactsViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rbo-8b-ROb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-JE-VyC">
+                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="468" id="JVJ-Ew-gYB"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9mf-sm-95y">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9mf-sm-95y" id="YO7-ks-wcc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hn3-iw-zDm" id="hSc-6s-6wO"/>
+                                    <outlet property="delegate" destination="Hn3-iw-zDm" id="3iW-0P-3h5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Ka-JE-VyC" firstAttribute="trailing" secondItem="oR6-8f-w0l" secondAttribute="trailing" id="0PI-xz-os9"/>
+                            <constraint firstItem="9Ka-JE-VyC" firstAttribute="bottom" secondItem="oR6-8f-w0l" secondAttribute="bottom" id="6Bj-eQ-kbJ"/>
+                            <constraint firstItem="9Ka-JE-VyC" firstAttribute="leading" secondItem="oR6-8f-w0l" secondAttribute="leading" id="BVa-P4-u8d"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oR6-8f-w0l"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Phone contacts" id="Wgw-HC-uHr" customClass="p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VzM-wT-vxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2981.5999999999999" y="3715.5922038980511"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kzp-QR-Kvu">
