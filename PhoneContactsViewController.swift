@@ -77,7 +77,7 @@ class PhoneContactsViewController: UIViewController, UITabBarDelegate, UITableVi
             let keyToFetch: [CNKeyDescriptor] = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactEmailAddressesKey as CNKeyDescriptor]
             let contacts = try store.unifiedContacts(matching: predicate, keysToFetch: keyToFetch)
             //self.object=
-            dispat_asynch
+            //dispat_asynch
          
         }
         catch {
