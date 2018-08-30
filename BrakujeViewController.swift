@@ -29,7 +29,7 @@ class Product: NSObject  {
     
      init(producent: String, productName: String, weight: Int, eanCode: String, number1: Int, number2: Int, number3: Int) {
         self.producent = producent
-        self.productName = producent
+        self.productName = productName
         self.weight = weight
         self.eanCode = eanCode
         self.number1 = number1
@@ -38,7 +38,7 @@ class Product: NSObject  {
     }
     func toString()
     {
-        print("\(producent) :  \(producent) :  \(weight)  : \(eanCode) : \(number1) : \(number2) : \(number3)")
+        print("\(producent) :  \(productName) :  \(weight)  : \(eanCode) : \(number1) : \(number2) : \(number3)")
     }
 }
 
@@ -73,6 +73,8 @@ func initialProduct()
    func giveElement(with nr: Int) -> Product?
    {
             var product : Product?
+            var weight: Int
+            var eanCode: String
             
             let nazwa:String = picturesArray[nr]
             let elementy = nazwa.split(separator: "_", maxSplits: 11, omittingEmptySubsequences: false)
@@ -85,26 +87,35 @@ func initialProduct()
             {
                 let producent : String = String(elementy[0])
                 let productName = NSMutableString()
+                let zakres=elementy.count-5
+                for i in 1..<zakres {
+                    productName.append("\(String(elementy[i])) ")
+                }
+                // Mark: substring of string
+                let str=String(elementy[elementy.count-5])
                 
-                productName.append(String(elementy[1]))
-                productName.append(String(elementy[2]))
-                productName.append(String(elementy[3]))
-                
-                //  "\(elementy[1])  \(elementy[2])  \(elementy[3])"
-//                productName.append(String(String(elementy[2])))
-//                productName.append(String(String(elementy[2])))
-                //var znaki="123"
-                //let weight=znaki.remove(at: String.Index)
-                
-                //let weight : NSMutableString=znaki.substring(to: String.Index.init(String.Index, within: <#T##String#>)
-                //print("www=\(weight))")
+                let size=str.distance(from: str.startIndex, to: str.endIndex)-1
+                let index = str.index(str.startIndex, offsetBy:  size)
+                if let  w : Int = Int(str.prefix(upTo: index))
+                {
+                    weight = w
+                }
+                else
+                {
+                     weight = 0
+                }
+     
                 
                 let number3 = Int(elementy[elementy.count-1])
                 let number2 = Int(elementy[elementy.count-2])
                 let number1 = Int(elementy[elementy.count-3])
-                let eanCode=String(elementy[elementy.count-4])
+                eanCode = String(elementy[elementy.count-4])
+                if Int(eanCode) == nil
+                {
+                    eanCode = "00000000"
+                }
                 
-                product = Product(producent: producent, productName: productName as String, weight: 3333, eanCode: eanCode, number1: number1!, number2: number2!, number3: number3!)
+                product = Product(producent: producent, productName: productName as String, weight: weight, eanCode: eanCode, number1: number1 ?? 0, number2: number2 ?? 0, number3: number3 ?? 0)
             }
             return product
         }
