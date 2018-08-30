@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */; };
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
+		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
 		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
 		2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */; };
@@ -17,7 +18,7 @@
 		2CE27567210237AF001C046B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27566210237AF001C046B /* AppDelegate.swift */; };
 		2CE27569210237AF001C046B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE27568210237AF001C046B /* ViewController.swift */; };
 		2CE2756C210237AF001C046B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE2756A210237AF001C046B /* Main.storyboard */; };
-		2CE2756F210237AF001C046B /* Przyprawy3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CE2756D210237AF001C046B /* Przyprawy3.xcdatamodeld */; };
+		2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */; };
 		2CE27571210237B1001C046B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CE27570210237B1001C046B /* Assets.xcassets */; };
 		2CE27574210237B1001C046B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE27572210237B1001C046B /* LaunchScreen.storyboard */; };
 		2CE2757F210237B1001C046B /* Przyprawy3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE2757E210237B1001C046B /* Przyprawy3Tests.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsViewController.swift; sourceTree = "<group>"; };
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
+		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
 		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
 		2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListCellView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
+				2CE27566210237AF001C046B /* AppDelegate.swift */,
+				2C31B32421383A4900B7581D /* Database.swift */,
 				2CF73B032135D97700FEA34C /* BrakujeViewController.swift */,
 				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
 				2C7CB577212FEB57005F6304 /* Contacts.swift */,
@@ -123,13 +127,12 @@
 		2CE27565210237AF001C046B /* Przyprawy3 */ = {
 			isa = PBXGroup;
 			children = (
-				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CE27568210237AF001C046B /* ViewController.swift */,
 				2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */,
 				2CE27570210237B1001C046B /* Assets.xcassets */,
 				2CE27572210237B1001C046B /* LaunchScreen.storyboard */,
 				2CE27575210237B1001C046B /* Info.plist */,
-				2CE2756D210237AF001C046B /* Przyprawy3.xcdatamodeld */,
+				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
 			);
 			path = Przyprawy3;
 			sourceTree = "<group>";
@@ -289,10 +292,11 @@
 				2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
 				2CF73B042135D97700FEA34C /* BrakujeViewController.swift in Sources */,
+				2C31B32521383A4900B7581D /* Database.swift in Sources */,
 				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
-				2CE2756F210237AF001C046B /* Przyprawy3.xcdatamodeld in Sources */,
+				2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,13 +626,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2CE2756D210237AF001C046B /* Przyprawy3.xcdatamodeld */ = {
+		2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				2CE2756E210237AF001C046B /* Przyprawy3.xcdatamodel */,
 			);
 			currentVersion = 2CE2756E210237AF001C046B /* Przyprawy3.xcdatamodel */;
-			path = Przyprawy3.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

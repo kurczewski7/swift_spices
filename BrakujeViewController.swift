@@ -44,9 +44,12 @@ class Product: NSObject  {
 
 class BrakujeViewController: UIViewController {
     var productList : [Product] = []
+    let database = Database()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        database.printPath()
+        
         //productList.append(<#T##newElement: Product##Product#>)
 
         // Do any additional setup after loading the view.
