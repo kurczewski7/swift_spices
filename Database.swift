@@ -74,4 +74,31 @@ class Database  {
         productTable?.number2 = 1
         productTable?.number3 = 1
     }
+    func filterData()  {
+        //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
+        //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
+        
+        //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
+        // ["Alice Smith", "Quentin Alberts"]
+        
+        let searchField = "producent"
+        let sortField = "producent"
+        let searchText = "Knor"
+        let reqest : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+        //let predicate=NSPredicate(format: "producent CONTAINS[cd] %@", searchText)
+        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
+        reqest.predicate=predicate
+        let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: true)
+        reqest.sortDescriptors=[sortDeescryptor]
+        do {
+            productArray = (try context?.fetch(reqest))!
+        } catch  {
+            print("Error feaching data from context \(error)")
+        }
+        updateGUI()
+    }
+    func updateGUI()
+    {
+    }
 }
+
