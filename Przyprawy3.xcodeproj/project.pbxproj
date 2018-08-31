@@ -11,6 +11,7 @@
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
+		2C70579C2139ED4300B99FEA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70579B2139ED4300B99FEA /* Product.swift */; };
 		2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DC212C492D00225A52 /* ShopingListViewController.swift */; };
 		2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */; };
 		2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CB577212FEB57005F6304 /* Contacts.swift */; };
@@ -48,6 +49,7 @@
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
+		2C70579B2139ED4300B99FEA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		2C7888DC212C492D00225A52 /* ShopingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListViewController.swift; sourceTree = "<group>"; };
 		2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListCellView.swift; sourceTree = "<group>"; };
 		2C7CB577212FEB57005F6304 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2C31B32421383A4900B7581D /* Database.swift */,
 				2CF73B032135D97700FEA34C /* BrakujeViewController.swift */,
+				2C70579B2139ED4300B99FEA /* Product.swift */,
 				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
 				2C7CB577212FEB57005F6304 /* Contacts.swift */,
 				2C7888DC212C492D00225A52 /* ShopingListViewController.swift */,
@@ -298,6 +301,7 @@
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
+				2C70579C2139ED4300B99FEA /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

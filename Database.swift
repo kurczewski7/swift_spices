@@ -9,24 +9,20 @@
 import UIKit
 import CoreData
 
-
-
 class Database  {
-    var x: String = ""
+
     var context : NSManagedObjectContext?
-    var  productTable: ProductTable?
-    
+    var product: ProductTable = ProductTable()
+    // var  productTable: ProductTable?
     var productArray=[ProductTable]()
     
     func printPath()
     {
-        
-        
-        print(FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask))
+         print(FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask))
     }
     init() {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        productTable = ProductTable(context: context!)
+        product = ProductTable(context: context!)
     }
     func save()
     {
@@ -65,19 +61,18 @@ class Database  {
     }
     func fillTestData()
     {
-        productTable?.id = 111
-        productTable?.producent = "Producent"
-        productTable?.productName = "Producent Name"
-        productTable?.eanCode = "454556455"
-        productTable?.weight = 4584
-        productTable?.number1 = 1
-        productTable?.number2 = 1
-        productTable?.number3 = 1
+        product.id = 111
+        product.producent = "Producent"
+        product.productName = "Producent Name"
+        product.eanCode = "454556455"
+        product.weight = 4584
+        product.number1 = 1
+        product.number2 = 1
+        product.number3 = 1
     }
     func filterData()  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
-        
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
         
@@ -97,8 +92,39 @@ class Database  {
         }
         updateGUI()
     }
+    func addProduct(productElem : Product, id : Int, saving : Bool)
+    {
+        product.id = Int32(id)
+        product.producent   = productElem.producent
+        product.pictureName = productElem.pictureName
+        product.productName = productElem.productName
+        product.eanCode     = productElem.eanCode
+        product.weight      = Int16(productElem.weight)
+        product.number1     = Int16(productElem.number1)
+        product.number2     = Int16(productElem.number1)
+        product.number3     = Int16(productElem.number1)
+        
+        self.productArray.append(product)
+        if saving {
+          self.save()
+        }
+    }
+    func addAllProducts(products: [Product])
+    {
+        for i in 1...10
+        {
+            self.addProduct(productElem: products[0], id: i, saving: false)
+        }
+        self.save()
+    }
     func updateGUI()
     {
     }
+    func toString(product: ProductTable)
+    {
+        // = ProductTable()
+        print("\(String(describing: product.producent)) :  \(String(describing: product.productName)) :  \(product.weight)  : \(String(describing: product.eanCode)) : \(product.number1) : \(product.number2) : \(product.number3)")
+    }
+
 }
 

@@ -7,40 +7,6 @@
 //
 
 import UIKit
-class Product: NSObject  {
-    var producent: String
-    var productName: String
-    var weight: Int
-    var eanCode: String
-    var number1: Int
-    var number2: Int
-    var number3: Int
-    
-    override init()
-    {
-        self.producent = ""
-        self.productName = ""
-        self.weight = 0
-        self.eanCode = ""
-        self.number1 = 0
-        self.number2 = 0
-        self.number3 = 0
-    }
-    
-     init(producent: String, productName: String, weight: Int, eanCode: String, number1: Int, number2: Int, number3: Int) {
-        self.producent = producent
-        self.productName = productName
-        self.weight = weight
-        self.eanCode = eanCode
-        self.number1 = number1
-        self.number2 = number2
-        self.number3 = number3
-    }
-    func toString()
-    {
-        print("\(producent) :  \(productName) :  \(weight)  : \(eanCode) : \(number1) : \(number2) : \(number3)")
-    }
-}
 
 class BrakujeViewController: UIViewController {
     var productList : [Product] = []
@@ -64,24 +30,41 @@ func initialProduct()
     
     }
     
-    
+    // MARK: - IBAction
     @IBAction func analizaTap(_ sender: Any) {
        for i in 0..<picturesArray.count
        {
             let product = giveElement(with: i)
             product?.toString()
         }
-    
    }
+    @IBAction func WczytajBaze(_ sender: UIButton) {
+        for i in 0..<picturesArray.count
+        {
+            let product = giveElement(with: i)
+            database.addProduct(productElem: product!, id: i, saving: false)
+            product?.toString()
+        }
+        database.save()
+    }
+    @IBAction func wyswietlBaze(_ sender: UIButton) {
+        database.loadData()
+        let baseArray = database.productArray
+        for rec in baseArray
+        {
+            database.toString(product: rec)
+        }        
+    }
+    
    func giveElement(with nr: Int) -> Product?
    {
             var product : Product?
             var weight: Int
             var eanCode: String
             
-            let nazwa:String = picturesArray[nr]
-            let elementy = nazwa.split(separator: "_", maxSplits: 11, omittingEmptySubsequences: false)
-            print("---- \(nazwa)  ----")
+            let pictureName:String = picturesArray[nr]
+            let elementy = pictureName.split(separator: "_", maxSplits: 11, omittingEmptySubsequences: false)
+            print("---- \(pictureName)  ----")
             for i in 0..<elementy.count
             {
                 print("\(i) = \(elementy[i])")
@@ -99,26 +82,22 @@ func initialProduct()
                 
                 let size=str.distance(from: str.startIndex, to: str.endIndex)-1
                 let index = str.index(str.startIndex, offsetBy:  size)
-                if let  w : Int = Int(str.prefix(upTo: index))
-                {
+                if let  w : Int = Int(str.prefix(upTo: index)) {
                     weight = w
                 }
-                else
-                {
+                else {
                      weight = 0
                 }
-     
                 
                 let number3 = Int(elementy[elementy.count-1])
                 let number2 = Int(elementy[elementy.count-2])
                 let number1 = Int(elementy[elementy.count-3])
                 eanCode = String(elementy[elementy.count-4])
-                if Int(eanCode) == nil
-                {
+                if Int(eanCode) == nil {
                     eanCode = "00000000"
                 }
                 
-                product = Product(producent: producent, productName: productName as String, weight: weight, eanCode: eanCode, number1: number1 ?? 0, number2: number2 ?? 0, number3: number3 ?? 0)
+                product = Product(producent: producent, productName: productName as String, weight: weight, eanCode: eanCode, number1: number1 ?? 0, number2: number2 ?? 0, number3: number3 ?? 0 , pictureName: pictureName)
             }
             return product
         }
