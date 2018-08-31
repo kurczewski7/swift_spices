@@ -50,9 +50,11 @@ func initialProduct()
     @IBAction func wyswietlBaze(_ sender: UIButton) {
         database.loadData()
         let baseArray = database.productArray
+        var i=1
         for rec in baseArray
         {
-            database.toString(product: rec)
+            database.toString(product: rec, nr: i)
+            i+=1
         }        
     }
     

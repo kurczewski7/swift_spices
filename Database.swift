@@ -111,7 +111,9 @@ class Database  {
     }
     func addAllProducts(products: [Product])
     {
-        for i in 1...10
+        print("=========")
+        print("rozmiar bazy: \(products.count)")
+        for i in 0..<products.count
         {
             self.addProduct(productElem: products[0], id: i, saving: false)
         }
@@ -120,10 +122,10 @@ class Database  {
     func updateGUI()
     {
     }
-    func toString(product: ProductTable)
+    func toString(product: ProductTable, nr: Int)
     {
         // = ProductTable()
-        print("\(String(describing: product.producent)) :  \(String(describing: product.productName)) :  \(product.weight)  : \(String(describing: product.eanCode)) : \(product.number1) : \(product.number2) : \(product.number3)")
+        print("\(nr)) \(String(describing: product.producent)) :  \(String(describing: product.productName)) :  \(product.weight)  : \(String(describing: product.eanCode)) : \(product.number1) : \(product.number2) : \(product.number3)")
     }
 
 }
