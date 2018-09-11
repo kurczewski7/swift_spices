@@ -25,7 +25,10 @@ class DetailAtHomeViewController: UIViewController {
         productImageView.image=UIImage(named: productImageName)
         productTitleLabel.text=productTitle
         productSubtitleLabel.text=productSubtitle
-
+        if(is3Dtouch)
+        {
+            registerForPreviewing(with: self, sourceView: view)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -46,3 +49,28 @@ class DetailAtHomeViewController: UIViewController {
     */
 
 }
+// MARK: 3D Touch
+extension DetailAtHomeViewController : UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+      let convertedLocation=view.convert(location, to: productImageView)
+        if(productImageView.bounds.contains(convertedLocation)) {
+            let popVC=storyboard?.instantiateViewController(withIdentifier: "popVC") as! popViewController
+            popVC.popImage = productImageView.image!
+            //Set your height
+            popVC.preferredContentSize = CGSize(width: 0.0, height: 300)
+            previewingContext.sourceRect = productImageView.frame
+            return popVC
+        }
+        else {
+          return nil
+        }
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        if let viewController = viewControllerToCommit as? popViewController {
+            viewController.back.isHidden=false
+        }
+        show(viewControllerToCommit, sender: self)
+    }
+}
+

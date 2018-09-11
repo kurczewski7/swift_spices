@@ -238,6 +238,41 @@
             </objects>
             <point key="canvasLocation" x="3008.8000000000002" y="2236.7316341829087"/>
         </scene>
+        <!--Pop View Controller-->
+        <scene sceneID="eJa-YL-QAU">
+            <objects>
+                <viewController storyboardIdentifier="popVC" id="hTl-S7-ICk" userLabel="Pop View Controller" customClass="popViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zya-ih-sb8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIE-sf-0IB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdj-Sp-nC8">
+                                <rect key="frame" x="170" y="569" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="beck"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iIE-sf-0IB" firstAttribute="top" secondItem="Zya-ih-sb8" secondAttribute="top" id="574-Jc-CX9"/>
+                            <constraint firstItem="iIE-sf-0IB" firstAttribute="leading" secondItem="36M-2b-yrR" secondAttribute="leading" id="5kI-Le-OOA"/>
+                            <constraint firstItem="iIE-sf-0IB" firstAttribute="trailing" secondItem="36M-2b-yrR" secondAttribute="trailing" id="PIq-le-W50"/>
+                            <constraint firstItem="36M-2b-yrR" firstAttribute="bottom" secondItem="iIE-sf-0IB" secondAttribute="bottom" id="pzo-hB-pn0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="36M-2b-yrR"/>
+                    </view>
+                    <connections>
+                        <outlet property="back" destination="Pdj-Sp-nC8" id="Xt7-Zg-onF"/>
+                        <outlet property="photo" destination="iIE-sf-0IB" id="YWc-Kf-KL7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWt-YD-oNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752.8000000000002" y="2234.9325337331338"/>
+        </scene>
         <!--Lista zakupów -->
         <scene sceneID="dDu-HT-hDr">
             <objects>
