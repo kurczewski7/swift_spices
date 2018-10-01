@@ -79,17 +79,22 @@ class Database  {
     }
     func addProduct(productElem : Product, id : Int, saving : Bool)
     {
-        product.id = Int32(id)
-        product.producent   = productElem.producent
-        product.pictureName = productElem.pictureName
-        product.productName = productElem.productName
-        product.eanCode     = productElem.eanCode
-        product.weight      = Int16(productElem.weight)
-        product.number1     = Int16(productElem.number1)
-        product.number2     = Int16(productElem.number1)
-        product.number3     = Int16(productElem.number1)
+        let newProduct = ProductTable(context: context!)
         
-        self.productArray.append(product)
+        newProduct.id = Int32(id)
+        newProduct.producent   = productElem.producent
+        newProduct.pictureName = productElem.pictureName
+        newProduct.productName = productElem.productName
+        newProduct.eanCode     = productElem.eanCode
+        newProduct.weight      = Int16(productElem.weight)
+        newProduct.number1     = Int16(productElem.number1)
+        newProduct.number2     = Int16(productElem.number1)
+        newProduct.number3     = Int16(productElem.number1)
+        newProduct.searchTag   = "no tags"
+
+        print("Rozmiar productArray przed \(productArray.count)")
+        self.productArray.append(newProduct)
+        print("Rozmiar productArray po \(productArray.count) -- \(productArray[productArray.count-1].pictureName ?? "NULL")")
         if saving {
             self.save()
         }

@@ -43,6 +43,7 @@ func initialProduct()
         {
             let product = giveElement(with: i)
             database.addProduct(productElem: product!, id: i, saving: true)
+    
             product?.toString()
         }
         database.save()
@@ -115,16 +116,8 @@ func initialProduct()
         let newProduct = ProductTable(context: self.database.context!)
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            newProduct.producent="Knor"
+            self.fill(product: newProduct)
             newProduct.productName=textField.text
-            newProduct.eanCode="88888"
-            newProduct.id=222
-            newProduct.pictureName="pic1"
-            newProduct.number1=1
-            newProduct.number2=2
-            newProduct.number3=3
-            newProduct.searchTag="tag1"
-            
             self.database.productArray.append(newProduct)
             self.database.save()
             
@@ -141,7 +134,19 @@ func initialProduct()
         present(alert, animated: true, completion: nil)
         
     }
-    
+    func fill(product rec : ProductTable)
+    {
+        
+        rec.producent="Knor"
+        rec.productName="no product"
+        rec.eanCode="88888"
+        rec.id=222
+        rec.pictureName="pic1"
+        rec.number1=1
+        rec.number2=2
+        rec.number3=3
+        rec.searchTag="tag1"
+    }
     @IBAction func deleteLastRecord(_ sender: UIButton) {
         
         
