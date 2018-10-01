@@ -12,27 +12,29 @@ import CoreData
 class Database  {
 
     var context : NSManagedObjectContext?
-    var product: ProductTable = ProductTable()
-    // var  productTable: ProductTable?
-    var productArray=[ProductTable]()
     
-    func printPath()
-    {
-         print(FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask))
-    }
+    var product: ProductTable = ProductTable()
+    var productArray = [ProductTable]()
+    var featchResultControllerProduct: NSFetchedResultsController<ProductTable>
+    let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+    let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
+    
+    var shoping : ShopingTable = ShopingTable()
+    var shopingList = [ShopingTable]()
+    var feachShopingRequest:NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+    
     init() {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         product = ProductTable(context: context!)
+        shoping = ShopingTable(context: context!)
+        feachProductRequest.sortDescriptors=[sortProductDescriptor]
+        featchResultControllerProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext: context!, sectionNameKeyPath: nil, cacheName: nil)
     }
+
     func save()
     {
-        do {
-            try context?.save()
-        }
-        catch
-        {
-            print("Error saveing context \(error)")
-        }
+        do {   try context?.save()    }
+        catch  {  print("Error saveing context \(error)")   }
     }
     func loadData()
     {
@@ -59,6 +61,49 @@ class Database  {
 
         save()
     }
+    func deleteLast()
+    {
+        let row = productArray.count-1
+       
+        context?.delete(productArray[row])
+        productArray.remove(at: row)
+        save()
+    }
+    func deleteAllData(entity: String)
+    {
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
+        do { try context?.execute(DelAllReqVar) }
+        catch { print(error) }
+        productArray.removeAll()
+    }
+    func addProduct(productElem : Product, id : Int, saving : Bool)
+    {
+        product.id = Int32(id)
+        product.producent   = productElem.producent
+        product.pictureName = productElem.pictureName
+        product.productName = productElem.productName
+        product.eanCode     = productElem.eanCode
+        product.weight      = Int16(productElem.weight)
+        product.number1     = Int16(productElem.number1)
+        product.number2     = Int16(productElem.number1)
+        product.number3     = Int16(productElem.number1)
+        
+        self.productArray.append(product)
+        if saving {
+            self.save()
+        }
+    }
+    func addAllProducts(products: [Product])
+    {
+        print("=========")
+        print("rozmiar bazy: \(products.count)")
+        for i in 0..<products.count
+        {
+            self.addProduct(productElem: products[0], id: i, saving: false)
+        }
+        self.save()
+    }
     func fillTestData()
     {
         product.id = 111
@@ -69,6 +114,7 @@ class Database  {
         product.number1 = 1
         product.number2 = 1
         product.number3 = 1
+        product.pictureName="Pict1"
     }
     func filterData()  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
@@ -92,40 +138,18 @@ class Database  {
         }
         updateGUI()
     }
-    func addProduct(productElem : Product, id : Int, saving : Bool)
-    {
-        product.id = Int32(id)
-        product.producent   = productElem.producent
-        product.pictureName = productElem.pictureName
-        product.productName = productElem.productName
-        product.eanCode     = productElem.eanCode
-        product.weight      = Int16(productElem.weight)
-        product.number1     = Int16(productElem.number1)
-        product.number2     = Int16(productElem.number1)
-        product.number3     = Int16(productElem.number1)
-        
-        self.productArray.append(product)
-        if saving {
-          self.save()
-        }
-    }
-    func addAllProducts(products: [Product])
-    {
-        print("=========")
-        print("rozmiar bazy: \(products.count)")
-        for i in 0..<products.count
-        {
-            self.addProduct(productElem: products[0], id: i, saving: false)
-        }
-        self.save()
-    }
+
     func updateGUI()
     {
     }
     func toString(product: ProductTable, nr: Int)
     {
         // = ProductTable()
-        print("\(nr)) \(String(describing: product.producent)) :  \(String(describing: product.productName)) :  \(product.weight)  : \(String(describing: product.eanCode)) : \(product.number1) : \(product.number2) : \(product.number3)")
+        print("\(nr)) \(String(describing: product.producent)) :  \(String(describing: product.productName)) :  \(product.weight)  : \(String(describing: product.eanCode)) : \(product.number1) : \(product.number2) : \(product.number3) : \(product.pictureName)")
+    }
+    func printPath()
+    {
+        print(FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask))
     }
 
 }

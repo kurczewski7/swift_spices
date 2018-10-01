@@ -22,16 +22,18 @@ let polishLanguage = true
 // Mark: Detect 3D touch
 let is3Dtouch = UIApplication.shared.keyWindow?.traitCollection.forceTouchCapability == UIForceTouchCapability.available
 let bundleID = "pl.wroclaw.pwr.Przyprawy3"
-
 var segmentValues : [String] = ["product","producent"]
+
+enum DbTableNames : String {
+    case produkty = "ProductTable"
+    case kupione = "ShopingTable"
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }

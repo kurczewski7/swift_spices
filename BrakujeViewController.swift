@@ -9,7 +9,7 @@
 import UIKit
 
 class BrakujeViewController: UIViewController {
-    var productList : [Product] = []
+    var productList = [Product]()
     let database = Database()
 
     override func viewDidLoad() {
@@ -42,13 +42,15 @@ func initialProduct()
         for i in 0..<picturesArray.count
         {
             let product = giveElement(with: i)
-            database.addProduct(productElem: product!, id: i, saving: false)
+            database.addProduct(productElem: product!, id: i, saving: true)
             product?.toString()
         }
         database.save()
     }
     @IBAction func wyswietlBaze(_ sender: UIButton) {
         database.loadData()
+        print("ilosc rekordow w bazie \(database.productArray.count)")
+    
         let baseArray = database.productArray
         var i=1
         for rec in baseArray
@@ -58,7 +60,10 @@ func initialProduct()
         }        
     }
     
-   func giveElement(with nr: Int) -> Product?
+    @IBAction func kasujTabele(_ sender: UIButton) {
+        database.deleteAllData(entity: DbTableNames.produkty.rawValue)
+    }
+    func giveElement(with nr: Int) -> Product?
    {
             var product : Product?
             var weight: Int
@@ -104,8 +109,53 @@ func initialProduct()
             return product
         }
  
+    @IBAction func addOneRecord(_ sender: UIButton) {
+        var  textField = UITextField()
+        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
+        let newProduct = ProductTable(context: self.database.context!)
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            newProduct.producent="Knor"
+            newProduct.productName=textField.text
+            newProduct.eanCode="88888"
+            newProduct.id=222
+            newProduct.pictureName="pic1"
+            newProduct.number1=1
+            newProduct.number2=2
+            newProduct.number3=3
+            newProduct.searchTag="tag1"
+            
+            self.database.productArray.append(newProduct)
+            self.database.save()
+            
+            //            self.database.fillTestData()
+            //            self.database.productArray.append(self.database.product)
+            //self.productList.append(newProduct)
+            //self.database.product.productName=textField.text
+        }
+        alert.addAction(action)
+        alert.addTextField { (field) in
+            textField=field
+            textField.placeholder="Add new record"
+        }
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func deleteLastRecord(_ sender: UIButton) {
         
         
+    }
+    
+    @IBAction func infoButton(_ sender: UIButton) {
+        let rec=database.productArray.count
+        print("rozmiar productArray \(rec)")
+        for i in 0..<rec
+        {
+            print("\(i) )\(database.productArray[i])")
+        }
+    }
+    
 //        let nazwa2:String = picturesArray[1]
 //        let nazwa3:String = picturesArray[2]
         

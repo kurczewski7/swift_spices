@@ -49,7 +49,7 @@ class DetailAtHomeViewController: UIViewController {
     */
 
 }
-// MARK: 3D Touch
+// MARK: 3D Touch dellegate method
 extension DetailAtHomeViewController : UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
       let convertedLocation=view.convert(location, to: productImageView)
@@ -57,7 +57,7 @@ extension DetailAtHomeViewController : UIViewControllerPreviewingDelegate {
             let popVC=storyboard?.instantiateViewController(withIdentifier: "popVC") as! popViewController
             popVC.popImage = productImageView.image!
             //Set your height
-            popVC.preferredContentSize = CGSize(width: 0.0, height: 300)
+            popVC.preferredContentSize = CGSize(width: 0.0, height: 400)
             previewingContext.sourceRect = productImageView.frame
             return popVC
         }

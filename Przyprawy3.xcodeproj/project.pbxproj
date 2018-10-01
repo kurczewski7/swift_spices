@@ -229,13 +229,16 @@
 				TargetAttributes = {
 					2CE27562210237AF001C046B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					2CE27579210237B1001C046B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 2CE27562210237AF001C046B;
 					};
 					2CE27584210237B1001C046B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 2CE27562210237AF001C046B;
 					};
 				};
@@ -487,7 +490,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -505,7 +508,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -525,7 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Przyprawy3.app/Przyprawy3";
 			};
@@ -546,7 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Przyprawy3.app/Przyprawy3";
 			};
@@ -566,7 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Przyprawy3;
 			};
@@ -586,7 +589,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.wroclaw.pwr.Przyprawy3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Przyprawy3;
 			};
