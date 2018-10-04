@@ -13,13 +13,13 @@ class Database  {
 
     var context : NSManagedObjectContext?
     
-    var product: ProductTable = ProductTable()
+    var product: ProductTable
     var productArray = [ProductTable]()
     var featchResultControllerProduct: NSFetchedResultsController<ProductTable>
     let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
     
-    var shoping : ShopingTable = ShopingTable()
+    var shoping : ShopingTable
     var shopingList = [ShopingTable]()
     var feachShopingRequest:NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     
@@ -39,7 +39,9 @@ class Database  {
     func loadData()
     {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-        do {        productArray = (try context?.fetch(request))!        }
+        do {    let newProducyArray     = try context?.fetch(request)
+            self.productArray = newProducyArray!
+        }
         catch { print("Error fetching data from context \(error)")   }
     }
     func editData()
@@ -75,7 +77,9 @@ class Database  {
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
         do { try context?.execute(DelAllReqVar) }
         catch { print(error) }
+         print("Preed kasowaniem productArray.count=\(productArray.count)")
         productArray.removeAll()
+        print("Po productArray.count=\(productArray.count)")
     }
     func addProduct(productElem : Product, id : Int, saving : Bool)
     {
@@ -94,7 +98,15 @@ class Database  {
 
         print("Rozmiar productArray przed \(productArray.count)")
         self.productArray.append(newProduct)
-        print("Rozmiar productArray po \(productArray.count) -- \(productArray[productArray.count-1].pictureName ?? "NULL")")
+        print("Rozmiar productArray po \(productArray.count)")
+        
+        if productArray[productArray.count-1].pictureName == nil
+        {
+            print("---------")
+            print("nul at \(productArray.count-1)")
+            print("---------")
+
+        }
         if saving {
             self.save()
         }

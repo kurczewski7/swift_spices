@@ -9,7 +9,7 @@
 import UIKit
 
 class BrakujeViewController: UIViewController {
-    var productList = [Product]()
+    // var productList = [Product]()
     let database = Database()
 
     override func viewDidLoad() {
@@ -63,6 +63,7 @@ func initialProduct()
     
     @IBAction func kasujTabele(_ sender: UIButton) {
         database.deleteAllData(entity: DbTableNames.produkty.rawValue)
+        
     }
     func giveElement(with nr: Int) -> Product?
    {
@@ -118,7 +119,9 @@ func initialProduct()
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             self.fill(product: newProduct)
             newProduct.productName=textField.text
+            print("Przed addOneRecord=\(self.database.productArray.count)")
             self.database.productArray.append(newProduct)
+            print("Po addOneRecord=\(self.database.productArray.count)")
             self.database.save()
             
             //            self.database.fillTestData()
