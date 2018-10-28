@@ -137,27 +137,30 @@ func initialProduct()
         }
  
     @IBAction func newAdd(_ sender: UIButton) {
-        //let prod=giveElement(with: 0)
+        let prod=giveElement(with: 0)
+        let  prod2=giveElement(with: 1)
+        let  prod3=giveElement(with: 2)
         
-        
-        addNewData()
+        addNewData(prod: prod)
+        addNewData(prod: prod2)
+        addNewData(prod: prod3)
     }
-    func addNewData() {
+    func addNewData(prod : Product) {
         let context = coreData.persistentContainer.viewContext
         let product=ProductTable(context: context)
         var productsTab: [ProductTable] = []
         
         //coreData.persistentContainer.
         
-//        product.pictureName=prod.pictureName
-//        product.eanCode=prod.eanCode
-//        product.producent=prod.producent
-//        product.productName=prod.productName
+        product.pictureName=prod.pictureName
+        product.eanCode=prod.eanCode
+        product.producent=prod.producent
+        product.productName=prod.productName
         
-        product.pictureName="prod.pictureName"
-        product.eanCode="eanCode"
-        product.producent="producent"
-        product.productName="productName"
+//        product.pictureName="prod.pictureName"
+//        product.eanCode="eanCode"
+//        product.producent="producent"
+//        product.productName="productName"
         productsTab.append(product)
 
         coreData.saveContext()
