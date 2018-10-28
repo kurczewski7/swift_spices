@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class BrakujeViewController: UIViewController {
     // var productList = [Product]()
-    let database = Database()
+    //let database = Database()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.printPath()
+        //database.printPath()
         
         //productList.append(<#T##newElement: Product##Product#>)
 
@@ -42,38 +43,51 @@ func initialProduct()
         print("wczytaj baze")
         for i in 0..<1     //picturesArray.count
         {
-            print("i\(i): \(database.productArray.count)")
+            //print("i\(i): \(database.productArray.count)")
             wczytywanieElementowBazy(i)
         }
-        database.save()
+        //database.save()
      }
     func wczytywanieElementowBazy(_ nrElem : Int)
     {
         //let product : Product  // =Product()
         
         let product = giveElement(with: nrElem)
-        database.addProduct(productElem: product, id: nrElem, saving: false)
+        //database.addProduct(productElem: product, id: nrElem, saving: false)
         product.toString()
         
         //database.addAllProducts(products: <#T##[Product]#>
         //database.save()
     }
     @IBAction func wyswietlBaze(_ sender: UIButton) {
-        print("wyswietlBaze przed load : ilosc rekordow w bazie \(database.productArray.count)")
-        database.loadData()
-        print("wyswietlBaze po : ilosc rekordow w bazie \(database.productArray.count)")
+        //print("wyswietlBaze przed load : ilosc rekordow w bazie \(database.productArray.count)")
+        //database.loadData()
+       // print("wyswietlBaze po : ilosc rekordow w bazie \(database.productArray.count)")
     
-        let baseArray = database.productArray
-        var i=1
-        for rec in baseArray
-        {
-            database.toString(product: rec, nr: i)
-            i+=1
-        }        
+        //let baseArray = database.productArray
+        //var i=1
+//        for rec in baseArray
+//        {
+//            database.toString(product: rec, nr: i)
+//            i+=1
+//        }
     }
     
     @IBAction func kasujTabele(_ sender: UIButton) {
-        database.deleteAllData(entity: DbTableNames.produkty.rawValue)
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: DbTableNames.produkty.rawValue)
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
+        let context=coreData.persistentContainer.viewContext
+        
+        do { try context.execute(DelAllReqVar) }
+        catch { print(error) }
+        //print("Preed kasowaniem productArray.count=\(productArray.count)")
+        //productArray.removeAll()
+        //print("Po productArray.count=\(productArray.count)")
+
+        
+        
+        //database.deleteAllData(entity: DbTableNames.produkty.rawValue)
+        //database.productArray.removeAll()
         
     }
     func giveElement(with nr: Int) -> Product
@@ -122,30 +136,57 @@ func initialProduct()
             return product
         }
  
-    @IBAction func addOneRecord(_ sender: UIButton) {
-        var  textField = UITextField()
-        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
-        let newProduct = ProductTable(context: self.database.context)
+    @IBAction func newAdd(_ sender: UIButton) {
+        //let prod=giveElement(with: 0)
         
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.fill(product: newProduct)
-            newProduct.productName=textField.text
-            print("Przed addOneRecord=\(self.database.productArray.count)")
-            self.database.productArray.append(newProduct)
-            print("Po addOneRecord=\(self.database.productArray.count)")
-            self.database.save()
-            
+        
+        addNewData()
+    }
+    func addNewData() {
+        let context = coreData.persistentContainer.viewContext
+        let product=ProductTable(context: context)
+        var productsTab: [ProductTable] = []
+        
+        //coreData.persistentContainer.
+        
+//        product.pictureName=prod.pictureName
+//        product.eanCode=prod.eanCode
+//        product.producent=prod.producent
+//        product.productName=prod.productName
+        
+        product.pictureName="prod.pictureName"
+        product.eanCode="eanCode"
+        product.producent="producent"
+        product.productName="productName"
+        productsTab.append(product)
+
+        coreData.saveContext()
+    }
+
+    @IBAction func addOneRecord(_ sender: UIButton) {
+//        var  textField = UITextField()
+//        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
+//        let newProduct = ProductTable(context: self.database.context)
+//
+//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+//            self.fill(product: newProduct)
+//            newProduct.productName=textField.text
+//            print("Przed addOneRecord=\(self.database.productArray.count)")
+//            self.database.productArray.append(newProduct)
+//            print("Po addOneRecord=\(self.database.productArray.count)")
+//            self.database.save()
+        
             //            self.database.fillTestData()
             //            self.database.productArray.append(self.database.product)
             //self.productList.append(newProduct)
             //self.database.product.productName=textField.text
-        }
-        alert.addAction(action)
-        alert.addTextField { (field) in
-            textField=field
-            textField.placeholder="Add new record"
-        }
-        present(alert, animated: true, completion: nil)
+        //}
+//        alert.addAction(action)
+//        alert.addTextField { (field) in
+//            textField=field
+//            textField.placeholder="Add new record"
+//        }
+       // present(alert, animated: true, completion: nil)
         
     }
     func fill(product rec : ProductTable)
@@ -167,12 +208,12 @@ func initialProduct()
     }
     
     @IBAction func infoButton(_ sender: UIButton) {
-        let rec=database.productArray.count
-        print("rozmiar productArray \(rec)")
-        for i in 0..<rec
-        {
-            print("\(i) )\(database.productArray[i])")
-        }
+        //let rec=database.productArray.count
+       // print("rozmiar productArray \(rec)")
+//        for i in 0..<rec
+//        {
+//            print("\(i) )\(database.productArray[i])")
+//        }
     }
     
 //        let nazwa2:String = picturesArray[1]

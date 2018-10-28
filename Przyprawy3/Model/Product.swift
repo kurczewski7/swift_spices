@@ -9,7 +9,7 @@
 
 import UIKit
 class Product: NSObject  {
-    let database = Database()
+    //let database = Database()
     
     var producent   : String
     var productName : String
