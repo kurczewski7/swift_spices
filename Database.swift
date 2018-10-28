@@ -11,36 +11,40 @@ import CoreData
 
 class Database  {
 
-    var context : NSManagedObjectContext?
+    var context : NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var product: ProductTable
-    var productArray = [ProductTable]()
+    var productArray : [ProductTable] = []
     var featchResultControllerProduct: NSFetchedResultsController<ProductTable>
     let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
     
-    var shoping : ShopingTable
-    var shopingList = [ShopingTable]()
+    var shoping : ShopingProductTable
+    var shopingList = [ShopingProductTable]()
     var feachShopingRequest:NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     
     init() {
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        product = ProductTable(context: context!)
-        shoping = ShopingTable(context: context!)
+        //context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        product = ProductTable(context: context)
+        shoping = ShopingProductTable(context: context)
         feachProductRequest.sortDescriptors=[sortProductDescriptor]
-        featchResultControllerProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext: context!, sectionNameKeyPath: nil, cacheName: nil)
+        featchResultControllerProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
 
     func save()
-    {
-        do {   try context?.save()    }
+    {   print("save przed \(productArray.count)")
+        do {   try context.save()    }
         catch  {  print("Error saveing context \(error)")   }
+        print("save po \(productArray.count)")
     }
     func loadData()
     {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-        do {    let newProducyArray     = try context?.fetch(request)
-            self.productArray = newProducyArray!
+        do {    let newProducyArray     = try context.fetch(request)
+            if newProducyArray[0].productName != nil  {      self.productArray = newProducyArray }
+            else {
+                print("Error loading empty data ")
+            }
         }
         catch { print("Error fetching data from context \(error)")   }
     }
@@ -58,7 +62,7 @@ class Database  {
     func deleteOne()
     {
         let row = 0
-        context?.delete(productArray[row])
+        context.delete(productArray[row])
         productArray.remove(at: row)
 
         save()
@@ -67,7 +71,7 @@ class Database  {
     {
         let row = productArray.count-1
        
-        context?.delete(productArray[row])
+        context.delete(productArray[row])
         productArray.remove(at: row)
         save()
     }
@@ -75,7 +79,7 @@ class Database  {
     {
         let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
-        do { try context?.execute(DelAllReqVar) }
+        do { try context.execute(DelAllReqVar) }
         catch { print(error) }
          print("Preed kasowaniem productArray.count=\(productArray.count)")
         productArray.removeAll()
@@ -83,7 +87,7 @@ class Database  {
     }
     func addProduct(productElem : Product, id : Int, saving : Bool)
     {
-        let newProduct = ProductTable(context: context!)
+        let newProduct = ProductTable(context: context)
         
         newProduct.id = Int32(id)
         newProduct.producent   = productElem.producent
@@ -107,18 +111,24 @@ class Database  {
             print("---------")
 
         }
-        if saving {
-            self.save()
-        }
+//        if saving {
+//            self.save()
+//        }
     }
     func addAllProducts(products: [Product])
     {
-        print("=========")
-        print("rozmiar bazy: \(products.count)")
+        print("===== addAllProducts  ====")
+        print("rozmiar danych do bazy: \(products.count)")
+        
         for i in 0..<products.count
+
         {
-            self.addProduct(productElem: products[0], id: i, saving: false)
+            self.addProduct(productElem: products[i], id: i, saving: false)
         }
+        //self.addProduct(productElem: products[0], id: 1, saving: false)
+        //self.addProduct(productElem: products[0], id: 2, saving: false)
+        //self.addProduct(productElem: products[0], id: 3, saving: false)
+        
         self.save()
     }
     func fillTestData()
@@ -149,7 +159,8 @@ class Database  {
         let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: true)
         reqest.sortDescriptors=[sortDeescryptor]
         do {
-            productArray = (try context?.fetch(reqest))!
+            let newProductArray = (try context.fetch(reqest))
+            productArray=newProductArray
         } catch  {
             print("Error feaching data from context \(error)")
         }

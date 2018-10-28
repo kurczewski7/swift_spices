@@ -35,22 +35,33 @@ func initialProduct()
        for i in 0..<picturesArray.count
        {
             let product = giveElement(with: i)
-            product?.toString()
+        product.toString()
         }
    }
     @IBAction func WczytajBaze(_ sender: UIButton) {
-        for i in 0..<picturesArray.count
+        print("wczytaj baze")
+        for i in 0..<1     //picturesArray.count
         {
-            let product = giveElement(with: i)
-            database.addProduct(productElem: product!, id: i, saving: true)
-    
-            product?.toString()
+            print("i\(i): \(database.productArray.count)")
+            wczytywanieElementowBazy(i)
         }
         database.save()
+     }
+    func wczytywanieElementowBazy(_ nrElem : Int)
+    {
+        //let product : Product  // =Product()
+        
+        let product = giveElement(with: nrElem)
+        database.addProduct(productElem: product, id: nrElem, saving: false)
+        product.toString()
+        
+        //database.addAllProducts(products: <#T##[Product]#>
+        //database.save()
     }
     @IBAction func wyswietlBaze(_ sender: UIButton) {
+        print("wyswietlBaze przed load : ilosc rekordow w bazie \(database.productArray.count)")
         database.loadData()
-        print("ilosc rekordow w bazie \(database.productArray.count)")
+        print("wyswietlBaze po : ilosc rekordow w bazie \(database.productArray.count)")
     
         let baseArray = database.productArray
         var i=1
@@ -65,9 +76,9 @@ func initialProduct()
         database.deleteAllData(entity: DbTableNames.produkty.rawValue)
         
     }
-    func giveElement(with nr: Int) -> Product?
+    func giveElement(with nr: Int) -> Product
    {
-            var product : Product?
+            var product : Product = Product()
             var weight: Int
             var eanCode: String
             
@@ -114,7 +125,7 @@ func initialProduct()
     @IBAction func addOneRecord(_ sender: UIButton) {
         var  textField = UITextField()
         let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
-        let newProduct = ProductTable(context: self.database.context!)
+        let newProduct = ProductTable(context: self.database.context)
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             self.fill(product: newProduct)
