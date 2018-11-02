@@ -105,9 +105,10 @@
 		2C158CBD2186106F00C3438B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2C31B32421383A4900B7581D /* Database.swift */,
+				2C15F01D21865A6700728EE0 /* Database2.swift */,
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
-				2C31B32421383A4900B7581D /* Database.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 			);
 			path = Model;
@@ -126,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				2CF73B032135D97700FEA34C /* BrakujeViewController.swift */,
-				2C15F01D21865A6700728EE0 /* Database2.swift */,
 				2C7288BC2147EE0F003506BE /* popViewController.swift */,
 				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
 				2C7CB577212FEB57005F6304 /* Contacts.swift */,

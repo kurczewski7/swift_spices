@@ -74,22 +74,9 @@ func initialProduct()
     }
     
     @IBAction func kasujTabele(_ sender: UIButton) {
-        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: DbTableNames.produkty.rawValue)
-        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
-        let context=coreData.persistentContainer.viewContext
-        
-        do { try context.execute(DelAllReqVar) }
-        catch { print(error) }
-        //print("Preed kasowaniem productArray.count=\(productArray.count)")
-        //productArray.removeAll()
-        //print("Po productArray.count=\(productArray.count)")
-
-        
-        
-        //database.deleteAllData(entity: DbTableNames.produkty.rawValue)
-        //database.productArray.removeAll()
-        
+      database.delTable()
     }
+    
     func giveElement(with nr: Int) -> Product
    {
             var product : Product = Product()
@@ -141,70 +128,49 @@ func initialProduct()
         let  prod2=giveElement(with: 1)
         let  prod3=giveElement(with: 2)
         
-        addNewData(prod: prod)
-        addNewData(prod: prod2)
-        addNewData(prod: prod3)
-    }
-    func addNewData(prod : Product) {
-        let context = coreData.persistentContainer.viewContext
-        let product=ProductTable(context: context)
-        var productsTab: [ProductTable] = []
-        
-        //coreData.persistentContainer.
-        
-        product.pictureName=prod.pictureName
-        product.eanCode=prod.eanCode
-        product.producent=prod.producent
-        product.productName=prod.productName
-        
-//        product.pictureName="prod.pictureName"
-//        product.eanCode="eanCode"
-//        product.producent="producent"
-//        product.productName="productName"
-        productsTab.append(product)
-
-        coreData.saveContext()
+        database.addNewData(prod: prod)
+        database.addNewData(prod: prod2)
+        database.addNewData(prod: prod3)
     }
 
     @IBAction func addOneRecord(_ sender: UIButton) {
-//        var  textField = UITextField()
-//        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
-//        let newProduct = ProductTable(context: self.database.context)
+        
+      //let newProduct = ProductTable(context: database.context)
+        // database.addOneRecord(newProduct: newProduct)
+        
+        var newProduct = ProductTable(context: database.context)
+        var  textField = UITextField()
+        let alert = UIAlertController(title: "Add new record", message: "", preferredStyle: UIAlertController.Style.alert)
+       
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            database.fill(product: &newProduct)
+            newProduct.productName=textField.text
+            database.addOneRecord(newProduct: newProduct)
+            
+//            database.productArray.append(newProduct)
+//            database.save()
+        }
+        alert.addAction(action)
+        alert.addTextField { (field) in
+            textField=field
+            textField.placeholder="Add new record"
+        }
+        present(alert, animated: true, completion: nil)
+        
+    }
+//    func fill(product rec : ProductTable)
+//    {
 //
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//            self.fill(product: newProduct)
-//            newProduct.productName=textField.text
-//            print("Przed addOneRecord=\(self.database.productArray.count)")
-//            self.database.productArray.append(newProduct)
-//            print("Po addOneRecord=\(self.database.productArray.count)")
-//            self.database.save()
-        
-            //            self.database.fillTestData()
-            //            self.database.productArray.append(self.database.product)
-            //self.productList.append(newProduct)
-            //self.database.product.productName=textField.text
-        //}
-//        alert.addAction(action)
-//        alert.addTextField { (field) in
-//            textField=field
-//            textField.placeholder="Add new record"
-//        }
-       // present(alert, animated: true, completion: nil)
-        
-    }
-    func fill(product rec : ProductTable)
-    {
-        
-        rec.producent="Knor"
-        rec.productName="no product"
-        rec.eanCode="88888"
-        rec.id=222
-        rec.pictureName="pic1"
-        rec.number1=1
-        rec.number2=2
-        rec.number3=3
-        rec.searchTag="tag1"
-    }
+//        rec.producent="Knor"
+//        rec.productName="no product"
+//        rec.eanCode="88888"
+//        rec.id=222
+//        rec.pictureName="pic1"
+//        rec.number1=1
+//        rec.number2=2
+//        rec.number3=3
+//        rec.searchTag="tag1"
+//    }
     @IBAction func deleteLastRecord(_ sender: UIButton) {
         
         

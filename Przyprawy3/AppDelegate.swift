@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 
-let coreData=CoreDataStack()
+let coreData = CoreDataStack()
+let database = Database(context: coreData.persistentContainer.viewContext)
+
 let picturesArray: [String] =
     ["CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200","CYKORIA_ARROD_PIEPRZ_CZARNY_ZIARNISTY_11G_60057064_0_173_200",
      "CYKORIA_ARROD_PRZYPRAWA_DO_KURCZAKA_20G_60194487_0_173_200","CYKORIA_BAZYLIA_CYKORIA_10_g_60066362_0_173_200",
