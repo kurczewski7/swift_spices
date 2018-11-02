@@ -30,16 +30,18 @@ func initialProduct()
     
     // MARK: - IBAction
     @IBAction func analizaTap(_ sender: Any) {
-       for i in 0..<picturesArray.count
-       {
-            let product = database.giveElement(with: i)
-        product.toString()
-        }
+//       for i in 0..<picturesArray.count
+//       {
+//            let product = database.giveElement(with: i)
+//        print("product.pictureName \(product.pictureName)")
+//        product.toString()
+//        }
    }
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
         for i in 0..<10  {
-            database.wczytywanieElementowBazy(i)
+            database.addProduct(withProductId: i)
+            //database.wczytywanieElementowBazy(i)
         }
         //database.save()
      }
@@ -60,19 +62,15 @@ func initialProduct()
     @IBAction func kasujTabele(_ sender: UIButton) {
       database.delTable()
     }
-    
-
- 
     @IBAction func newAdd(_ sender: UIButton) {
-        let prod=database.giveElement(with: 0)
-        let  prod2=database.giveElement(with: 1)
-        let  prod3=database.giveElement(with: 2)
-        
-        database.addNewData(prod: prod)
-        database.addNewData(prod: prod2)
-        database.addNewData(prod: prod3)
+        let prod=database.giveElement(withProduct: 0)
+        let  prod2=database.giveElement(withProduct: 1)
+        let  prod3=database.giveElement(withProduct: 2)
+       
+        database.addOneRecord(newProduct: prod)
+        database.addOneRecord(newProduct: prod2)
+        database.addOneRecord(newProduct: prod3)
     }
-
     @IBAction func addOneRecord(_ sender: UIButton) {
         var newProduct = ProductTable(context: database.context)
         var  textField = UITextField()
