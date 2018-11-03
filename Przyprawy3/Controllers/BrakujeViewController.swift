@@ -56,7 +56,7 @@ func initialProduct()
     
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
-        for i in 0..<10  {
+        for i in 0..<50  {
             database.addProduct(withProductId: i)
             //database.wczytywanieElementowBazy(i)
         }

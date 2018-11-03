@@ -130,25 +130,6 @@ class Database  {
             else {
                 weight = 0
             }
-
-//            weight = Int(w)!
-//            if str.getCString(&buffer, maxLength: 1, encoding: str.Encoding) == "G"
-//            {
-//
-//            }
-//            let lastChar=
-//            if(str) {
-//
-            
-    //        }
-//            let size=str.distance(from: str.startIndex, to: str.endIndex)-1
-//            let index = str.index(str.startIndex, offsetBy:  size)
-//            if let  w : Int = Int(str.prefix(upTo: index)) {
-//                weight = w
-//            }
-//            else {
-//                weight = 0
-//            }
             let number3 = Int(elementy[elementy.count-1])
             let number2 = Int(elementy[elementy.count-2])
             let number1 = Int(elementy[elementy.count-3])
@@ -195,15 +176,16 @@ class Database  {
     func substrng(right : String, len: Int) -> String {
         return String(right.suffix(len))
     }
-      func filterData()  {
+    func filterData(searchText text : String, searchField field: SearchField)  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
         
-        let searchField = "producent"
-        let sortField = "producent"
-        let searchText = "Knor"
+        let searchField =  field.rawValue   //"producent"
+        let sortField   =  field.rawValue     //"producent"
+        let searchText  =  text
+        
         let reqest : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
         //let predicate=NSPredicate(format: "producent CONTAINS[cd] %@", searchText)
         let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)

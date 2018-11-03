@@ -13,10 +13,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var instantSearch = true
     var productMode = true
     
-    @IBAction func searchButton(_ sender: UIBarButtonItem) {
-        
-    }
-    
+
     let sg = UISegmentedControl(items: segmentValues)
     
     @IBOutlet var searchedBar: UISearchBar!
@@ -28,6 +25,11 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
          database.loadData()
     }
     
+    @IBAction func searchButton(_ sender: UIBarButtonItem) {
+        database.filterData(searchText: "aMi", searchField: .Producent)
+        table.reloadData()
+        
+    }
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
