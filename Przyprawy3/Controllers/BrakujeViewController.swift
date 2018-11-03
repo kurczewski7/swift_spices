@@ -39,16 +39,19 @@ func initialProduct()
    }
     
     @IBAction func getSubstr(_ sender: UIButton) {
+        
         let str="0123456789"
-        let str2=database.substring(string: str, startEl: 3, len: 5)
+        var str2=database.substring(string: str, startPosition: 8, len: 2)
+        print("\(str2)")
+        str2=database.substring(string: str, startPosition: 9, len: 2);
         print("\(str2)")
         
-        let str3="ABCDEFGHIJK"
-        let str4=database.substrng(left: str, len: 2)
-        print("\(str4)")
-        
-        let str5=database.substrng(right: str, len: 2)
-        print("\(str5)")
+        //let str3="ABCDEFGHIJK"
+        str2=database.substrng(left: str, len: 2)
+        print("\(str2)")
+
+        str2=database.substrng(right: str, len: 2)
+        print("\(str2)")
     }
     
     @IBAction func WczytajBaze(_ sender: UIButton) {

@@ -84,6 +84,7 @@ class Database  {
         let product : ProductTable = ProductTable(context: context)
         let weight: Int
         var eanCode: String
+        var w : String = ""
         
         let pictureName:String = picturesArray[nr]
         let elementy = pictureName.split(separator: "_", maxSplits: 11, omittingEmptySubsequences: false)
@@ -101,12 +102,36 @@ class Database  {
                 productName.append("\(String(elementy[i])) ")
             }
             // Mark: substring of string
-            var buffer:[CChar] = [20]
             let str=String(elementy[elementy.count-5])
-            
-            
-            
             let str2=String(elementy[elementy.count-6])
+            let str3=String(elementy[elementy.count-7])
+            
+            if database.substrng(right: str, len: 1).uppercased() == "G"    {
+                w=database.substrng(left: str, len: str.count-1)
+                if str.count==1 {
+                    w =  String(elementy[elementy.count-6])
+                }
+                else
+                {
+                   w = database.substrng(left: str, len: str.count-1)
+                }
+            }
+            else if database.substrng(right: str2, len: 1).uppercased() == "G"  {
+                w=database.substrng(left: str2, len: str2.count-1)
+            } else if database.substrng(right: str3, len: 1).uppercased() == "G" {
+            }
+            else {
+                w="0"
+            }
+            
+            if let  value : Int = Int(w) {
+                weight = value
+            }
+            else {
+                weight = 0
+            }
+
+//            weight = Int(w)!
 //            if str.getCString(&buffer, maxLength: 1, encoding: str.Encoding) == "G"
 //            {
 //
@@ -116,14 +141,14 @@ class Database  {
 //
             
     //        }
-            let size=str.distance(from: str.startIndex, to: str.endIndex)-1
-            let index = str.index(str.startIndex, offsetBy:  size)
-            if let  w : Int = Int(str.prefix(upTo: index)) {
-                weight = w
-            }
-            else {
-                weight = 0
-            }
+//            let size=str.distance(from: str.startIndex, to: str.endIndex)-1
+//            let index = str.index(str.startIndex, offsetBy:  size)
+//            if let  w : Int = Int(str.prefix(upTo: index)) {
+//                weight = w
+//            }
+//            else {
+//                weight = 0
+//            }
             let number3 = Int(elementy[elementy.count-1])
             let number2 = Int(elementy[elementy.count-2])
             let number1 = Int(elementy[elementy.count-3])
@@ -157,34 +182,11 @@ class Database  {
         rec.weight=123
         rec.searchTag="tag1"
     }
-    func substring(string str: String, startEl : Int, len : Int) -> String
-    {
-        var index = str.index(str.startIndex, offsetBy: startEl, limitedBy: str.endIndex)
-        
-        let start = str.index(str.startIndex, offsetBy: startEl)
-        let end = str.index(str.endIndex, offsetBy: -3)
-        let range = start..<end
-
-        let mySubstring = str[range]  // play
-        
-        
-        
-        
-        
-        //let substr=s
-        //substr.
-        //let substr="Ala ma kota"
-        //let index = str.index(str.startIndex, offsetBy:  size)
-        
-        
-        //        let size=str.distance(from: str.endIndex, to: str.endIndex)-1
-        //        let index = str.index(str.startIndex, offsetBy:  size)
-        //        if let  w : Int = Int(str.prefix(upTo: index)) {
-        //            weight = w
-        //        }
-        //        else {
-        //            weight = 0
-        //        }
+    func substring(string str: String, startPosition startEl: Int, len : Int) -> String {
+        let startInd = str.index(str.startIndex, offsetBy: startEl)
+        let end=min(startEl+len,str.count)
+        let endInd = str.index(str.startIndex, offsetBy: end)
+        let mySubstring = str[startInd..<endInd]  
         return String(mySubstring)
     }
     func substrng(left : String, len: Int) -> String {
