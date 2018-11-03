@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+// import CoreData
 
 class BrakujeViewController: UIViewController {
     // var productList = [Product]()
@@ -37,6 +37,20 @@ func initialProduct()
 //        product.toString()
 //        }
    }
+    
+    @IBAction func getSubstr(_ sender: UIButton) {
+        let str="0123456789"
+        let str2=database.substring(string: str, startEl: 3, len: 5)
+        print("\(str2)")
+        
+        let str3="ABCDEFGHIJK"
+        let str4=database.substrng(left: str, len: 2)
+        print("\(str4)")
+        
+        let str5=database.substrng(right: str, len: 2)
+        print("\(str5)")
+    }
+    
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
         for i in 0..<10  {

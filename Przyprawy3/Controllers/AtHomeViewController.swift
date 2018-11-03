@@ -13,6 +13,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var instantSearch = true
     var productMode = true
     
+    @IBAction func searchButton(_ sender: UIBarButtonItem) {
+        
+    }
     
     let sg = UISegmentedControl(items: segmentValues)
     
@@ -22,19 +25,21 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
+         database.loadData()
     }
     
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return picturesArray.count
+        //return picturesArray.count
+        return database.productArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AtHomeCell
 
-        cell.categoryLabel.text = "Przyprawa"
-        cell.producentLabel.text="Winiary"
-        cell.descriptionLabel.text = picturesArray[indexPath.row]
-        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
+        cell.categoryLabel.text = database.productArray[indexPath.row].productName?.capitalized(with: nil)   //database.productArray[indexPath.row].pictureName
+        cell.producentLabel.text =  database.productArray[indexPath.row].producent?.uppercased()     //"Winiary"
+        cell.descriptionLabel.text =  String(database.productArray[indexPath.row].weight).lowercased()+"g"                       //picturesArray[indexPath.row]
+        cell.productPicture.image = UIImage(named:  database.productArray[indexPath.row].pictureName!)       // picturesArray[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,10 +52,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {
             let nextVC=segue.destination as! DetailAtHomeViewController
             nextVC.numberOfRow=numberOfRow
-            nextVC.productImageName=picturesArray[numberOfRow]
-            nextVC.productTitle="Przyprawa aaa"
-            nextVC.productSubtitle="Knor"
-            
+            nextVC.productImageName=database.productArray[numberOfRow].pictureName!                //picturesArray[numberOfRow]
+            nextVC.productTitle=database.productArray[numberOfRow].productName!                     //"Przyprawa aaa"
+            nextVC.productSubtitle=database.productArray[numberOfRow].producent!                                                                //"Knor"
         }
     }
 

@@ -101,8 +101,21 @@ class Database  {
                 productName.append("\(String(elementy[i])) ")
             }
             // Mark: substring of string
+            var buffer:[CChar] = [20]
             let str=String(elementy[elementy.count-5])
             
+            
+            
+            let str2=String(elementy[elementy.count-6])
+//            if str.getCString(&buffer, maxLength: 1, encoding: str.Encoding) == "G"
+//            {
+//
+//            }
+//            let lastChar=
+//            if(str) {
+//
+            
+    //        }
             let size=str.distance(from: str.startIndex, to: str.endIndex)-1
             let index = str.index(str.startIndex, offsetBy:  size)
             if let  w : Int = Int(str.prefix(upTo: index)) {
@@ -111,7 +124,6 @@ class Database  {
             else {
                 weight = 0
             }
-            
             let number3 = Int(elementy[elementy.count-1])
             let number2 = Int(elementy[elementy.count-2])
             let number1 = Int(elementy[elementy.count-3])
@@ -142,10 +154,46 @@ class Database  {
         rec.number1=1
         rec.number2=2
         rec.number3=3
+        rec.weight=123
         rec.searchTag="tag1"
     }
+    func substring(string str: String, startEl : Int, len : Int) -> String
+    {
+        var index = str.index(str.startIndex, offsetBy: startEl, limitedBy: str.endIndex)
+        
+        let start = str.index(str.startIndex, offsetBy: startEl)
+        let end = str.index(str.endIndex, offsetBy: -3)
+        let range = start..<end
 
-    func filterData()  {
+        let mySubstring = str[range]  // play
+        
+        
+        
+        
+        
+        //let substr=s
+        //substr.
+        //let substr="Ala ma kota"
+        //let index = str.index(str.startIndex, offsetBy:  size)
+        
+        
+        //        let size=str.distance(from: str.endIndex, to: str.endIndex)-1
+        //        let index = str.index(str.startIndex, offsetBy:  size)
+        //        if let  w : Int = Int(str.prefix(upTo: index)) {
+        //            weight = w
+        //        }
+        //        else {
+        //            weight = 0
+        //        }
+        return String(mySubstring)
+    }
+    func substrng(left : String, len: Int) -> String {
+        return String(left.prefix(len))
+    }
+    func substrng(right : String, len: Int) -> String {
+        return String(right.suffix(len))
+    }
+      func filterData()  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
