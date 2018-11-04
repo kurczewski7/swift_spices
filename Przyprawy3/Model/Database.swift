@@ -50,7 +50,7 @@ class Database  {
         save()
     }
     func delTable()  {
-        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: DbTableNames.produkty.rawValue)
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: DbTableNames.products.rawValue)
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
         let context=coreData.persistentContainer.viewContext
         
@@ -176,7 +176,7 @@ class Database  {
     func substrng(right : String, len: Int) -> String {
         return String(right.suffix(len))
     }
-    func filterData(searchText text : String, searchField field: SearchField)  {
+    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField)  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
@@ -199,6 +199,17 @@ class Database  {
             print("Error feaching data from context \(error)")
         }
         updateGUI()
+    }
+    func getReqest(searchTable : DbTableNames) -> NSFetchRequest<NSFetchRequestResult> {
+        let reqest: NSFetchRequest<NSFetchRequestResult>
+        switch searchTable {
+        case .products:          reqest  = ProductTable.fetchRequest()
+        case .toShop:            reqest  = ToShopProductTable.fetchRequest()
+        case .basket:            reqest  = BasketProductTable.fetchRequest()
+        case .shopingProduct:    reqest  = ShopingProductTable.fetchRequest()
+        case .users:             reqest  = Users.fetchRequest()
+        }
+        return reqest
     }
     func save() {
         do {   try context.save()    }

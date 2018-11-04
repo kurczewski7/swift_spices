@@ -26,7 +26,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
-        database.filterData(searchText: "aMi", searchField: .Producent)
+        database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
         table.reloadData()
         
     }

@@ -29,12 +29,11 @@ let bundleID = "pl.wroclaw.pwr.Przyprawy3"
 var segmentValues : [String] = ["product","producent"]
 
 enum DbTableNames : String {
-    case produkty         = "ProductTable"
-    case kupione          = "ShopingTable"
-    case koszyk           = "BasketProductTable"
-    case kupioneProdukty  = "ShopingProductTable"
-    case doKupienia       = "ToShopProductTable"
-    case uzytkownicy      = "Users"
+    case products        = "ProductTable"
+    case basket          = "BasketProductTable"
+    case shopingProduct  = "ShopingProductTable"
+    case toShop           = "ToShopProductTable"
+    case users           = "Users"
 }
 enum SearchField : String {
     case Producent = "producent"
