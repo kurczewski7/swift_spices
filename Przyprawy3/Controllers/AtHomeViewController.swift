@@ -27,9 +27,16 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
-        table.reloadData()
-        
+        table.reloadData()        
     }
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        database.filterData(searchText: "dO", searchTable: .products, searchField: .Product)
+        table.reloadData()
+    }
+    
+    
+    
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count

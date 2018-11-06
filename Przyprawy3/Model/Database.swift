@@ -13,24 +13,59 @@ class Database  {
     
     // variable for ProductTable
     var productArray : [ProductTable] = []
-    var featchResultControllerProduct: NSFetchedResultsController<ProductTable>
+    var featchResultCtrlProduct: NSFetchedResultsController<ProductTable>
     let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
+    //var productTable = ProductTable(context: context)
     
     // variable for ShopingProductTable
-    var shoping : ShopingProductTable
-    var shopingList = [ShopingProductTable]()
-    var feachShopingRequest:NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+    var shopingProductArray = [ShopingProductTable]()
+    let featchResultCtrlShopingProduct: NSFetchedResultsController<ShopingProductTable>
+    var feachShopingRequest:NSFetchRequest<ShopingProductTable> = ShopingProductTable.fetchRequest()
+    let sortShopingProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    //var shopingProductTable : ShopingProductTable(context: context)
+
+    // variable for ToShopProductTable
+    var toShopProductArray = [ToShopProductTable]()
+    let featchResultCtrlToShopProduct: NSFetchedResultsController<ToShopProductTable>
+    var feachToShopProductRequest:NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
+    let sortToShopProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    //var shopingProductTable : ShopingProductTable(context: context)
+
+    // variable for BasketProductTable
+    var basketProductArray = [BasketProductTable]()
+    let featchResultCtrlBasketProduct: NSFetchedResultsController<BasketProductTable>
+    var feachBasketProductRequest:NSFetchRequest<BasketProductTable> = BasketProductTable.fetchRequest()
+    let sortBasketProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    //var shopingProductTable : ShopingProductTable(context: context)
+
+    
+    
+//    case .products:          reqest  = ProductTable.fetchRequest()
+//    case .toShop:            reqest  = ToShopProductTable.fetchRequest()
+//    case .basket:            reqest  = BasketProductTable.fetchRequest()
+//    case .shopingProduct:    reqest  = ShopingProductTable.fetchRequest()
+//    case .users:             reqest  = Users.fetchRequest()
+
 
     init(context: NSManagedObjectContext) {
         self.context = context
         
         // init Eniity buffors
         //product = ProductTable(context: context)
-        shoping = ShopingProductTable(context: context)
+        //shoping = ShopingProductTable(context: context)
         
         feachProductRequest.sortDescriptors=[sortProductDescriptor]
-        featchResultControllerProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        featchResultCtrlProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        feachShopingRequest.sortDescriptors=[sortShopingProductDescriptor]
+        featchResultCtrlShopingProduct=NSFetchedResultsController(fetchRequest: feachShopingRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        feachToShopProductRequest.sortDescriptors=[sortToShopProductDescriptor]
+        featchResultCtrlToShopProduct=NSFetchedResultsController(fetchRequest: feachToShopProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        feachBasketProductRequest.sortDescriptors=[sortBasketProductDescriptor]
+        featchResultCtrlBasketProduct=NSFetchedResultsController(fetchRequest: feachBasketProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
     func loadData()  {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
@@ -176,29 +211,51 @@ class Database  {
     func substrng(right : String, len: Int) -> String {
         return String(right.suffix(len))
     }
-    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField)  {
+    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField, isAscending: Bool = true)  {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
-        
+        //let reqest : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+        //let predicate=NSPredicate(format: "producent CONTAINS[cd] %@", searchText)
+
         let searchField =  field.rawValue   //"producent"
         let sortField   =  field.rawValue     //"producent"
         let searchText  =  text
         
-        let reqest : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-        //let predicate=NSPredicate(format: "producent CONTAINS[cd] %@", searchText)
+        let reqest=getReqest(searchTable: searchTable) //.products
         let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
         reqest.predicate=predicate
-        let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: true)
+        let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: isAscending)
         reqest.sortDescriptors=[sortDeescryptor]
         do {
-            let newProductArray = (try context.fetch(reqest))
-            productArray=newProductArray
+            let newSearchArray = (try context.fetch(reqest))
+            switch searchTable {
+            case .products:         productArray       = newSearchArray as! [ProductTable]
+            case .shopingProduct:   basketProductArray = newSearchArray as! [BasketProductTable]
+            case .toShop:           toShopProductArray = newSearchArray as! [ToShopProductTable]
+            case .basket:           basketProductArray = newSearchArray as! [BasketProductTable]
+            default:
+                print("Table does not exist")
+            }
+
+            //productArray = newSearchArray as! [ProductTable]
         } catch  {
             print("Error feaching data from context \(error)")
         }
         updateGUI()
+    }
+    func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
+    {
+//        switch searchTable {
+//            case .products:  productArray = newProductArray as! [ProductTable]
+//            case .shopingProduct:  basketProductArray = newProductArray as! [BasketProductTable]
+//            case .toShop:  toShopProductArray = newProductArray as! [ToShopProductTable]
+//            case .basket:  basketProductArray = newProductArray as! [BasketProductTable]
+//        default:
+//            print("Table does not exist")
+//        }
+        //productArray = newProductArray as! [ProductTable]
     }
     func getReqest(searchTable : DbTableNames) -> NSFetchRequest<NSFetchRequestResult> {
         let reqest: NSFetchRequest<NSFetchRequestResult>

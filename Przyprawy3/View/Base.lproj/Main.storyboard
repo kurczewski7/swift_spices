@@ -237,11 +237,18 @@
                         <viewLayoutGuide key="safeArea" id="Yx1-YX-pRw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dostępne w domu" id="5gn-qC-3HH">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="9y5-D0-VKV">
-                            <connections>
-                                <action selector="searchButton:" destination="kmI-pv-7KX" id="NfG-tY-TDm"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="9y5-D0-VKV">
+                                <connections>
+                                    <action selector="searchButton:" destination="kmI-pv-7KX" id="NfG-tY-TDm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="CUR-MQ-fTc">
+                                <connections>
+                                    <action selector="addButton:" destination="kmI-pv-7KX" id="56g-YA-ioj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="searchedBar" destination="jtr-Ae-YFt" id="umI-sJ-Nhh"/>
