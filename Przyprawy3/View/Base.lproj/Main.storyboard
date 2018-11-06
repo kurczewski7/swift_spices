@@ -129,6 +129,14 @@
                                     <action selector="getSubstr:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="L4W-xx-2zj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyA-bT-xI6">
+                                <rect key="frame" x="263" y="187" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="newDb"/>
+                                <connections>
+                                    <action selector="newDb:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="Ugx-7T-LFQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0Hl-y2-TA5"/>

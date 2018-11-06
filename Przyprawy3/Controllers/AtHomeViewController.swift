@@ -6,14 +6,16 @@
 //  Copyright © 2018 Slawomir Kurczewski. All rights reserved.
 //
 
+
+// self.table.tableHeaderView = sg
 import UIKit
 
 class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var numberOfRow = 0
     var instantSearch = true
     var productMode = true
+    var selectedSegmentIndex = 0
     
-
     let sg = UISegmentedControl(items: segmentValues)
     
     @IBOutlet var searchedBar: UISearchBar!
@@ -35,8 +37,6 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         table.reloadData()
     }
     
-    
-    
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
@@ -52,7 +52,6 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         numberOfRow=indexPath.row
         performSegue(withIdentifier: "goToAtHome", sender: self)
     }
@@ -75,10 +74,12 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: SearchBar metod
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("clicked \(searchBar.text!)")
+        database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
         changeMyView()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("changed \(searchBar.text!)")
+        database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
         changeMyView()
     }
     
@@ -87,6 +88,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         if(instantSearch)
         {
+            table.reloadData()
             print("Now refresh UI")
         }
     }
@@ -98,12 +100,12 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         sg.insertSegment(withTitle: giveProductPrompt(with: false)[0], at: 0, animated: false)
         sg.insertSegment(withTitle: giveProductPrompt(with: false)[1], at: 1, animated: false)
         sg.selectedSegmentIndex = 0
+        self.selectedSegmentIndex = 0
         //segmetedControl.addTarget(self, action: "segmentedControlValueChanged:", forControlEvents:)
         //addTarget(self, action: #selector(changeWebView), for: .valueChanged)
         sg.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         
         self.table.tableHeaderView = sg
-        
         table.sectionHeaderHeight = 100
         
         //self.table.tableHeaderView?.backgroundColor=UIColor.yellow
@@ -112,6 +114,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func segmentedControlValueChanged(segment: UISegmentedControl)
     {
         print("segment changed \(segment.selectedSegmentIndex)")
+        self.selectedSegmentIndex = segment.selectedSegmentIndex
         if (searchedBar.text?.isEmpty)!
         {
             searchedBar.placeholder =  giveProductPrompt(with: true)[segment.selectedSegmentIndex]

@@ -39,14 +39,6 @@ class Database  {
     let sortBasketProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
     //var shopingProductTable : ShopingProductTable(context: context)
 
-    
-    
-//    case .products:          reqest  = ProductTable.fetchRequest()
-//    case .toShop:            reqest  = ToShopProductTable.fetchRequest()
-//    case .basket:            reqest  = BasketProductTable.fetchRequest()
-//    case .shopingProduct:    reqest  = ShopingProductTable.fetchRequest()
-//    case .users:             reqest  = Users.fetchRequest()
-
 
     init(context: NSManagedObjectContext) {
         self.context = context

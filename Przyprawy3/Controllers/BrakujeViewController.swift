@@ -119,6 +119,26 @@ func initialProduct()
         }
     }
     
+    @IBAction func newDb(_ sender: UIButton) {
+        let shoping=ShopingProductTable(context: database.context)
+        let product=ProductTable(context: database.context)
+        product.eanCode="60920808"
+    
+        shoping.eanCode="60920808" //"60057064"
+        shoping.productRelation=product
+        database.shopingProductArray.append(shoping)
+        database.save()
+        
+        
+//        if let product=shoping.productRelation
+//        {
+//            product.pictureName=""
+//        }
+//
+        
+        
+        
+    }
     
     
     //    func fill(product rec : ProductTable)
