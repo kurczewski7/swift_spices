@@ -10,7 +10,8 @@
 // self.table.tableHeaderView = sg
 import UIKit
 
-class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DatabaseDelegate {
+ 
     var numberOfRow = 0
     var instantSearch = true
     var productMode = true
@@ -25,16 +26,21 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
          database.loadData()
+         database.delegate = self
     }
-    
+    // DatabaseDelegate method
+    func updateGUI() {
+         table.reloadData()
+    }
+
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
-        table.reloadData()        
+        //table.reloadData()
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         database.filterData(searchText: "dO", searchTable: .products, searchField: .Product)
-        table.reloadData()
+        //table.reloadData()
     }
     
     // MARK - TableView metod
@@ -67,23 +73,14 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("clicked \(searchBar.text!)")
         database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
-        changeMyView()
+        //changeMyView()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("changed \(searchBar.text!)")
         database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
-        changeMyView()
     }
     
     // MARK: - My own methods
-    func changeMyView()
-    {
-        if(instantSearch)
-        {
-            table.reloadData()
-            print("Now refresh UI")
-        }
-    }
     func initSearchBar(_ searchBar: UISearchBar)
     {
         searchBar.placeholder=self.giveProductPrompt(with: true)[0]

@@ -7,9 +7,14 @@
 //
 import UIKit
 import CoreData
-
+protocol DatabaseDelegate: class {
+    func updateGUI()
+}
 class Database  {
     var context: NSManagedObjectContext
+    
+    // seting delegate
+    var delegate: DatabaseDelegate?
     
     // variable for ProductTable
     var productArray : [ProductTable] = []
@@ -42,6 +47,7 @@ class Database  {
 
     init(context: NSManagedObjectContext) {
         self.context = context
+        
         
         // init Eniity buffors
         //product = ProductTable(context: context)
@@ -239,7 +245,7 @@ class Database  {
         } catch  {
             print("Error feaching data from context \(error)")
         }
-        updateGUI()
+        delegate?.updateGUI()
     }
     func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
     {
@@ -270,9 +276,6 @@ class Database  {
     }
     
 
-    func updateGUI() {
-    
-    }
     func toString(product: ProductTable, nr: Int)
     {
         // = ProductTable()
