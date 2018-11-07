@@ -45,25 +45,17 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AtHomeCell
 
-        cell.categoryLabel.text = database.productArray[indexPath.row].productName?.capitalized(with: nil)   //database.productArray[indexPath.row].pictureName
-        cell.producentLabel.text =  database.productArray[indexPath.row].producent?.uppercased()     //"Winiary"
+        cell.categoryLabel.text = database.productArray[indexPath.row].productName?.capitalized(with: nil) ?? "No product"
+        //database.productArray[indexPath.row].pictureName
+        cell.producentLabel.text = database.productArray[indexPath.row].producent?.uppercased()  ?? "No producent"   
         cell.descriptionLabel.text =  String(database.productArray[indexPath.row].weight).lowercased()+"g"                       //picturesArray[indexPath.row]
-        cell.productPicture.image = UIImage(named:  database.productArray[indexPath.row].pictureName!)       // picturesArray[indexPath.row])
+        cell.productPicture.image = UIImage(named:  database.productArray[indexPath.row].pictureName ?? "question-mark")
+        // picturesArray[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         numberOfRow=indexPath.row
         performSegue(withIdentifier: "goToAtHome", sender: self)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier=="goToAtHome"
-        {
-            let nextVC=segue.destination as! DetailAtHomeViewController
-            nextVC.numberOfRow=numberOfRow
-            nextVC.productImageName=database.productArray[numberOfRow].pictureName!                //picturesArray[numberOfRow]
-            nextVC.productTitle=database.productArray[numberOfRow].productName!                     //"Przyprawa aaa"
-            nextVC.productSubtitle=database.productArray[numberOfRow].producent!                                                                //"Knor"
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,8 +125,20 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return myPrompt
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="goToAtHome"
+        {
+            let nextVC=segue.destination as! DetailAtHomeViewController
+            nextVC.numberOfRow=numberOfRow
+            
+            nextVC.productImageName=database.productArray[numberOfRow].pictureName ?? "question-mark"
+            nextVC.productTitle=database.productArray[numberOfRow].productName ?? "no product"
+            nextVC.productSubtitle=database.productArray[numberOfRow].producent ?? "no producent"
+            nextVC.productWeight="\(database.productArray[numberOfRow].weight)g"
+        }
+    }
 
-        
 //        searchBar.showsScopeBar=true
 //        searchBar.scopeButtonTitles=["name", "Producenr","gggg"]
 //        searchBar.selectedScopeButtonIndex=0

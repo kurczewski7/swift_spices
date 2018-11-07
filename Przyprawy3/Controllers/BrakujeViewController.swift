@@ -56,7 +56,7 @@ func initialProduct()
     
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
-        for i in 0..<50  {
+        for i in 0..<picturesArray.count  {
             database.addProduct(withProductId: i)
             //database.wczytywanieElementowBazy(i)
         }
@@ -77,7 +77,7 @@ func initialProduct()
     }
     
     @IBAction func kasujTabele(_ sender: UIButton) {
-      database.delTable()
+        database.delTable(dbTableName: .products)
     }
     @IBAction func newAdd(_ sender: UIButton) {
         let prod=database.giveElement(withProduct: 0)
@@ -119,6 +119,9 @@ func initialProduct()
         }
     }
     
+    @IBAction func delDb2(_ sender: UIButton) {
+        database.delTable(dbTableName: .shopingProduct)
+    }
     @IBAction func newDb(_ sender: UIButton) {
         let shoping=ShopingProductTable(context: database.context)
         let product=ProductTable(context: database.context)
@@ -135,9 +138,6 @@ func initialProduct()
 //            product.pictureName=""
 //        }
 //
-        
-        
-        
     }
     
     

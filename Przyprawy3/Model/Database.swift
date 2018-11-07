@@ -62,9 +62,12 @@ class Database  {
     func loadData()  {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
         do {    let newProducyArray     = try context.fetch(request)
-            if newProducyArray[0].productName != nil  {      self.productArray = newProducyArray }
+            // Todo- error out of range
+            
+            if newProducyArray.count > 0  {      self.productArray = newProducyArray }
             else {
-                print("Error loading empty data ")
+                print("Error loading empty data")
+                self.productArray = newProducyArray
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -76,8 +79,8 @@ class Database  {
         productArray.remove(at: r)        
         save()
     }
-    func delTable()  {
-        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: DbTableNames.products.rawValue)
+    func delTable(dbTableName : DbTableNames)  {
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: dbTableName.rawValue)
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
         let context=coreData.persistentContainer.viewContext
         
@@ -208,18 +211,19 @@ class Database  {
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
-        //let reqest : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-        //let predicate=NSPredicate(format: "producent CONTAINS[cd] %@", searchText)
 
         let searchField =  field.rawValue   //"producent"
         let sortField   =  field.rawValue     //"producent"
         let searchText  =  text
         
         let reqest=getReqest(searchTable: searchTable) //.products
-        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
-        reqest.predicate=predicate
-        let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: isAscending)
-        reqest.sortDescriptors=[sortDeescryptor]
+        if text.count>0 {
+            let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
+            reqest.predicate=predicate
+            let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: isAscending)
+            reqest.sortDescriptors=[sortDeescryptor]
+        }
+
         do {
             let newSearchArray = (try context.fetch(reqest))
             switch searchTable {

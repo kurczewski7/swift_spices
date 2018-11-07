@@ -13,10 +13,13 @@ class DetailAtHomeViewController: UIViewController {
     @IBOutlet var productImageView: UIImageView!
     @IBOutlet var productTitleLabel: UILabel!
     @IBOutlet var productSubtitleLabel: UILabel!
+    @IBOutlet var productWeightLabel: UILabel!
+    
     
     var productImageName = ""
     var productTitle = ""
     var productSubtitle = ""
+    var productWeight = ""
     var numberOfRow = 0
     
     
@@ -25,6 +28,7 @@ class DetailAtHomeViewController: UIViewController {
         productImageView.image=UIImage(named: productImageName)
         productTitleLabel.text=productTitle
         productSubtitleLabel.text=productSubtitle
+        productWeightLabel.text=productWeight
         if(is3Dtouch)
         {
             registerForPreviewing(with: self, sourceView: view)
