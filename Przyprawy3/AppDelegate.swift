@@ -85,7 +85,7 @@ let picturesArray: [String] =
     "KNORR_KNORR_CURRY_20g_35905207_0_173_200",
     "KNORR_KNORR_CYNAMON_15g_35810316_0_173_200",
     "KNORR_KNORR_fix_carbonara_45g_45_g_23550577_0_173_200",
-    "KNORR_KNORR_fix_danie_orientalne_z_kurczakiem_48_g_23629918_0_173_200",
+    "KNORR_KNORR_fix_danie_orientalne_z_kurczakiem_48_g_23629918_0_173_200", //--- error
     "KNORR_KNORR_fix_do_gulaszu_45g_45_g_23804354_0_173_200",
     "KNORR_KNORR_fix_do_kotl_miel_70g_70_g_23832264_0_173_200",
     "KNORR_KNORR_fix_do_potr_chinskich36g_36_g_23822257_0_173_200",

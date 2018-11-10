@@ -145,6 +145,14 @@
                                     <action selector="delDb2:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="391-rZ-DAw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmX-Qf-6kM">
+                                <rect key="frame" x="242" y="289" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="addCategory"/>
+                                <connections>
+                                    <action selector="addNewCategory:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="W75-JF-jEC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0Hl-y2-TA5"/>
@@ -335,6 +343,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hCi-6f-2wM"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Produkt" id="hWv-Vf-uPF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="2gG-Sk-0LP">
+                            <connections>
+                                <action selector="editProductNameButton:" destination="enE-9m-W5Y" id="tA9-Zt-c4Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productImageView" destination="CvG-5F-WTL" id="BNV-uo-9YZ"/>
                         <outlet property="productSubtitleLabel" destination="vBJ-xh-5lI" id="2v0-UH-gwD"/>

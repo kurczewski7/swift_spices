@@ -21,6 +21,7 @@ class DetailAtHomeViewController: UIViewController {
     var productSubtitle = ""
     var productWeight = ""
     var numberOfRow = 0
+    var aliasOfProductName="moje"
     
     
     override func viewDidLoad() {
@@ -41,7 +42,31 @@ class DetailAtHomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func editProductNameButton(_ sender: UIBarButtonItem) {
+        let alertController=UIAlertController(title: "Zmiana nazwy", message: "Zmień nazwę produktu lub anuluj zmianę.", preferredStyle: .alert)
+        let action1=UIAlertAction(title: "Anuluj", style: .cancel
+            , handler: nil)
+        
+        let action2 = UIAlertAction(title: "Zmień", style: .default) { (action) in
+            
+            self.productTitleLabel.text=alertController.textFields![0].text
+            self.aliasOfProductName=alertController.textFields?[1].text ?? ""
+        }
+        alertController.addTextField { (text) in
+            text.text=self.productTitleLabel.text
+        }
+        alertController.addTextField { (text) in
+            text.placeholder="Skrót nazwy (opcjonalnie)"
+            text.text=self.aliasOfProductName
+        }
 
+       alertController.addAction(action1)
+       alertController.addAction(action2)
+        
+        present(alertController, animated: true, completion: nil)
+       //present(self, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -140,6 +140,16 @@ func initialProduct()
 //
     }
     
+    @IBAction func addNewCategory(_ sender: UIButton) {
+        let newProduct=ProductTable(context: database.context)
+        let newCategory=Category(context: database.context)
+        newCategory.categoryName="Druga kategoria"
+        newProduct.producent="CCCC"
+        newProduct.productName="DDD"
+        newProduct.parentCategory=newCategory
+        database.save()
+    }
+    
     
     //    func fill(product rec : ProductTable)
     //    {

@@ -44,7 +44,6 @@ class Database  {
     let sortBasketProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
     //var shopingProductTable : ShopingProductTable(context: context)
 
-
     init(context: NSManagedObjectContext) {
         self.context = context
         
@@ -177,9 +176,9 @@ class Database  {
             product.productName=String(productName)
             product.eanCode    =  eanCode
             product.pictureName=pictureName
-            product.number1    = Int16(number1!)
-            product.number2    = Int16(number2!)
-            product.number3    = Int16(number3!)
+            product.number1    = Int32(number1!)
+            product.number2    = Int32(number2!)
+            product.number3    = Int32(number3!)
             product.weight     = Int16(weight)
             product.id         = Int32(nr)
             product.changeDate = Date.init()

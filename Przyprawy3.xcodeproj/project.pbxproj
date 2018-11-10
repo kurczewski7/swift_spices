@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */; };
 		2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C158CD7218623B300C3438B /* CoreDataStack.swift */; };
-		2C15F01E21865A6700728EE0 /* Database2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15F01D21865A6700728EE0 /* Database2.swift */; };
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
@@ -50,7 +49,6 @@
 /* Begin PBXFileReference section */
 		2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsViewController.swift; sourceTree = "<group>"; };
 		2C158CD7218623B300C3438B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		2C15F01D21865A6700728EE0 /* Database2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database2.swift; sourceTree = "<group>"; };
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				2C31B32421383A4900B7581D /* Database.swift */,
-				2C15F01D21865A6700728EE0 /* Database2.swift */,
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
@@ -334,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */,
-				2C15F01E21865A6700728EE0 /* Database2.swift in Sources */,
 				2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */,
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
