@@ -43,6 +43,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //table.reloadData()
     }
     
+    @IBAction func keyboardModeButton(_ sender: UIBarButtonItem) {
+        searchedBar.resignFirstResponder()
+    }
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
@@ -73,7 +76,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("clicked \(searchBar.text!)")
         database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
-        //changeMyView()
+        DispatchQueue.main.async {
+            self.searchedBar.resignFirstResponder()
+        }
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("changed \(searchBar.text!)")

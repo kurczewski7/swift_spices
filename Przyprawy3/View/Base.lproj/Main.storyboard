@@ -264,6 +264,11 @@
                                     <action selector="addButton:" destination="kmI-pv-7KX" id="56g-YA-ioj"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem systemItem="compose" id="HrQ-9T-O3x">
+                                <connections>
+                                    <action selector="keyboardModeButton:" destination="kmI-pv-7KX" id="VfE-fQ-f7Z"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -350,7 +355,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iIE-sf-0IB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdj-Sp-nC8">
                                 <rect key="frame" x="170" y="569" width="34" height="30"/>
@@ -367,6 +372,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="36M-2b-yrR"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="hjp-rm-mWo"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="taY-gv-gA5"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="back" destination="Pdj-Sp-nC8" id="Xt7-Zg-onF"/>
                         <outlet property="photo" destination="iIE-sf-0IB" id="YWc-Kf-KL7"/>
