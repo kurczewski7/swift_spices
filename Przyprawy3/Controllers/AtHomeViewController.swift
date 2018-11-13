@@ -66,6 +66,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         numberOfRow=indexPath.row
         performSegue(withIdentifier: "goToAtHome", sender: self)
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

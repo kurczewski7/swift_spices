@@ -13,7 +13,8 @@ enum DbTableNames : String {
     case products        = "ProductTable"
     case basket          = "BasketProductTable"
     case shopingProduct  = "ShopingProductTable"
-    case toShop           = "ToShopProductTable"
+    case toShop          = "ToShopProductTable"
+    case categories      = "CategoryTable"
     case users           = "Users"
 }
 enum SearchField : String {
@@ -29,8 +30,8 @@ let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
 let  categoriesData : [CategoryType]  =
     [(name: "Przyprawy", nameEN: "Spices", pictureName: "picture1", selectedCategory : true),
-     (name: "Vegetables", nameEN: "Vegetables", pictureName: "picture2", selectedCategory : true),
-     (name: "Owoce", nameEN: "Fructs", pictureName: "picture3", selectedCategory : true)]
+     (name: "Vegetables", nameEN: "Vegetables", pictureName: "picture2", selectedCategory : false),
+     (name: "Owoce", nameEN: "Fructs", pictureName: "picture3", selectedCategory : false)]
 
 
    // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
@@ -217,6 +218,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        database.loadCategoryData()
+        if database.categoryArray.count==0 {
+            for rec in categoriesData {
+                database.addCategory(newCategoryValue: rec)
+            }
+        }
         // Override point for customization after application launch.
         return true
     }

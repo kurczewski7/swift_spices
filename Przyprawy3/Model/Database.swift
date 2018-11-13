@@ -16,7 +16,15 @@ class Database  {
     // seting delegate
     var delegate: DatabaseDelegate?
     
+    
+    
     //
+    var selectedCategory:CategoryTable? {
+        didSet {
+           // loadData(withCategory: )
+            print("Seting Category \(selectedCategory?.categoryName ?? "")")
+        }
+    }
     var categoryArray: [CategoryTable] = []
     var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
     let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
@@ -78,10 +86,26 @@ class Database  {
         do {    let newProducyArray     = try context.fetch(request)
             // Todo- error out of range
             
-            if newProducyArray.count > 0  {      self.productArray = newProducyArray }
+            if newProducyArray.count > 0  {
+                self.productArray = newProducyArray }
             else {
                 print("Error loading empty data")
                 self.productArray = newProducyArray
+            }
+        }
+        catch { print("Error fetching data from context \(error)")   }
+    }
+    
+    func loadCategoryData() {
+    //let xx CategoryTable
+    let request : NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
+    do {    let newProducyArray     = try context.fetch(request)
+    // Todo- error out of range    
+        if newProducyArray.count > 0  {
+            self.categoryArray = newProducyArray }
+        else {
+            print("Error loading empty data")
+            self.categoryArray = newProducyArray
             }
         }
         catch { print("Error fetching data from context \(error)")   }
@@ -110,8 +134,24 @@ class Database  {
         self.save()
     }
     func addProduct(withProductId id : Int, saving : Bool = true)    {
+//        let shoping=ShopingProductTable(context: database.context)
+//        let product=ProductTable(context: database.context)
+//        product.eanCode="60920808"
+//
+//        shoping.eanCode="60920808" //"60057064"
+//        shoping.productRelation=product
+//        database.shopingProductArray.append(shoping)
+//        database.save()
+
+        
+ //gggggggggh
+        
+        
         let productElem = giveElement(withProduct: id)
         productElem.id=Int32(id)
+        
+        //productElem.parentCategory?.categoryName=database.selectedCategory?.categoryName
+        productElem.parentCategory=database.selectedCategory
         self.productArray.append(productElem)
         if productArray[productArray.count-1].pictureName == nil
         {
@@ -174,9 +214,9 @@ class Database  {
             else {
                 weight = 0
             }
-            let number3 = Int(elementy[elementy.count-1])
-            let number2 = Int(elementy[elementy.count-2])
-            let number1 = Int(elementy[elementy.count-3])
+            let number3 = Int(elementy[elementy.count-1]) ?? 0
+            let number2 = Int(elementy[elementy.count-2]) ?? 0
+            let number1 = Int(elementy[elementy.count-3]) ?? 0
             eanCode = String(elementy[elementy.count-4])
             if Int(eanCode) == nil {
                 eanCode = "00000000"
@@ -185,9 +225,9 @@ class Database  {
             product.productName=String(productName)
             product.eanCode    =  eanCode
             product.pictureName=pictureName
-            product.number1    = Int32(number1!)
-            product.number2    = Int32(number2!)
-            product.number3    = Int32(number3!)
+            product.number1    = Int32(number1)
+            product.number2    = Int32(number2)
+            product.number3    = Int32(number3)
             product.weight     = Int16(weight)
             product.id         = Int32(nr)
             product.changeDate = Date.init()
@@ -270,11 +310,18 @@ class Database  {
     func getReqest(searchTable : DbTableNames) -> NSFetchRequest<NSFetchRequestResult> {
         let reqest: NSFetchRequest<NSFetchRequestResult>
         switch searchTable {
-        case .products:          reqest  = ProductTable.fetchRequest()
-        case .toShop:            reqest  = ToShopProductTable.fetchRequest()
-        case .basket:            reqest  = BasketProductTable.fetchRequest()
-        case .shopingProduct:    reqest  = ShopingProductTable.fetchRequest()
-        case .users:             reqest  = Users.fetchRequest()
+        case .products:
+            reqest  = ProductTable.fetchRequest()
+        case .toShop:
+            reqest  = ToShopProductTable.fetchRequest()
+        case .basket:
+            reqest  = BasketProductTable.fetchRequest()
+        case .shopingProduct:
+            reqest  = ShopingProductTable.fetchRequest()
+        case .categories:
+             reqest  = CategoryTable.fetchRequest()
+        case .users:
+            reqest  = Users.fetchRequest()
         }
         return reqest
     }
@@ -297,16 +344,21 @@ class Database  {
         let product=ProductTable(context: database.context)
         return product
     }
-    func setupCategories(categoryType category: CategoryType) {
+    func addCategory(newCategoryValue category: CategoryType) {
         let newCategory=CategoryTable(context: database.context)
         newCategory.categoryName=category.name
         newCategory.nameEN=category.nameEN
+        newCategory.selectedCategory=category.selectedCategory
         newCategory.selectedCategory=category.selectedCategory
         //        let pict=UIImage(named: category.pictureName)
         //        let coder=NSCoder()
         //        coder.decodeData()
         newCategory.picture=nil
         database.categoryArray.append(newCategory)
+        if category.selectedCategory {
+            database.selectedCategory=newCategory
+        }
+        database.save()
     }
 }
 

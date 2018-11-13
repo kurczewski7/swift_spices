@@ -150,7 +150,15 @@ func initialProduct()
         database.save()
     }
     @IBAction func fillCategory(_ sender: Any) {
+        for rec in categoriesData {
+           database.addCategory(newCategoryValue: rec)
+        }
     }
+    
+    @IBAction func delCategories(_ sender: UIButton) {
+        database.delTable(dbTableName: .categories)
+    }
+    
     
     
     //    func fill(product rec : ProductTable)

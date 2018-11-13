@@ -154,7 +154,7 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U4I-YB-A35">
-                                <rect key="frame" x="242" y="448" width="49" height="31"/>
+                                <rect key="frame" x="242" y="528" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9R-fn-m3W">
@@ -163,6 +163,14 @@
                                 <state key="normal" title="fillCategory"/>
                                 <connections>
                                     <action selector="fillCategory:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="Pt5-h9-FO8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8s-s8-0Wr">
+                                <rect key="frame" x="242" y="398" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="delCategory"/>
+                                <connections>
+                                    <action selector="delCategories:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="OKC-9P-HBb"/>
                                 </connections>
                             </button>
                         </subviews>
