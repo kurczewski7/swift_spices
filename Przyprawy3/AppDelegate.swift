@@ -9,9 +9,31 @@
 import UIKit
 import CoreData
 
+enum DbTableNames : String {
+    case products        = "ProductTable"
+    case basket          = "BasketProductTable"
+    case shopingProduct  = "ShopingProductTable"
+    case toShop           = "ToShopProductTable"
+    case users           = "Users"
+}
+enum SearchField : String {
+    case Producent = "producent"
+    case Product   = "productName"
+    case Tag       = "searchTag"
+    case EAN       = "eanCode"
+}
+
+ typealias CategoryType = (name: String, nameEN: String, pictureName: String, selectedCategory : Bool)
 
 let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
+let  categoriesData : [CategoryType]  =
+    [(name: "Przyprawy", nameEN: "Spices", pictureName: "picture1", selectedCategory : true),
+     (name: "Vegetables", nameEN: "Vegetables", pictureName: "picture2", selectedCategory : true),
+     (name: "Owoce", nameEN: "Fructs", pictureName: "picture3", selectedCategory : true)]
+
+
+   // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
 
 let picturesArray: [String] =
     ["CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200",
@@ -189,19 +211,6 @@ let is3Dtouch = UIApplication.shared.keyWindow?.traitCollection.forceTouchCapabi
 let bundleID = "pl.wroclaw.pwr.Przyprawy3"
 var segmentValues : [String] = ["product","producent"]
 
-enum DbTableNames : String {
-    case products        = "ProductTable"
-    case basket          = "BasketProductTable"
-    case shopingProduct  = "ShopingProductTable"
-    case toShop           = "ToShopProductTable"
-    case users           = "Users"
-}
-enum SearchField : String {
-    case Producent = "producent"
-    case Product   = "productName"
-    case Tag       = "searchTag"
-    case EAN       = "eanCode"
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -235,6 +244,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         coreData.saveContext()
     }
+    
+    
 ///   tu był corebData stack
     // Mark : 3D touch method
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

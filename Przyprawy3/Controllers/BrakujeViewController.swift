@@ -142,12 +142,14 @@ func initialProduct()
     
     @IBAction func addNewCategory(_ sender: UIButton) {
         let newProduct=ProductTable(context: database.context)
-        let newCategory=Category(context: database.context)
+        let newCategory=CategoryTable(context: database.context)
         newCategory.categoryName="Druga kategoria"
         newProduct.producent="CCCC"
         newProduct.productName="DDD"
         newProduct.parentCategory=newCategory
         database.save()
+    }
+    @IBAction func fillCategory(_ sender: Any) {
     }
     
     

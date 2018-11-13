@@ -16,6 +16,12 @@ class Database  {
     // seting delegate
     var delegate: DatabaseDelegate?
     
+    //
+    var categoryArray: [CategoryTable] = []
+    var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
+    let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
+    let sortCategoryDescriptor = NSSortDescriptor(key: "categoryName", ascending: true)
+
     // variable for ProductTable
     var productArray : [ProductTable] = []
     var featchResultCtrlProduct: NSFetchedResultsController<ProductTable>
@@ -63,6 +69,9 @@ class Database  {
         
         feachBasketProductRequest.sortDescriptors=[sortBasketProductDescriptor]
         featchResultCtrlBasketProduct=NSFetchedResultsController(fetchRequest: feachBasketProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        feachCategoryRequest.sortDescriptors=[]
+        featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
     func loadData()  {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
@@ -284,7 +293,20 @@ class Database  {
     {
         print(FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask))
     }
-
-
+    func getEntityBuffor(databaseWithProduct database: Database) -> ProductTable {
+        let product=ProductTable(context: database.context)
+        return product
+    }
+    func setupCategories(categoryType category: CategoryType) {
+        let newCategory=CategoryTable(context: database.context)
+        newCategory.categoryName=category.name
+        newCategory.nameEN=category.nameEN
+        newCategory.selectedCategory=category.selectedCategory
+        //        let pict=UIImage(named: category.pictureName)
+        //        let coder=NSCoder()
+        //        coder.decodeData()
+        newCategory.picture=nil
+        database.categoryArray.append(newCategory)
+    }
 }
 

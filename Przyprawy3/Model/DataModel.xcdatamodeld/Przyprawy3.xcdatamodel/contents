@@ -5,8 +5,11 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="productRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="basketProductTable" inverseEntity="ProductTable" syncable="YES"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+    <entity name="CategoryTable" representedClassName="CategoryTable" syncable="YES" codeGenerationType="class">
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameEN" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="selectedCategory" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="parentCategory" inverseEntity="ProductTable" syncable="YES"/>
     </entity>
     <entity name="ProductTable" representedClassName=".ProductTable" syncable="YES" codeGenerationType="class">
@@ -22,7 +25,7 @@
         <attribute name="searchTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="basketProductTable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasketProductTable" inverseName="productRelation" inverseEntity="BasketProductTable" syncable="YES"/>
-        <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="products" inverseEntity="Category" syncable="YES"/>
+        <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryTable" inverseName="products" inverseEntity="CategoryTable" syncable="YES"/>
         <relationship name="shopingProductRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShopingProductTable" inverseName="productRelation" inverseEntity="ShopingProductTable" syncable="YES"/>
         <relationship name="toShopRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ToShopProductTable" inverseName="productRelation" inverseEntity="ToShopProductTable" syncable="YES"/>
     </entity>
@@ -45,10 +48,10 @@
     </entity>
     <elements>
         <element name="BasketProductTable" positionX="-277.06640625" positionY="-16.4921875" width="128" height="88"/>
+        <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="120"/>
         <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="103"/>
         <element name="Users" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
-        <element name="Category" positionX="-251.7265625" positionY="-182.3828125" width="128" height="73"/>
     </elements>
 </model>
