@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhv-Zg-V2M">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="10" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mll-wY-1Rm">
                                     <size key="itemSize" width="50" height="50"/>
@@ -28,13 +28,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="AK1-Lj-ceS">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.72549019609999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="customSize" width="150" height="150"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -45,14 +46,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="3Hy-qm-lUA"/>
                             <constraint firstItem="dhv-Zg-V2M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7ty-tY-FSk"/>
-                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BUM-n0-5JJ"/>
-                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="In8-aP-WdH"/>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="J5q-dE-RCM"/>
                             <constraint firstItem="dhv-Zg-V2M" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RkB-43-dNy"/>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="10" id="YvT-wv-3lN"/>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kXo-mE-o0J"/>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="o7l-Ug-ar4"/>
+                            <constraint firstItem="dhv-Zg-V2M" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uCY-gt-CeJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Category" id="j3i-mg-BlL"/>
+                    <connections>
+                        <outlet property="collectionView" destination="dhv-Zg-V2M" id="Ksd-o9-4kT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -463,9 +471,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Seh-qX-QhG">
-                                <rect key="frame" x="0.0" y="64" width="305" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.80873946929999996" blue="0.48386762100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SIe-bn-etG">
                                     <size key="itemSize" width="134" height="203"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -480,20 +487,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="102" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awf-Tb-EXm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200" translatesAutoresizingMaskIntoConstraints="NO" id="awf-Tb-EXm">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jeg-E5-3az">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jeg-E5-3az">
                                                     <rect key="frame" x="0.0" y="119" width="102" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.33333333329999998" green="0.72549019609999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="102" height="160"/>
                                         <connections>
                                             <outlet property="productName" destination="Jeg-E5-3az" id="y22-UE-Gxh"/>
@@ -732,4 +739,7 @@
             <point key="canvasLocation" x="1324" y="3710"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200" width="173" height="200"/>
+    </resources>
 </document>

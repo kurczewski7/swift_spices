@@ -9,8 +9,21 @@
 import UIKit
 
 class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    @IBOutlet var collectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.delegate=self
+        collectionView.dataSource=self
+
+
+        // Do any additional setup after loading the view.
+    }
+    
+    //
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 25
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -19,15 +32,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-     
-
-        // Do any additional setup after loading the view.
-    }
-    
 
     /*
     // MARK: - Navigation
