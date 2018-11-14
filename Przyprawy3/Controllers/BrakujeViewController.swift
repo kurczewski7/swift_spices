@@ -143,9 +143,11 @@ func initialProduct()
     @IBAction func addNewCategory(_ sender: UIButton) {
         let newProduct=ProductTable(context: database.context)
         let newCategory=CategoryTable(context: database.context)
-        newCategory.categoryName="Druga kategoria"
-        newProduct.producent="CCCC"
-        newProduct.productName="DDD"
+        let newCategoryName=database.selectedCategory?.categoryName
+        print("newCategoryName=\(newCategoryName ?? "brak")")
+        newCategory.categoryName=newCategoryName //"Druga kategoria"
+        newProduct.producent =   "KKKKCCCC"
+        newProduct.productName = "LLLDDD"
         newProduct.parentCategory=newCategory
         database.save()
     }

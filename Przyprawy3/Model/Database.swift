@@ -21,8 +21,7 @@ class Database  {
     //
     var selectedCategory:CategoryTable? {
         didSet {
-           // loadData(withCategory: )
-            print("Seting Category \(selectedCategory?.categoryName ?? "")")
+            print("Seting Category: \(selectedCategory?.categoryName ?? "")")
         }
     }
     var categoryArray: [CategoryTable] = []

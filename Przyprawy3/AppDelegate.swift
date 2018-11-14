@@ -218,12 +218,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("database.categoryArray.count przed : \(database.categoryArray.count)")
         database.loadCategoryData()
+        print("database.categoryArray.count przed : \(database.categoryArray.count)")
         if database.categoryArray.count==0 {
             for rec in categoriesData {
                 database.addCategory(newCategoryValue: rec)
             }
         }
+        else {
+            for cat in database.categoryArray {
+                if cat.selectedCategory {
+                    database.selectedCategory=cat
+                }
+            }
+        }
+    
         // Override point for customization after application launch.
         return true
     }
