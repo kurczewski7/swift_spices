@@ -16,8 +16,6 @@ class Database  {
     // seting delegate
     var delegate: DatabaseDelegate?
     
-    
-    
     //
     var selectedCategory:CategoryTable? {
         didSet {
@@ -349,6 +347,8 @@ class Database  {
         newCategory.nameEN=category.nameEN
         newCategory.selectedCategory=category.selectedCategory
         newCategory.selectedCategory=category.selectedCategory
+        newCategory.pictureEmoji=category.pictureName
+        
         //        let pict=UIImage(named: category.pictureName)
         //        let coder=NSCoder()
         //        coder.decodeData()

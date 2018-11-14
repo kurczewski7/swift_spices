@@ -29,11 +29,12 @@ enum SearchField : String {
 let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
 let  categoriesData : [CategoryType]  =
-    [(name: "Przyprawy", nameEN: "Spices", pictureName: "picture1", selectedCategory : true),
-     (name: "Vegetables", nameEN: "Vegetables", pictureName: "picture2", selectedCategory : false),
-     (name: "Owoce", nameEN: "Fructs", pictureName: "picture3", selectedCategory : false)]
+    [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : true),
+     (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),
+     (name: "Owoce", nameEN: "Fructs", pictureName: "🍏🍒🍐", selectedCategory : false),
+     (name: "Mięso", nameEN: "Miel", pictureName: "🍗🥩🍖", selectedCategory : false)]
 
-
+// text="🌶🧂 🍏🍒🍐🥬🥕🥒"
    // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
 
 let picturesArray: [String] =

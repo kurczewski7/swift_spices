@@ -9,6 +9,7 @@
         <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nameEN" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="pictureEmoji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="selectedCategory" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="parentCategory" inverseEntity="ProductTable" syncable="YES"/>
     </entity>
@@ -48,7 +49,7 @@
     </entity>
     <elements>
         <element name="BasketProductTable" positionX="-277.06640625" positionY="-16.4921875" width="128" height="88"/>
-        <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="120"/>
+        <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="133"/>
         <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="103"/>
