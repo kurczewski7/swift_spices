@@ -27,8 +27,17 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "cellCategories", for: indexPath) as! CategoryCollectionViewCell
+        cell.backgroundColor=UIColor.purple
+        cell.layer.cornerRadius=20
         return cell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopingListCellView
+//
+//        // Configure the cell
+//        cell.backgroundView?.backgroundColor = UIColor.brown
+//        cell.productName.text = "aaa"
+//        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
+
     }
     
 
