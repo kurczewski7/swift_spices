@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */; };
 		2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C158CD7218623B300C3438B /* CoreDataStack.swift */; };
+		2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */; };
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsViewController.swift; sourceTree = "<group>"; };
 		2C158CD7218623B300C3438B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */,
 				2CF73B032135D97700FEA34C /* BrakujeViewController.swift */,
 				2C7288BC2147EE0F003506BE /* popViewController.swift */,
 				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
@@ -334,6 +337,7 @@
 				2C7288BD2147EE0F003506BE /* popViewController.swift in Sources */,
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
+				2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */,
 				2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */,
 				2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */,
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
