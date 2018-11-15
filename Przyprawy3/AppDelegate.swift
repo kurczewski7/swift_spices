@@ -32,9 +32,14 @@ let  categoriesData : [CategoryType]  =
     [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : true),
      (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),
      (name: "Owoce", nameEN: "Fructs", pictureName: "🍏🍒🍐", selectedCategory : false),
-     (name: "Mięso", nameEN: "Miel", pictureName: "🍗🥩🍖", selectedCategory : false)]
+     (name: "Mięso", nameEN: "Miel", pictureName: "🍗🥩🍖", selectedCategory : false),
+     (name: "Pieczywo", nameEN: "Broat", pictureName: "🥐🍞🥖", selectedCategory : false),
+     (name: "Nabiał", nameEN: "Milk", pictureName: "🥛🧀🥚", selectedCategory : false),
+     (name: "Napoje", nameEN: "Drinks", pictureName: "☕️🍺🍹", selectedCategory : false),
+     (name: "Inne", nameEN: "Others", pictureName: "🥜🥟🥮", selectedCategory : false)
+]
 
-// text="🌶🧂 🍏🍒🍐🥬🥕🥒"
+
    // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
 
 let picturesArray: [String] =
