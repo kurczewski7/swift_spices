@@ -251,6 +251,14 @@
                                     <action selector="analizaTap:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="bPE-yF-BsA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-Rj-qIx">
+                                <rect key="frame" x="243" y="436" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DelToShop"/>
+                                <connections>
+                                    <action selector="delToShopButton:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="7I7-Of-7kL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

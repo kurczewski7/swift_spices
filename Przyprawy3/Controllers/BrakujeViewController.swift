@@ -161,6 +161,9 @@ func initialProduct()
         database.delTable(dbTableName: .categories)
     }
     
+    @IBAction func delToShopButton(_ sender: UIButton) {
+        database.delTable(dbTableName: .toShop)
+    }
     
     
         
