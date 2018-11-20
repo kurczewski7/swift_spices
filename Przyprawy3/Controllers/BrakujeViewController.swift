@@ -163,22 +163,6 @@ func initialProduct()
     
     
     
-    //    func fill(product rec : ProductTable)
-    //    {
-    //
-    //        rec.producent="Knor"
-    //        rec.productName="no product"
-    //        rec.eanCode="88888"
-    //        rec.id=222
-    //        rec.pictureName="pic1"
-    //        rec.number1=1
-    //        rec.number2=2
-    //        rec.number3=3
-    //        rec.searchTag="tag1"
-    //    }
-
-//        let nazwa2:String = picturesArray[1]
-//        let nazwa3:String = picturesArray[2]
         
     /*
     // MARK: - Navigation
