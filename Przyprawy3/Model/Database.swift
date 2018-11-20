@@ -228,6 +228,7 @@ class Database  {
             product.weight     = Int16(weight)
             product.id         = Int32(nr)
             product.changeDate = Date.init()
+            product.checked    = false
         }
         return product
     }

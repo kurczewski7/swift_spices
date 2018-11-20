@@ -53,12 +53,14 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AtHomeCell
+        let product=database.productArray[indexPath.row]
 
-        cell.categoryLabel.text = database.productArray[indexPath.row].productName?.capitalized(with: nil) ?? "No product"
+        cell.categoryLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
         //database.productArray[indexPath.row].pictureName
-        cell.producentLabel.text = database.productArray[indexPath.row].producent?.uppercased()  ?? "No producent"   
-        cell.descriptionLabel.text =  String(database.productArray[indexPath.row].weight).lowercased()+"g"                       //picturesArray[indexPath.row]
-        cell.productPicture.image = UIImage(named:  database.productArray[indexPath.row].pictureName ?? "question-mark")
+        cell.producentLabel.text = product.producent?.uppercased()  ?? "No producent"
+        cell.descriptionLabel.text =  String(product.weight).lowercased()+"g"                       //picturesArray[indexPath.row]
+        cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
+        cell.accessoryType =  product.checked ? .checkmark : .none
         // picturesArray[indexPath.row])
         return cell
     }
@@ -66,9 +68,32 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         numberOfRow=indexPath.row
         performSegue(withIdentifier: "goToAtHome", sender: self)
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+    // MARK : Editing style
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let currCell=tableView.cellForRow(at: indexPath)
+        let isChecked = (currCell?.accessoryType == .checkmark)
+        let checkAction=UITableViewRowAction(style: .default, title: " 🧺\nDo koszyka", handler:
+        {(action, indexPath) -> Void in
+            currCell?.accessoryType = .checkmark
+            database.productArray[indexPath.row].checked = true
+            database.save()
+        })
+        let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
+        { (action, indexPath) -> Void in
+            currCell?.accessoryType = .none
+            database.productArray[indexPath.row].checked = false
+            database.save()
+    })
+    checkAction.backgroundColor=UIColor(red: 48.0/255, green: 173.0/255, blue: 99.0/255, alpha: 1.0)
+    uncheckAction.backgroundColor=UIColor.red
+    
+    
+        return isChecked ? [uncheckAction] : [checkAction]
     }
+        
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
