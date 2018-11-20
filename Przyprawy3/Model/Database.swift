@@ -107,6 +107,20 @@ class Database  {
         }
         catch { print("Error fetching data from context \(error)")   }
     }
+    func loadToShopData() {
+        //let xx CategoryTable
+        let request : NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
+        do {    let newProducyArray     = try context.fetch(request)
+            // Todo- error out of range
+            if newProducyArray.count > 0  {
+                self.toShopProductArray = newProducyArray }
+            else {
+                print("Error loading empty data")
+                self.toShopProductArray = newProducyArray
+            }
+        }
+        catch { print("Error fetching data from context \(error)")   }
+    }
 
     func deleteOne(withProductRec row : Int = -1) {
         let r = (row == -1 ? productArray.count-1 : row)
@@ -354,11 +368,18 @@ class Database  {
         //        let coder=NSCoder()
         //        coder.decodeData()
         newCategory.picture=nil
-        database.categoryArray.append(newCategory)
+        categoryArray.append(newCategory)
         if category.selectedCategory {
-            database.selectedCategory=newCategory
+            selectedCategory=newCategory
         }
-        database.save()
+        save()
+    }
+    func addToBasket(product : ProductTable) {
+        let toShopProduct = ToShopProductTable(context: context)
+        toShopProduct.changeDate=Date.init()
+        toShopProduct.eanCode=product.eanCode
+        toShopProduct.productRelation=product
+        toShopProductArray.append(toShopProduct)        
     }
 }
 

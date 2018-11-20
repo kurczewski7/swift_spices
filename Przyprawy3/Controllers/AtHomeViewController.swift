@@ -27,6 +27,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
          initSearchBar(self.searchedBar)
          database.loadData()
          database.delegate = self
+        //table.cellForRow(at: <#T##IndexPath#>)
     }
     // DatabaseDelegate method
     func updateGUI() {
@@ -57,11 +58,12 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         cell.categoryLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
         //database.productArray[indexPath.row].pictureName
+         //cell.producentLabel?.font.withSize(25)
         cell.producentLabel.text = product.producent?.uppercased()  ?? "No producent"
         cell.descriptionLabel.text =  String(product.weight).lowercased()+"g"                       //picturesArray[indexPath.row]
         cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
         cell.accessoryType =  product.checked ? .checkmark : .none
-        // picturesArray[indexPath.row])
+        cell.producentLabel?.font.withSize(25)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -79,6 +81,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
             database.productArray[indexPath.row].checked = true
+            database.addToBasket(product: database.productArray[indexPath.row])
             database.save()
         })
         let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
