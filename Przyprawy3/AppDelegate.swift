@@ -225,7 +225,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("database.categoryArray.count przed : \(database.categoryArray.count)")
-        database.loadCategoryData()
+        database.loadData(tableNameType: .categories)
         print("database.categoryArray.count przed : \(database.categoryArray.count)")
         if database.categoryArray.count==0 {
             for rec in categoriesData {

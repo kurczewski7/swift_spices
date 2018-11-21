@@ -13,16 +13,17 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var tabView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.loadToShopData()
-        
-        //tabView.delegate=self
-        //tabView.dataSource=self
-
+        database.loadData(tableNameType: .toShop)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        database.loadData(tableNameType: .toShop)
+        tabView.reloadData()
+        print("viewWillAppear")
     }
 
     // MARK: - Table view data source
@@ -50,8 +51,16 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         //cell.textLabel?.text="aaa:\(indexPath.row)"
 
         // Configure the cell...
-
         return cell
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let checkAction=UITableViewRowAction(style: .default, title: "🛍\nKup") { (action, indexPath) in
+        }
+        let uncheckAction=UITableViewRowAction(style: .default, title: "🗑\nZwróć") { (action, indexPath) in
+        }
+        checkAction.backgroundColor=UIColor.green
+        uncheckAction.backgroundColor=UIColor.red
+        return [checkAction,uncheckAction]
     }
 
 
@@ -65,7 +74,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -75,20 +84,20 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
 
-    /*
+    
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    //     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
+    //    }
+    
 
-    /*
+
     // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    //     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    //        return true
+    //    }
+ 
 
     /*
     // MARK: - Navigation

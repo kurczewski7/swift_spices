@@ -38,11 +38,12 @@
     </entity>
     <entity name="ToShopProductTable" representedClassName="ToShopProductTable" syncable="YES" codeGenerationType="class">
         <attribute name="changeDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="checked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="eanCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="productRelation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="toShopRelation" inverseEntity="ProductTable" syncable="YES"/>
     </entity>
-    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+    <entity name="UsersTable" representedClassName="UsersTable" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,7 +54,7 @@
         <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="133"/>
         <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="285"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
-        <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="103"/>
-        <element name="Users" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
+        <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="118"/>
+        <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
     </elements>
 </model>

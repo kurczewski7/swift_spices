@@ -106,7 +106,7 @@ func initialProduct()
         present(alert, animated: true, completion: nil)
     }
     @IBAction func deleteLastRecord(_ sender: UIButton) {
-     database.loadData()
+        database.loadData(tableNameType: .products)
      database.deleteOne()
         
     }

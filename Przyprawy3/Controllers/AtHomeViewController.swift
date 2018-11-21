@@ -25,7 +25,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
-         database.loadData()
+        database.loadData(tableNameType: .products)
          database.delegate = self
         //table.cellForRow(at: <#T##IndexPath#>)
     }
