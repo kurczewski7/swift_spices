@@ -56,12 +56,38 @@ func initialProduct()
     
     @IBAction func WczytajBaze(_ sender: UIButton) {
         print("wczytaj baze")
+        var k=0
         for i in 0..<picturesArray.count  {
             database.addProduct(withProductId: i)
-            //database.wczytywanieElementowBazy(i)
+            k=i
         }
-        //database.save()
+        for rek in fructsProd {
+            k=k+1
+            otherProduct(pictureName: rek, productName: rek, categoryNumber: 2, productId: k)
+        }
+        for rek2 in vegetableProd {
+             k=k+1
+            otherProduct(pictureName: rek2, productName: rek2, categoryNumber: 2, productId: k)
+        }
+        for rek3 in othersProd {
+             k=k+1
+            otherProduct(pictureName: rek3, productName: rek3, categoryNumber: 2, productId: k)
+        }
+        
+       
+        
      }
+    func otherProduct(pictureName: String, productName: String, categoryNumber: Int, productId: Int) {
+        //database.addProduct(withProductId: j)
+        let category = database.categoryArray[0]
+        let product = ProductTable(context: database.context)
+        product.producent = ""
+        product.pictureName = pictureName
+        product.productName = productName
+        product.id = Int32(productId)
+        product.parentCategory = category
+        database.addOneRecord(newProduct: product)
+    }
     @IBAction func wyswietlBaze(_ sender: UIButton) {
         //print("wyswietlBaze przed load : ilosc rekordow w bazie \(database.productArray.count)")
         //database.loadData()

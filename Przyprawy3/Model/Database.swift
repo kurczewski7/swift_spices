@@ -22,20 +22,6 @@ class Database  {
             print("Seting Category: \(selectedCategory?.categoryName ?? "")")
         }
     }
-  
-//        case .toShop:
-//        reqest  = ToShopProductTable.fetchRequest()
-//        case .basket:
-//        reqest  = BasketProductTable.fetchRequest()
-//        case .shopingProduct:
-//        reqest  = ShopingProductTable.fetchRequest()
-//        case .categories:
-//        reqest  = CategoryTable.fetchRequest()
-//        case .users:
-//        reqest  = UsersTable.fetchRequest()
-
-        
-        
     
     var categoryArray: [CategoryTable] = []
     var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
@@ -134,20 +120,20 @@ class Database  {
         feachCategoryRequest.sortDescriptors=[]
         featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
-//    func loadData()  {
-//        let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-//        do {    let newProducyArray     = try context.fetch(request)
-//            // Todo- error out of range
-//            
-//            if newProducyArray.count > 0  {
-//                self.productArray = newProducyArray }
-//            else {
-//                print("Error loading empty data")
-//                self.productArray = newProducyArray
-//            }
-//        }
-//        catch { print("Error fetching data from context \(error)")   }
-//    }
+    func loadData()  {
+        let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
+        do {    let newProducyArray     = try context.fetch(request)
+            // Todo- error out of range
+            
+            if newProducyArray.count > 0  {
+                self.productArray = newProducyArray }
+            else {
+                print("Error loading empty data")
+                self.productArray = newProducyArray
+            }
+        }
+        catch { print("Error fetching data from context \(error)")   }
+    }
     func loadData(tableNameType tabName : DbTableNames) {
         var request : NSFetchRequest<NSFetchRequestResult>?
         switch tabName {
@@ -195,34 +181,6 @@ class Database  {
 
     }
     
-//    func loadCategoryData() {
-//    //let xx CategoryTable
-//    let request : NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
-//    do {    let newProducyArray     = try context.fetch(request)
-//    // Todo- error out of range    
-//        if newProducyArray.count > 0  {
-//            self.categoryArray = newProducyArray }
-//        else {
-//            print("Error loading empty data")
-//            self.categoryArray = newProducyArray
-//            }
-//        }
-//        catch { print("Error fetching data from context \(error)")   }
-//    }
-//    func loadToShopData() {
-//        //let xx CategoryTable
-//        let request : NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
-//        do {    let newProducyArray     = try context.fetch(request)
-//            // Todo- error out of range
-//            if newProducyArray.count > 0  {
-//                self.toShopProductArray = newProducyArray }
-//            else {
-//                print("Error loading empty data")
-//                self.toShopProductArray = newProducyArray
-//            }
-//        }
-//        catch { print("Error fetching data from context \(error)")   }
-//    }
 
     func deleteOne(withProductRec row : Int = -1) {
         let r = (row == -1 ? productArray.count-1 : row)
@@ -246,20 +204,7 @@ class Database  {
         self.productArray.append(newProduct)
         self.save()
     }
-    func addProduct(withProductId id : Int, saving : Bool = true)    {
-//        let shoping=ShopingProductTable(context: database.context)
-//        let product=ProductTable(context: database.context)
-//        product.eanCode="60920808"
-//
-//        shoping.eanCode="60920808" //"60057064"
-//        shoping.productRelation=product
-//        database.shopingProductArray.append(shoping)
-//        database.save()
-
-        
- //gggggggggh
-        
-        
+    func addProduct(withProductId id : Int, saving : Bool = true)    {        
         let productElem = giveElement(withProduct: id)
         productElem.id=Int32(id)
         

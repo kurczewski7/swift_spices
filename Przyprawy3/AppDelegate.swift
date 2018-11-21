@@ -39,6 +39,23 @@ let  categoriesData : [CategoryType]  =
      (name: "Inne", nameEN: "Others", pictureName: "🥜🥟🥮", selectedCategory : false)
 ]
 
+let fructsProd    : [String] = ["owoce_01_b","owoce_02_b","owoce_03_b","owoce_04_b","owoce_05_b","owoce_06_b","owoce_07_b","owoce_08_b","owoce_09_b","owoce_10_b",
+                                "owoce_11_b","owoce_12_b","owoce_13_b","owoce_14_b","owoce_15_b","owoce_16_b","owoce_17_b","owoce_18_b","owoce_19_b","owoce_20_b"]
+
+let vegetableProd : [String] = ["warzywa_01_b","warzywa_02_b","warzywa_03_b","warzywa_04_b","warzywa_05_b","warzywa_06_b","warzywa_07_b","warzywa_08_b",
+                                "warzywa_09_b","warzywa_10_b","warzywa_11_b","warzywa_12_b","warzywa_13_b","warzywa_14_b","warzywa_15_b","warzywa_16_b",
+                                "warzywa_17_b","warzywa_18_b"]
+
+let othersProd    : [String] = ["pozostale_01_b","pozostale_02_b","pozostale_03_b","pozostale_04_b","pozostale_05_b","pozostale_06_b","pozostale_07_b",
+                               "pozostale_08_b","pozostale_09_b","pozostale_10_b","pozostale_11_b","pozostale_12_b","pozostale_13_b","pozostale_14_b",
+                                "pozostale_15_b","pozostale_16_b","pozostale_17_b","pozostale_18_b","pozostale_19_b","pozostale_20_b", "pozostale_21_b",
+                                "pozostale_22_b"]
+
+//otherProduct(pictureName: "owoce_01_b", productName: "owoce_01_b", categoryNumber: 2, productId: k+1)
+//otherProduct(pictureName: "warzywa_01_b", productName: "warzywa_01_b", categoryNumber: 2, productId: k+2)
+//otherProduct(pictureName: "pozostale_01_b", productName: "pozostale_01_b", categoryNumber: 2, productId: k+3)
+
+
 
    // / [("Przyprawy", "Spices","picture1",true),("Warzywa", "Vegetables","picture1",false),("Owoce", "Fructs","picture1",false)]
 
