@@ -53,16 +53,20 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Configure the cell...
         return cell
     }
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let checkAction=UITableViewRowAction(style: .default, title: "🛍\nKup") { (action, indexPath) in
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let checkAction=UITableViewRowAction(style: .default, title: "🛍\nKup") { (action, indexPath) in
+//        }
+//        let uncheckAction=UITableViewRowAction(style: .default, title: "🗑\nZwróć") { (action, indexPath) in
+//        }
+//        checkAction.backgroundColor=UIColor.green
+//        uncheckAction.backgroundColor=UIColor.red
+//        return [checkAction,uncheckAction]
+//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        let uncheckAction=UITableViewRowAction(style: .default, title: "🗑\nZwróć") { (action, indexPath) in
-        }
-        checkAction.backgroundColor=UIColor.green
-        uncheckAction.backgroundColor=UIColor.red
-        return [checkAction,uncheckAction]
     }
-
 
     /*
     // Override to support conditional editing of the table view.

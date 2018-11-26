@@ -71,7 +71,7 @@ func initialProduct()
         }
         for rek3 in othersProd {
              k=k+1
-            otherProduct(pictureName: rek3, productName: rek3, categoryNumber: 2, productId: k)
+            otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 2, productId: k)
         }
         
        
