@@ -37,6 +37,7 @@ let  categoriesData : [CategoryType]  =
      (name: "Nabiał", nameEN: "Milk", pictureName: "🥛🧀🥚", selectedCategory : false),
      (name: "Napoje", nameEN: "Drinks", pictureName: "☕️🍺🍹", selectedCategory : false),
      (name: "Inne", nameEN: "Others", pictureName: "🥜🥟🥮", selectedCategory : false)
+        //✖️✔️☛☞☛✔︎✘✓✕❤︎☎︎☏✆✍︎✍︎✍︎💲✖️✔️
 ]
 
 let fructsProd    : [String] = ["owoce_01_b","owoce_02_b","owoce_03_b","owoce_04_b","owoce_05_b","owoce_06_b","owoce_07_b","owoce_08_b","owoce_09_b","owoce_10_b",
