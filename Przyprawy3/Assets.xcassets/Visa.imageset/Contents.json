@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ShoppingCartLoaded.png",
+      "filename" : "Visa.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ShoppingCartLoaded@2x.png",
+      "filename" : "Visa@2X.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ShoppingCartLoaded@3x.png",
+      "filename" : "Visa@3X.png",
       "scale" : "3x"
     }
   ],

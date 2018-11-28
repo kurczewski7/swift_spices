@@ -119,11 +119,11 @@
             </objects>
             <point key="canvasLocation" x="2124" y="776.76161919040487"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Szukaj-->
         <scene sceneID="0LX-6M-Sva">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eEU-mC-SKT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="bfC-sg-oQ2"/>
+                    <tabBarItem key="tabBarItem" title="Szukaj" image="Filter" id="bfC-sg-oQ2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Emb-r3-q9j">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -870,11 +870,11 @@
             </objects>
             <point key="canvasLocation" x="388" y="777"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Wybrane-->
         <scene sceneID="Lq8-Y0-i1s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G0Y-Vd-dtr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="TDq-vy-pT7"/>
+                    <tabBarItem key="tabBarItem" title="Wybrane" image="Like" selectedImage="Like" id="TDq-vy-pT7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JTp-FS-jTh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -889,11 +889,11 @@
             </objects>
             <point key="canvasLocation" x="1324" y="1553.9730134932536"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Kupione-->
         <scene sceneID="7Uq-dG-iz3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D3O-D4-llO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="ShoppingCartLoaded" systemItem="topRated" id="kNy-DZ-Mwg"/>
+                    <tabBarItem key="tabBarItem" title="Kupione" image="Shopping" id="kNy-DZ-Mwg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uLT-b3-ZHb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -908,11 +908,11 @@
             </objects>
             <point key="canvasLocation" x="2310" y="2254"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Płatność-->
         <scene sceneID="Mkk-ju-2V0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Shk-Tr-tkY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="rqj-4S-bog"/>
+                    <tabBarItem key="tabBarItem" title="Płatność" image="Visa" id="rqj-4S-bog"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5DU-7S-piU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -949,7 +949,6 @@
         <!--To shop 2-->
         <scene sceneID="XVD-ro-i5J">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6nR-EX-Pf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Xdy-XS-FUA" userLabel="To shop 2" customClass="ToShopTableViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S1g-jR-vzS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1046,13 +1045,16 @@
                         <outlet property="tabView" destination="Nqc-c2-ob8" id="KQI-6Z-eBy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6nR-EX-Pf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2921" y="1554"/>
         </scene>
     </scenes>
     <resources>
         <image name="CYKORIA_ARROD_PAPRYKA_OSTRA_MIELONA_10G_59954826_0_173_200" width="173" height="200"/>
+        <image name="Filter" width="25" height="25"/>
         <image name="Like" width="25" height="25"/>
-        <image name="ShoppingCartLoaded" width="50" height="50"/>
+        <image name="Shopping" width="25" height="25"/>
+        <image name="Visa" width="25" height="25"/>
     </resources>
 </document>

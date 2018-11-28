@@ -64,7 +64,10 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 //    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // tableView.deleteRows(at: [indexPath], with: .fade)
+             tableView.deleteRows(at: [indexPath], with: .fade)
+            database.toShopProductArray.remove(at: 0)
+            tableView.reloadData()
+            
         }
     }
 

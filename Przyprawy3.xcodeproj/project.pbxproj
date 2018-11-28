@@ -122,7 +122,6 @@
 		2C158CBF2186109800C3438B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */,
 				2CE27572210237B1001C046B /* LaunchScreen.storyboard */,
@@ -179,6 +178,7 @@
 		2CE27565210237AF001C046B /* Przyprawy3 */ = {
 			isa = PBXGroup;
 			children = (
+				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2C158CBF2186109800C3438B /* View */,
 				2C158CBD2186106F00C3438B /* Model */,
