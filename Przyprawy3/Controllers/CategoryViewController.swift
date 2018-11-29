@@ -47,6 +47,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("wybrano kategorię \(indexPath.row)")
         database.selectedCategory=database.findSelestedCategory(categoryId : indexPath.row)
+        performSegue(withIdentifier: "goToProducts", sender: self)
+        //performSegue(withIdentifier: "goToAtHome", sender: self)
     }
     //database.categoryArray[indexPath.row].categoryName
 
