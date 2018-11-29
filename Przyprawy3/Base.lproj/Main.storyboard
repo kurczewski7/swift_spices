@@ -344,16 +344,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="geO-WE-SrC">
-                                                    <rect key="frame" x="313" y="31" width="42" height="40"/>
+                                                    <rect key="frame" x="133" y="31" width="222" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="heI-O4-nru"/>
+                                                        <constraint firstAttribute="height" constant="60" id="heI-O4-nru"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHs-aS-g1r">
-                                                    <rect key="frame" x="312" y="85" width="42" height="40"/>
+                                                    <rect key="frame" x="133" y="85" width="222" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ldr-pv-XY1"/>
                                                     </constraints>
@@ -363,18 +363,20 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="top" secondItem="geO-WE-SrC" secondAttribute="bottom" constant="14" id="2VC-Jx-8rK"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="top" secondItem="geO-WE-SrC" secondAttribute="bottom" constant="-6" id="2VC-Jx-8rK"/>
                                                 <constraint firstItem="aPf-3e-ThQ" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="topMargin" constant="-6" id="6VU-pe-9yC"/>
                                                 <constraint firstItem="hHs-aS-g1r" firstAttribute="bottom" secondItem="sUc-dd-DDX" secondAttribute="bottomMargin" constant="6" id="7GV-zB-DBO"/>
                                                 <constraint firstItem="geO-WE-SrC" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="topMargin" constant="20" id="8MW-17-74s"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="centerX" secondItem="geO-WE-SrC" secondAttribute="centerX" id="H4N-qx-N4Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="bKV-Lb-D4d" secondAttribute="trailing" constant="2" id="JxV-8l-xvT"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="leading" secondItem="bKV-Lb-D4d" secondAttribute="leading" id="KZn-C2-O2z"/>
                                                 <constraint firstItem="geO-WE-SrC" firstAttribute="top" secondItem="bKV-Lb-D4d" secondAttribute="bottom" constant="-1" id="MJX-52-ehS"/>
                                                 <constraint firstItem="aPf-3e-ThQ" firstAttribute="leading" secondItem="sUc-dd-DDX" secondAttribute="leading" constant="5" id="MLx-eM-n0F"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="geO-WE-SrC" secondAttribute="trailing" constant="5" id="O8t-eS-PC5"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="top" constant="11" id="P1h-ed-Ta8"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="top" constant="11" id="QRq-qZ-14M"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="leading" secondItem="aPf-3e-ThQ" secondAttribute="trailing" constant="8" id="XhN-dj-Er6"/>
-                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="centerX" secondItem="geO-WE-SrC" secondAttribute="centerX" constant="-1" id="dek-Rh-EdQ"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="leading" secondItem="geO-WE-SrC" secondAttribute="leading" id="iNO-dy-Cgt"/>
                                                 <constraint firstAttribute="trailing" secondItem="bKV-Lb-D4d" secondAttribute="trailing" constant="2" id="s7t-xN-GoE"/>
                                             </constraints>
                                         </tableViewCellContentView>
