@@ -20,6 +20,9 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
     
     //
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,18 +36,26 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.contentLabel.text=database.category.categoryArray[indexPath.row].pictureEmoji
         //categoryArray[indexPath.row].pictureEmoji                 //"🌶🧂 🍏🍒🍐🥬🥕🥒"
         cell.nameLabel.textColor=(database.category.categoryArray[indexPath.row].selectedCategory ? UIColor.blue:  UIColor.black)
+        cell.likeButton.isEnabled = (database.category.categoryArray[indexPath.row].selectedCategory ? true : false)
         cell.nameLabel.text=database.category.categoryArray[indexPath.row].categoryName
-        //database.categoryArray[indexPath.row].categoryName
         return cell
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopingListCellView
-//
-//        // Configure the cell
-//        cell.backgroundView?.backgroundColor = UIColor.brown
-//        cell.productName.text = "aaa"
-//        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
 
     }
-    
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("wybrano kategorię \(indexPath.row)")
+        database.selectedCategory=database.findSelestedCategory(categoryId : indexPath.row)
+    }
+    //database.categoryArray[indexPath.row].categoryName
+
+    //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopingListCellView
+    //
+    //        // Configure the cell
+    //        cell.backgroundView?.backgroundColor = UIColor.brown
+    //        cell.productName.text = "aaa"
+    //        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
 
 
     /*

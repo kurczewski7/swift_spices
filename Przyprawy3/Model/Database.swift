@@ -22,13 +22,15 @@ class Database  {
     @objc var selectedCategory:CategoryTable? {
         didSet {
             print("Seting Category: \(selectedCategory?.categoryName ?? "")")
+            let catArray=database.category.categoryArray
+            for el in catArray {
+                el.selectedCategory = selectedCategory?.categoryName == el.categoryName ? true : false
+            }
+            database.save()
         }
     }
 //    typealias CategorySetingType = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
 //    var categorySeting: CategorySetingType?
-    
-    
-
 //    let categorySeting = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
 
     // variable for ProductTable
@@ -457,7 +459,10 @@ class Database  {
         toShopProduct.productRelation=product
         toShopProductArray.append(toShopProduct)        
     }
-
+    //findSelestedCategory(categoryId : indexPath.row)
+    func findSelestedCategory(categoryId : Int) -> CategoryTable {
+        return database.category.categoryArray[categoryId]
+    }
 }
 // New Class
 class CategorySeting {

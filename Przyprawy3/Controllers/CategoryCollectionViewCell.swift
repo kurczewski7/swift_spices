@@ -13,4 +13,11 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var contentLabel: UILabel!
     @IBOutlet var picture: UIImageView!
+    @IBOutlet var likeButton: UIButton!
+    
+    @IBAction func likePressedButton(_ sender: UIButton) {
+        print("like presed")
+        likeButton.imageView?.image = UIImage(named: "heartfull.png")
+        
+    }
 }

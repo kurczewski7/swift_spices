@@ -46,7 +46,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-Sl-7mr">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-Sl-7mr">
                                                     <rect key="frame" x="60" y="101" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="7U8-0U-HIu"/>
@@ -54,35 +54,25 @@
                                                     </constraints>
                                                     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <size key="titleShadowOffset" width="2" height="2"/>
-                                                    <state key="normal" image="Like"/>
+                                                    <state key="normal" image="heart"/>
                                                     <connections>
-                                                        <segue destination="kmI-pv-7KX" kind="show" id="BQZ-9G-c92"/>
+                                                        <action selector="likePressedButton:" destination="fTp-vj-cpb" eventType="touchUpInside" id="hfr-4I-b4E"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="oY0-UU-jqb">
-                                                    <rect key="frame" x="6" y="14" width="36" height="36"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="alV-M7-lqh"/>
-                                                        <constraint firstAttribute="width" constant="36" id="tMh-KA-pfs"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.72549019609999998" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Wwh-I8-MUe" secondAttribute="trailing" id="LqB-p7-AfF"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="oY0-UU-jqb" secondAttribute="bottom" constant="107" id="b6m-i4-5Zh"/>
                                             <constraint firstItem="Wwh-I8-MUe" firstAttribute="top" secondItem="fTp-vj-cpb" secondAttribute="top" constant="10" id="bLr-pK-T33"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="7DB-Sl-7mr" secondAttribute="bottom" constant="11" id="bvm-0Q-mMI"/>
-                                            <constraint firstItem="oY0-UU-jqb" firstAttribute="centerX" secondItem="fTp-vj-cpb" secondAttribute="centerX" constant="-58.5" id="jhl-V1-voq"/>
                                             <constraint firstItem="7DB-Sl-7mr" firstAttribute="centerX" secondItem="fTp-vj-cpb" secondAttribute="centerX" id="pUo-Xz-Zk9"/>
                                             <constraint firstItem="Wwh-I8-MUe" firstAttribute="leading" secondItem="fTp-vj-cpb" secondAttribute="leading" id="u3x-Pu-voX"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="contentLabel" destination="LXK-8b-LbM" id="geQ-hA-khK"/>
+                                            <outlet property="likeButton" destination="7DB-Sl-7mr" id="x3r-OM-xiO"/>
                                             <outlet property="nameLabel" destination="Wwh-I8-MUe" id="fuY-0T-MV4"/>
-                                            <outlet property="picture" destination="oY0-UU-jqb" id="pFs-Ej-ECZ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -105,9 +95,6 @@
                             <constraint firstItem="dhv-Zg-V2M" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="19" id="uCY-gt-CeJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="icA-2F-gcc" appends="YES" id="qPC-Ut-vQD"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Category🛒" id="j3i-mg-BlL"/>
                     <connections>
@@ -455,26 +442,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CvG-5F-WTL">
-                                <rect key="frame" x="67" y="80" width="241" height="331"/>
+                                <rect key="frame" x="67" y="36" width="241" height="331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="331" id="BpG-yp-b7d"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBJ-xh-5lI">
-                                <rect key="frame" x="16" y="427" width="343" height="36"/>
+                                <rect key="frame" x="16" y="383" width="343" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waga" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygt-1K-CUe">
-                                <rect key="frame" x="16" y="522" width="343" height="22"/>
+                                <rect key="frame" x="16" y="478" width="343" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOd-g6-UKk">
-                                <rect key="frame" x="16" y="477" width="343" height="29"/>
+                                <rect key="frame" x="16" y="433" width="343" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="120-4O-dzO"/>
                                 </constraints>
@@ -1056,5 +1043,6 @@
         <image name="Like" width="25" height="25"/>
         <image name="Shopping" width="25" height="25"/>
         <image name="Visa" width="25" height="25"/>
+        <image name="heart" width="128" height="128"/>
     </resources>
 </document>
