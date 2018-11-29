@@ -141,9 +141,16 @@ class Database  {
     }
     func loadData(tableNameType tabName : DbTableNames) {
         var request : NSFetchRequest<NSFetchRequestResult>?
+        var groupPredicate:NSPredicate?
+        var groupId=self.selectedCategory?.id ?? 8
+        groupId=1
+        
         switch tabName {
         case .products       :
             request = ProductTable.fetchRequest()
+            groupPredicate = NSPredicate(format: "%K = %@", "categoryId", "\(groupId)")
+            print(groupId)
+            request?.predicate = groupPredicate
         case .basket         :
             request = BasketProductTable.fetchRequest()
         case .shopingProduct :
@@ -156,6 +163,13 @@ class Database  {
             request = ToShopProductTable.fetchRequest()
         }
 
+//        let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
+//        predicates.append(predicate)
+//        let predicateAll=NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
+//        reqest.predicate=predicateAll
+//  let groupPredicate=NSPredicate(format: "%K = %@", "categoryId", "\(findCategoryId)")
+        
+        
         //request = ProductTable.fetchRequest()
         do {    let newArray     = try context.fetch(request!)
             // Todo- error out of range
@@ -183,10 +197,7 @@ class Database  {
             }
         }
         catch { print("Error fetching data from context \(error)")   }
-
     }
-    
-
     func deleteOne(withProductRec row : Int = -1) {
         let r = (row == -1 ? productArray.count-1 : row)
         context.delete(productArray[r])
@@ -369,21 +380,6 @@ class Database  {
         }
         delegate?.updateGUI()
     }
-    //    func loadComputData() {
-    //        var searchPredicate:NSPredicate?
-    //
-    //        var predicates = [NSPredicate]()
-    //        let statusPredicate=NSPredicate(format: "isForSale=%@", true)
-    //        predicates.append(statusPredicate)
-    //        if let additionPredicate=searchPredicate {
-    //            predicates.append(additionPredicate)
-    //        }
-    //        let predicate=NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
-    //        if srtDescryptor.count>0 {
-    //            reqest.sortDescryptor=sortDescryptor
-    //        }
-    //        tableView.reloadData()
-    //    }
     func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
     {
 //        switch searchTable {
@@ -459,7 +455,6 @@ class Database  {
         toShopProduct.productRelation=product
         toShopProductArray.append(toShopProduct)        
     }
-    //findSelestedCategory(categoryId : indexPath.row)
     func findSelestedCategory(categoryId : Int) -> CategoryTable {
         return database.category.categoryArray[categoryId]
     }
