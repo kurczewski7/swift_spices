@@ -71,7 +71,7 @@ func initialProduct()
         }
         for rek3 in othersProd {
              k=k+1
-            otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 4, productId: k)
+            otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 7, productId: k)
         }
         
        
@@ -158,15 +158,7 @@ func initialProduct()
         shoping.productRelation=product
         database.shopingProductArray.append(shoping)
         database.save()
-        
-        
-//        if let product=shoping.productRelation
-//        {
-//            product.pictureName=""
-//        }
-//
-    }
-    
+    }    
     @IBAction func addNewCategory(_ sender: UIButton) {
         let newProduct=ProductTable(context: database.context)
         let newCategory=CategoryTable(context: database.context)
@@ -185,17 +177,12 @@ func initialProduct()
             i+=1
         }
     }
-    
     @IBAction func delCategories(_ sender: UIButton) {
         database.delTable(dbTableName: .categories)
     }
-    
     @IBAction func delToShopButton(_ sender: UIButton) {
         database.delTable(dbTableName: .toShop)
     }
-    
-    
-        
     /*
     // MARK: - Navigation
 

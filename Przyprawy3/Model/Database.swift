@@ -125,6 +125,17 @@ class Database  {
         //feachCategoryRequest.sortDescriptors=[]
         //featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
+    func setSelectedCategory() {
+        if category.categoryArray.count>0 {
+            for elem in category.categoryArray {
+                if elem.selectedCategory {
+                    self.selectedCategory=elem
+                    print("self.selectedCategory.id:\(self.selectedCategory?.id ?? 9)")
+                    break
+                }
+            }
+        }
+    }
     func loadData()  {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
         do {    let newProducyArray     = try context.fetch(request)
@@ -142,14 +153,11 @@ class Database  {
     func loadData(tableNameType tabName : DbTableNames) {
         var request : NSFetchRequest<NSFetchRequestResult>?
         var groupPredicate:NSPredicate?
-        var groupId=self.selectedCategory?.id ?? 8
-        groupId=1
         
         switch tabName {
         case .products       :
             request = ProductTable.fetchRequest()
-            groupPredicate = NSPredicate(format: "%K = %@", "categoryId", "\(groupId)")
-            print(groupId)
+            groupPredicate = NSPredicate(format: "%K = %@", "categoryId", "\(self.selectedCategory?.id ?? 9)")
             request?.predicate = groupPredicate
         case .basket         :
             request = BasketProductTable.fetchRequest()
@@ -157,6 +165,7 @@ class Database  {
             request = ShopingProductTable.fetchRequest()
         case .categories     :
             request = CategoryTable.fetchRequest()
+            setSelectedCategory()
         case .users          :
             request = UsersTable.fetchRequest()
         case .toShop         :
@@ -185,6 +194,7 @@ class Database  {
                     shopingProductArray = newArray as! [ShopingProductTable]
                     case .categories     :
                     category.categoryArray = newArray as! [CategoryTable]
+                    
                     case .users          :
                     usersArray = newArray as! [UsersTable]
                     case .toShop         :

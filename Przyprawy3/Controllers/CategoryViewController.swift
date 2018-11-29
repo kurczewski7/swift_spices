@@ -16,9 +16,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         collectionView.delegate=self
         collectionView.dataSource=self
-
-
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
