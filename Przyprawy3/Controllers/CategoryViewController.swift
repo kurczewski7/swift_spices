@@ -23,16 +23,18 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return database.categoryArray.count
+        return database.category.categoryArray.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "cellCategories", for: indexPath) as! CategoryCollectionViewCell
         cell.backgroundColor=UIColor.lightGray
         cell.layer.cornerRadius=20
-        cell.contentLabel.text=database.categoryArray[indexPath.row].pictureEmoji                 //"🌶🧂 🍏🍒🍐🥬🥕🥒"
-        cell.nameLabel.textColor=(database.categoryArray[indexPath.row].selectedCategory ? UIColor.blue:  UIColor.black)
-        cell.nameLabel.text=database.categoryArray[indexPath.row].categoryName
+        cell.contentLabel.text=database.category.categoryArray[indexPath.row].pictureEmoji
+        //categoryArray[indexPath.row].pictureEmoji                 //"🌶🧂 🍏🍒🍐🥬🥕🥒"
+        cell.nameLabel.textColor=(database.category.categoryArray[indexPath.row].selectedCategory ? UIColor.blue:  UIColor.black)
+        cell.nameLabel.text=database.category.categoryArray[indexPath.row].categoryName
+        //database.categoryArray[indexPath.row].categoryName
         return cell
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopingListCellView
 //

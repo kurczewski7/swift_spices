@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 enum DbTableNames : String {
     case products        = "ProductTable"
@@ -26,12 +26,14 @@ enum SearchField : String {
 
  typealias CategoryType = (name: String, nameEN: String, pictureName: String, selectedCategory : Bool)
 
+
+
 let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
 let  categoriesData : [CategoryType]  =
-    [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : true),
+    [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : false),
      (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),
-     (name: "Owoce", nameEN: "Fructs", pictureName: "🍏🍒🍐", selectedCategory : false),
+     (name: "Owoce", nameEN: "Fructs", pictureName: "🍏🍒🍐", selectedCategory : true),
      (name: "Mięso", nameEN: "Miel", pictureName: "🍗🥩🍖", selectedCategory : false),
      (name: "Pieczywo", nameEN: "Broat", pictureName: "🥐🍞🥖", selectedCategory : false),
      (name: "Nabiał", nameEN: "Milk", pictureName: "🥛🧀🥚", selectedCategory : false),
@@ -242,16 +244,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("database.categoryArray.count przed : \(database.categoryArray.count)")
+        print("database.categoryArray.count przed : \(database.category.categoryArray.count)")
         database.loadData(tableNameType: .categories)
-        print("database.categoryArray.count przed : \(database.categoryArray.count)")
-        if database.categoryArray.count==0 {
+        print("database.categoryArray.count przed : \(database.category.categoryArray.count)")
+        if database.category.categoryArray.count == 0 {
+            var i=1
             for rec in categoriesData {
-                database.addCategory(newCategoryValue: rec)
+                database.addCategory(newCategoryValue: rec, idNumber: i)
+                i+=1
             }
         }
         else {
-            for cat in database.categoryArray {
+            for cat in database.category.categoryArray {
                 if cat.selectedCategory {
                     database.selectedCategory=cat
                 }

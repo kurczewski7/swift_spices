@@ -67,11 +67,11 @@ func initialProduct()
         }
         for rek2 in vegetableProd {
              k=k+1
-            otherProduct(pictureName: rek2, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll", categoryNumber: 2, productId: k)
+            otherProduct(pictureName: rek2, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll", categoryNumber: 1, productId: k)
         }
         for rek3 in othersProd {
              k=k+1
-            otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 2, productId: k)
+            otherProduct(pictureName: rek3, productName: "aaaaa bbbbb ccccc ddddd eeeeee ffffff ggggg hhhhh iiiiii jjjjj kkkkk llllll mmmmm nnnn oooooo ppppp", categoryNumber: 4, productId: k)
         }
         
        
@@ -79,13 +79,14 @@ func initialProduct()
      }
     func otherProduct(pictureName: String, productName: String, categoryNumber: Int, productId: Int) {
         //database.addProduct(withProductId: j)
-        let category = database.categoryArray[0]
+        let category = database.category.categoryArray[categoryNumber]
         let product = ProductTable(context: database.context)
         product.producent = ""
         product.pictureName = pictureName
         product.productName = productName
         product.id = Int32(productId)
         product.parentCategory = category
+        product.categoryId=Int16(categoryNumber+1)
         database.addOneRecord(newProduct: product)
     }
     @IBAction func wyswietlBaze(_ sender: UIButton) {
@@ -178,8 +179,10 @@ func initialProduct()
         database.save()
     }
     @IBAction func fillCategory(_ sender: Any) {
+        var i=1
         for rec in categoriesData {
-           database.addCategory(newCategoryValue: rec)
+            database.addCategory(newCategoryValue: rec, idNumber: i)
+            i+=1
         }
     }
     

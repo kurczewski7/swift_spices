@@ -15,18 +15,21 @@ class Database  {
     
     // seting delegate
     var delegate: DatabaseDelegate?
+    //Entitis of project
+    var category: CategorySeting=CategorySeting()
     
     //
-    var selectedCategory:CategoryTable? {
+    @objc var selectedCategory:CategoryTable? {
         didSet {
             print("Seting Category: \(selectedCategory?.categoryName ?? "")")
         }
     }
+//    typealias CategorySetingType = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
+//    var categorySeting: CategorySetingType?
     
-    var categoryArray: [CategoryTable] = []
-    var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
-    let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
-    let sortCategoryDescriptor = NSSortDescriptor(key: "categoryName", ascending: true)
+    
+
+//    let categorySeting = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
 
     // variable for ProductTable
     var productArray : [ProductTable] = []
@@ -62,7 +65,7 @@ class Database  {
         var myArray: [AnyObject]?
         switch dbName {
         case .products:
-            myArray  = categoryArray
+            myArray  = category.categoryArray
         case .categories:
             myArray  = productArray
         case .shopingProduct:
@@ -117,8 +120,8 @@ class Database  {
         feachBasketProductRequest.sortDescriptors=[sortBasketProductDescriptor]
         featchResultCtrlBasketProduct=NSFetchedResultsController(fetchRequest: feachBasketProductRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        feachCategoryRequest.sortDescriptors=[]
-        featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        //feachCategoryRequest.sortDescriptors=[]
+        //featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
     func loadData()  {
         let request : NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
@@ -165,7 +168,7 @@ class Database  {
                     case .shopingProduct :
                     shopingProductArray = newArray as! [ShopingProductTable]
                     case .categories     :
-                    categoryArray = newArray as! [CategoryTable]
+                    category.categoryArray = newArray as! [CategoryTable]
                     case .users          :
                     usersArray = newArray as! [UsersTable]
                     case .toShop         :
@@ -210,6 +213,7 @@ class Database  {
         
         //productElem.parentCategory?.categoryName=database.selectedCategory?.categoryName
         productElem.parentCategory=database.selectedCategory
+        productElem.categoryId = 1
         self.productArray.append(productElem)
         if productArray[productArray.count-1].pictureName == nil
         {
@@ -324,15 +328,24 @@ class Database  {
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
-
-        let searchField =  field.rawValue   //"producent"
-        let sortField   =  field.rawValue     //"producent"
-        let searchText  =  text
+        var predicates = [NSPredicate]()
         
+        let searchField =  field.rawValue
+        let sortField   =  field.rawValue
+        let searchText  =  text
+        let findCategoryId = database.selectedCategory?.id ?? 1
+        
+        if searchTable == .products {
+            let groupPredicate=NSPredicate(format: "%K = %@", "categoryId", "\(findCategoryId)")
+            predicates.append(groupPredicate)
+        }
+       
         let reqest=getReqest(searchTable: searchTable) //.products
         if text.count>0 {
             let predicate=NSPredicate(format: "%K CONTAINS[cd] %@", searchField, searchText)
-            reqest.predicate=predicate
+            predicates.append(predicate)
+            let predicateAll=NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
+            reqest.predicate=predicateAll
             let sortDeescryptor=NSSortDescriptor(key: sortField, ascending: isAscending)
             reqest.sortDescriptors=[sortDeescryptor]
         }
@@ -354,6 +367,21 @@ class Database  {
         }
         delegate?.updateGUI()
     }
+    //    func loadComputData() {
+    //        var searchPredicate:NSPredicate?
+    //
+    //        var predicates = [NSPredicate]()
+    //        let statusPredicate=NSPredicate(format: "isForSale=%@", true)
+    //        predicates.append(statusPredicate)
+    //        if let additionPredicate=searchPredicate {
+    //            predicates.append(additionPredicate)
+    //        }
+    //        let predicate=NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
+    //        if srtDescryptor.count>0 {
+    //            reqest.sortDescryptor=sortDescryptor
+    //        }
+    //        tableView.reloadData()
+    //    }
     func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
     {
 //        switch searchTable {
@@ -403,19 +431,20 @@ class Database  {
         let product=ProductTable(context: database.context)
         return product
     }
-    func addCategory(newCategoryValue category: CategoryType) {
+    func addCategory(newCategoryValue category: CategoryType, idNumber id: Int) {
         let newCategory=CategoryTable(context: database.context)
         newCategory.categoryName=category.name
         newCategory.nameEN=category.nameEN
         newCategory.selectedCategory=category.selectedCategory
         newCategory.selectedCategory=category.selectedCategory
         newCategory.pictureEmoji=category.pictureName
+        newCategory.id=Int16(id)
         
         //        let pict=UIImage(named: category.pictureName)
         //        let coder=NSCoder()
         //        coder.decodeData()
         newCategory.picture=nil
-        categoryArray.append(newCategory)
+        self.category.categoryArray.append(newCategory)
         if category.selectedCategory {
             selectedCategory=newCategory
         }
@@ -428,5 +457,19 @@ class Database  {
         toShopProduct.productRelation=product
         toShopProductArray.append(toShopProduct)        
     }
+
 }
+// New Class
+class CategorySeting {
+    var categoryArray: [CategoryTable] = []
+    //var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
+    let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
+    var sortCategoryDescriptor:NSSortDescriptor
+    init()
+    {
+        categoryArray=[]
+        sortCategoryDescriptor=NSSortDescriptor(key: "categoryName", ascending: true)
+    }
+}
+
 
