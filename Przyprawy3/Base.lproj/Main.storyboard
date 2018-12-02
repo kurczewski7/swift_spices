@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category🛒-->
+        <!--Category 🛒-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CategoryViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +102,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Category🛒" id="j3i-mg-BlL"/>
+                    <navigationItem key="navigationItem" title="Category 🛒" id="j3i-mg-BlL"/>
                     <connections>
                         <outlet property="collectionView" destination="dhv-Zg-V2M" id="Ksd-o9-4kT"/>
                     </connections>
@@ -307,6 +307,35 @@
             </objects>
             <point key="canvasLocation" x="3250" y="3708"/>
         </scene>
+        <!--Scanning now-->
+        <scene sceneID="5xg-KY-RAv">
+            <objects>
+                <viewController id="0QL-Ds-h0P" customClass="ScanerViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0U1-aO-fXe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tin-bi-XEk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scanning now" id="iLw-HC-ZWX">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="camera" id="DxP-4s-O8f">
+                                <connections>
+                                    <action selector="scannerStartTap:" destination="0QL-Ds-h0P" id="MT0-ms-zcc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="pause" id="k1K-SM-kHd">
+                                <connections>
+                                    <action selector="scannerStopTap:" destination="0QL-Ds-h0P" id="qVX-g9-6F8"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yi6-RR-xf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3980" y="3444"/>
+        </scene>
         <!--At Home View Controller-->
         <scene sceneID="QLz-wa-6rm">
             <objects>
@@ -343,7 +372,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="geO-WE-SrC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="geO-WE-SrC">
                                                     <rect key="frame" x="133" y="31" width="222" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="heI-O4-nru"/>
@@ -352,8 +381,8 @@
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHs-aS-g1r">
-                                                    <rect key="frame" x="133" y="85" width="222" height="40"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHs-aS-g1r">
+                                                    <rect key="frame" x="133" y="85" width="221" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ldr-pv-XY1"/>
                                                     </constraints>
@@ -367,16 +396,13 @@
                                                 <constraint firstItem="aPf-3e-ThQ" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="topMargin" constant="-6" id="6VU-pe-9yC"/>
                                                 <constraint firstItem="hHs-aS-g1r" firstAttribute="bottom" secondItem="sUc-dd-DDX" secondAttribute="bottomMargin" constant="6" id="7GV-zB-DBO"/>
                                                 <constraint firstItem="geO-WE-SrC" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="topMargin" constant="20" id="8MW-17-74s"/>
-                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="centerX" secondItem="geO-WE-SrC" secondAttribute="centerX" id="H4N-qx-N4Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="bKV-Lb-D4d" secondAttribute="trailing" constant="2" id="JxV-8l-xvT"/>
-                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="leading" secondItem="bKV-Lb-D4d" secondAttribute="leading" id="KZn-C2-O2z"/>
                                                 <constraint firstItem="geO-WE-SrC" firstAttribute="top" secondItem="bKV-Lb-D4d" secondAttribute="bottom" constant="-1" id="MJX-52-ehS"/>
                                                 <constraint firstItem="aPf-3e-ThQ" firstAttribute="leading" secondItem="sUc-dd-DDX" secondAttribute="leading" constant="5" id="MLx-eM-n0F"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="geO-WE-SrC" secondAttribute="trailing" constant="5" id="O8t-eS-PC5"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="top" constant="11" id="P1h-ed-Ta8"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="top" constant="11" id="QRq-qZ-14M"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="leading" secondItem="aPf-3e-ThQ" secondAttribute="trailing" constant="8" id="XhN-dj-Er6"/>
-                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="leading" secondItem="geO-WE-SrC" secondAttribute="leading" id="iNO-dy-Cgt"/>
                                                 <constraint firstAttribute="trailing" secondItem="bKV-Lb-D4d" secondAttribute="trailing" constant="2" id="s7t-xN-GoE"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -807,11 +833,18 @@
                         <viewLayoutGuide key="safeArea" id="iIC-7T-6cj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kontakty" id="vmv-e8-RYk">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="dLT-pC-CXk">
-                            <connections>
-                                <segue destination="dnd-Dn-Lwg" kind="show" id="CTL-i5-5pO"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="compose" id="dLT-pC-CXk">
+                                <connections>
+                                    <segue destination="dnd-Dn-Lwg" kind="show" id="CTL-i5-5pO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="N2p-ZL-tQo">
+                                <connections>
+                                    <segue destination="0QL-Ds-h0P" kind="show" id="tfq-Tf-JZ6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gca-Pb-Ugr" userLabel="First Responder" sceneMemberID="firstResponder"/>
