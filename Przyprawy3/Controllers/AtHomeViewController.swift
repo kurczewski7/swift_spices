@@ -11,7 +11,19 @@
 import UIKit
 
 class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DatabaseDelegate {
- 
+    // DatabaseDelegate method
+    func getNumberOfRecords(numbersOfRecords recNo: Int) {
+//        if recNo == 0 {
+//            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database", preferredStyle: .alert)
+//            let actionOK = UIAlertAction(title: "OK", style: .default)
+//            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel)
+//            alertController.addAction(actionCanel)
+//            alertController.addAction(actionOK)
+//            present(alertController, animated: true)
+//        }
+    }
+    
+    
     var numberOfRow = 0
     var instantSearch = true
     var productMode = true
@@ -40,7 +52,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
-        database.filterData(searchText: "dO", searchTable: .products, searchField: .Product)
+        database.searchEanCode()
         //table.reloadData()
     }
     

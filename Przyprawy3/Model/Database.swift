@@ -9,9 +9,20 @@ import UIKit
 import CoreData
 protocol DatabaseDelegate: class {
     func updateGUI()
-}
+    func getNumberOfRecords(numbersOfRecords recNo: Int)
+    }
 class Database  {
     var context: NSManagedObjectContext
+    var scanerCodebarValue: String {
+        didSet {
+            print("Codebar was read :\(scanerCodebarValue)")
+            // let xx="49443310"
+            
+            if(self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN) == 0) {
+                print("Not found this product")
+            }
+        }
+    }
     
     // seting delegate
     var delegate: DatabaseDelegate?
@@ -124,6 +135,7 @@ class Database  {
         
         //feachCategoryRequest.sortDescriptors=[]
         //featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        self.scanerCodebarValue = ""
     }
     func setSelectedCategory() {
         if category.categoryArray.count>0 {
@@ -346,12 +358,14 @@ class Database  {
     func substrng(right : String, len: Int) -> String {
         return String(right.suffix(len))
     }
-    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField, isAscending: Bool = true)  {
+    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField, isAscending: Bool = true) -> Int {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
         // ["Alice Smith", "Quentin Alberts"]
+        
         var predicates = [NSPredicate]()
+        var numberOfRecords = 0
         
         let searchField =  field.rawValue
         let sortField   =  field.rawValue
@@ -377,9 +391,13 @@ class Database  {
             let newSearchArray = (try context.fetch(reqest))
             switch searchTable {
             case .products:         productArray       = newSearchArray as! [ProductTable]
+                                    numberOfRecords    = productArray.count
             case .shopingProduct:   basketProductArray = newSearchArray as! [BasketProductTable]
+                                    numberOfRecords    = basketProductArray.count
             case .toShop:           toShopProductArray = newSearchArray as! [ToShopProductTable]
+                                    numberOfRecords    = toShopProductArray.count
             case .basket:           basketProductArray = newSearchArray as! [BasketProductTable]
+                                    numberOfRecords    = basketProductArray.count
             default:
                 print("Table does not exist")
             }
@@ -388,7 +406,10 @@ class Database  {
         } catch  {
             print("Error feaching data from context \(error)")
         }
+        delegate?.getNumberOfRecords(numbersOfRecords: numberOfRecords)
         delegate?.updateGUI()
+        
+        return numberOfRecords
     }
     func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
     {
@@ -468,6 +489,10 @@ class Database  {
     func findSelestedCategory(categoryId : Int) -> CategoryTable {
         return database.category.categoryArray[categoryId]
     }
+    func searchEanCode() {
+        database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
+    }
+    
 }
 // New Class
 class CategorySeting {

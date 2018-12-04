@@ -134,6 +134,7 @@
 		2C158CC1218610BB00C3438B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C82B33C21B4655600EDB60F /* ScanerViewController.swift */,
 				2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */,
 				2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */,
 				2CF73B032135D97700FEA34C /* BrakujeViewController.swift */,
@@ -160,7 +161,6 @@
 		2CE2755A210237AF001C046B = {
 			isa = PBXGroup;
 			children = (
-				2C82B33C21B4655600EDB60F /* ScanerViewController.swift */,
 				2CE27565210237AF001C046B /* Przyprawy3 */,
 				2CE2757D210237B1001C046B /* Przyprawy3Tests */,
 				2CE27588210237B1001C046B /* Przyprawy3UITests */,

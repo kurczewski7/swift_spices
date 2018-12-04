@@ -317,6 +317,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tin-bi-XEk"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Vjy-Pa-g4d"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="dcQ-Xy-9EU"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Scanning now" id="iLw-HC-ZWX">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="camera" id="DxP-4s-O8f">
@@ -331,10 +335,11 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yi6-RR-xf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3980" y="3444"/>
+            <point key="canvasLocation" x="3729" y="15"/>
         </scene>
         <!--At Home View Controller-->
         <scene sceneID="QLz-wa-6rm">
@@ -372,7 +377,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="geO-WE-SrC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="geO-WE-SrC">
                                                     <rect key="frame" x="133" y="31" width="222" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="heI-O4-nru"/>
@@ -381,8 +386,8 @@
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHs-aS-g1r">
-                                                    <rect key="frame" x="133" y="85" width="221" height="40"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHs-aS-g1r">
+                                                    <rect key="frame" x="133" y="85" width="42" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ldr-pv-XY1"/>
                                                     </constraints>
@@ -404,6 +409,8 @@
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="top" secondItem="sUc-dd-DDX" secondAttribute="top" constant="11" id="QRq-qZ-14M"/>
                                                 <constraint firstItem="bKV-Lb-D4d" firstAttribute="leading" secondItem="aPf-3e-ThQ" secondAttribute="trailing" constant="8" id="XhN-dj-Er6"/>
                                                 <constraint firstAttribute="trailing" secondItem="bKV-Lb-D4d" secondAttribute="trailing" constant="2" id="s7t-xN-GoE"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="leading" secondItem="bKV-Lb-D4d" secondAttribute="leading" id="sl6-M1-Jj2"/>
+                                                <constraint firstItem="hHs-aS-g1r" firstAttribute="centerX" secondItem="geO-WE-SrC" secondAttribute="centerX" constant="-90" id="wr8-sl-sjj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -445,14 +452,15 @@
                                     <action selector="searchButton:" destination="kmI-pv-7KX" id="NfG-tY-TDm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="add" id="CUR-MQ-fTc">
+                            <barButtonItem systemItem="refresh" id="CUR-MQ-fTc">
                                 <connections>
                                     <action selector="addButton:" destination="kmI-pv-7KX" id="56g-YA-ioj"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="compose" id="HrQ-9T-O3x">
+                            <barButtonItem image="barcode" id="HrQ-9T-O3x">
                                 <connections>
                                     <action selector="keyboardModeButton:" destination="kmI-pv-7KX" id="VfE-fQ-f7Z"/>
+                                    <segue destination="0QL-Ds-h0P" kind="show" id="f1O-vw-lg1"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -839,11 +847,7 @@
                                     <segue destination="dnd-Dn-Lwg" kind="show" id="CTL-i5-5pO"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="camera" id="N2p-ZL-tQo">
-                                <connections>
-                                    <segue destination="0QL-Ds-h0P" kind="show" id="tfq-Tf-JZ6"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -1109,6 +1113,7 @@
         <image name="Like" width="25" height="25"/>
         <image name="Shopping" width="25" height="25"/>
         <image name="Visa" width="25" height="25"/>
+        <image name="barcode" width="37.5" height="37.5"/>
         <image name="heart" width="128" height="128"/>
     </resources>
 </document>
