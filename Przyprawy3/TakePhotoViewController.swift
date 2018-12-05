@@ -8,35 +8,33 @@
 
 import UIKit
 
-class TakePhotoViewController: UIViewController, UINavigationControllerDelegate ,UIImagePickerControllerDelegate {
-    let imagePicker=UIImagePickerController()
+class TakePhotoViewController: UIViewController, UINavigationControllerDelegate ,UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
+    let imagePicker = UIImagePickerController()
+    var currentSource : UIImagePickerController.SourceType = .camera
     @IBOutlet var photoImageView: UIImageView!
-    enum ImageSource {
-        case photoLibrary
-        case camera
-        case photoAlbum
-    }
+    //var currentSourceType UIImagePickerController.SourceType
     
     @IBAction func takePhotoTap(_ sender: Any) {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             selectImageFrom(.photoLibrary)
             return
         }
-        selectImageFrom(.camera)
+        selectImageFrom(currentSource)
         present(imagePicker, animated: true)
     }
-    func selectImageFrom( _ source: ImageSource) {
-        imagePicker.delegate=self
-        switch source {
-        case .camera:       imagePicker.sourceType = .camera
-        case .photoLibrary: imagePicker.sourceType = .photoLibrary
-        case .photoAlbum:   imagePicker.sourceType = .savedPhotosAlbum
-        }
+    @IBAction func cancelTap(_ sender: UIBarButtonItem) {
+         dismiss(animated: true)
     }
+    func selectImageFrom( _ source: UIImagePickerController.SourceType) {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing=true
+        imagePicker.sourceType = source
+        }
+    
     // Delegate method : UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             print("Image not found")
             return
         }
@@ -45,10 +43,37 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageTapGesture=UITapGestureRecognizer(target: self, action: #selector(tapUserPhoto(_:)))
+        imageTapGesture.delegate = self
+        imageTapGesture.numberOfTapsRequired = 1
+        photoImageView.addGestureRecognizer(imageTapGesture)
+        photoImageView.isUserInteractionEnabled=true
 
         // Do any additional setup after loading the view.
     }
-    
+    @objc func tapUserPhoto(_ sender: UITapGestureRecognizer) {
+        print("tapUserPhoto")
+        let alertController=UIAlertController(title: "Warning", message: "You can change default photo source", preferredStyle: .alert)
+        let actionPhotoLibrary=UIAlertAction(title: "Photo Library", style:
+        .default) { (action) in
+            print("Photo Library")
+            self.currentSource = .photoLibrary
+        }
+        let actionPhotoAlbum=UIAlertAction(title: "Photo Album", style: .default) { (action) in
+            print("Photo Album")
+            self.currentSource = .savedPhotosAlbum
+        }
+        let actionCamera=UIAlertAction(title: "Camera", style: .default) { (action) in
+            print("Photo Camera")
+            self.currentSource = .camera
+        }
+        let actionCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(actionCamera)
+        alertController.addAction(actionPhotoLibrary)
+        alertController.addAction(actionPhotoAlbum)
+        alertController.addAction(actionCancel)
+        present(alertController, animated: true)
+    }
 
     /*
     // MARK: - Navigation

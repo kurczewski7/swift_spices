@@ -12,7 +12,6 @@ import AVFoundation
 class ScanerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-
  
     @IBAction func scannerStartTap(_ sender: UIBarButtonItem) {
         captureSession.startRunning()
