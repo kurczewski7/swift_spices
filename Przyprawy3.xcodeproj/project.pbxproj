@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C0A1D2821355BFF006FA312 /* PhoneContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */; };
 		2C158CD8218623B300C3438B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C158CD7218623B300C3438B /* CoreDataStack.swift */; };
+		2C1B3BDD21B7D12000B53ABA /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B3BDC21B7D12000B53ABA /* TakePhotoViewController.swift */; };
 		2C1B793E219C66DB00A7BD63 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */; };
 		2C1B7940219C7DE300A7BD63 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */; };
 		2C1EB36121A46ADA00426F61 /* ToShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactsViewController.swift; sourceTree = "<group>"; };
 		2C158CD7218623B300C3438B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2C1B3BDC21B7D12000B53ABA /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		2C1B793D219C66DB00A7BD63 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToShopTableViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE2756A210237AF001C046B /* Main.storyboard */,
+				2C1B3BDC21B7D12000B53ABA /* TakePhotoViewController.swift */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2C158CBF2186109800C3438B /* View */,
 				2C158CBD2186106F00C3438B /* Model */,
@@ -364,6 +367,7 @@
 				2C7888DD212C492D00225A52 /* ShopingListViewController.swift in Sources */,
 				2CE2756F210237AF001C046B /* DataModel.xcdatamodeld in Sources */,
 				2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */,
+				2C1B3BDD21B7D12000B53ABA /* TakePhotoViewController.swift in Sources */,
 				2C70579C2139ED4300B99FEA /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
