@@ -53,6 +53,7 @@ class ScanerViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             scanerFailed()
             return
         }
+
         previewLayer=AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame=view.bounds
         previewLayer.videoGravity = .resizeAspectFill
@@ -82,22 +83,10 @@ class ScanerViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         dismiss(animated: true)
     }
     func scanerFound(code: String) {
-        database.scanerCodebarValue = "34851998"   //code
+        database.scanerCodebarValue =  code //"34851998"
         self.title = code
-        navigationController?.popToRootViewController(animated: true)
-        //performSegue(withIdentifier: "gotoProduct", sender: self)
+        navigationController?.popViewController(animated: true)
         database.searchEanCode()
-        
-        
-        //        if database.productArray.count == 0 {
-        //
-        //            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database", preferredStyle: .alert)
-        //            let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel, handler: nil)
-        //            alertController.addAction(actionCanel)
-        //            alertController.addAction(actionOK)
-        //            present(alertController, animated: true)
-        //        }
     }
     func scanerFailed() {
         let allertController=UIAlertController(title: "Scaning not suported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)

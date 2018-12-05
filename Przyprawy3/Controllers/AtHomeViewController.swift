@@ -11,39 +11,44 @@
 import UIKit
 
 class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DatabaseDelegate {
-    // DatabaseDelegate method
-    func getNumberOfRecords(numbersOfRecords recNo: Int) {
-//        if recNo == 0 {
-//            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database", preferredStyle: .alert)
-//            let actionOK = UIAlertAction(title: "OK", style: .default)
-//            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel)
-//            alertController.addAction(actionCanel)
-//            alertController.addAction(actionOK)
-//            present(alertController, animated: true)
-//        }
-    }
-    
-    
     var numberOfRow = 0
     var instantSearch = true
     var productMode = true
     var selectedSegmentIndex = 0
+    var eanMode: Bool = false
     
     let sg = UISegmentedControl(items: segmentValues)
-    
+    var numberOfRecords = -1
+
     @IBOutlet var searchedBar: UISearchBar!
     @IBOutlet var table: UITableView!
     
+    // DatabaseDelegate method
+    func updateGUI() {
+        table.reloadData()
+    }
+    func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool) {
+        self.numberOfRecords=recNo
+        self.eanMode=eanMode
+    }
+
     override func viewDidLoad() {
+        
+        // DatabaseDelegate method
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
         database.loadData(tableNameType: .products)
          database.delegate = self
-        //table.cellForRow(at: <#T##IndexPath#>)
     }
-    // DatabaseDelegate method
-    func updateGUI() {
-         table.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        if numberOfRecords == 0  && eanMode{
+            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database", preferredStyle: .alert)
+            let actionOK = UIAlertAction(title: "OK", style: .default)
+            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel)
+            alertController.addAction(actionCanel)
+            alertController.addAction(actionOK)
+            present(alertController, animated: true)
+        }
     }
 
     @IBAction func searchButton(_ sender: UIBarButtonItem) {

@@ -9,16 +9,18 @@ import UIKit
 import CoreData
 protocol DatabaseDelegate: class {
     func updateGUI()
-    func getNumberOfRecords(numbersOfRecords recNo: Int)
+    func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool)
     }
 class Database  {
     var context: NSManagedObjectContext
+    var eanMode: Bool = false
     var scanerCodebarValue: String {
         didSet {
             print("Codebar was read :\(scanerCodebarValue)")
             // let xx="49443310"
-            
-            if(self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN) == 0) {
+            self.eanMode = true
+            self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN)
+            if database.productArray.count == 0 {
                 print("Not found this product")
             }
         }
@@ -358,7 +360,7 @@ class Database  {
     func substrng(right : String, len: Int) -> String {
         return String(right.suffix(len))
     }
-    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField, isAscending: Bool = true) -> Int {
+    func filterData(searchText text : String, searchTable : DbTableNames, searchField field: SearchField, isAscending: Bool = true) {
         //let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
         //let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
         //(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
@@ -406,10 +408,10 @@ class Database  {
         } catch  {
             print("Error feaching data from context \(error)")
         }
-        delegate?.getNumberOfRecords(numbersOfRecords: numberOfRecords)
+        delegate?.getNumberOfRecords(numbersOfRecords: numberOfRecords, eanMode: eanMode)
         delegate?.updateGUI()
         
-        return numberOfRecords
+        return 
     }
     func setSearchRequestArray(newProductArray: NSFetchRequest<NSFetchRequestResult>, searchTable : DbTableNames)
     {
