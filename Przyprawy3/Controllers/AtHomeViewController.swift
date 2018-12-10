@@ -67,11 +67,11 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
-        return database.productArray.count
+        return database.product.productArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AtHomeCell
-        let product=database.productArray[indexPath.row]
+        let product=database.product.productArray[indexPath.row]
 
         cell.categoryLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
         //database.productArray[indexPath.row].pictureName
@@ -97,14 +97,14 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let checkAction=UITableViewRowAction(style: .default, title: " 🧺\nDo koszyka", handler:
         {(action, indexPath) -> Void in
             currCell?.accessoryType = .checkmark
-            database.productArray[indexPath.row].checked = true
-            database.addToBasket(product: database.productArray[indexPath.row])
+            database.product.productArray[indexPath.row].checked = true
+            database.addToBasket(product: database.product.productArray[indexPath.row])
             database.save()
         })
         let uncheckAction=UITableViewRowAction(style: .destructive, title: "❎\nUsuń z koszyka ", handler:
         { (action, indexPath) -> Void in
             currCell?.accessoryType = .none
-            database.productArray[indexPath.row].checked = false
+            database.product.productArray[indexPath.row].checked = false
             database.save()
     })
     checkAction.backgroundColor=UIColor(red: 48.0/255, green: 173.0/255, blue: 99.0/255, alpha: 1.0)
@@ -182,10 +182,10 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let nextVC=segue.destination as! DetailAtHomeViewController
             nextVC.numberOfRow=numberOfRow
             
-            nextVC.productImageName=database.productArray[numberOfRow].pictureName ?? "question-mark"
-            nextVC.productTitle=database.productArray[numberOfRow].productName ?? "no product"
-            nextVC.productSubtitle=database.productArray[numberOfRow].producent ?? "no producent"
-            nextVC.productWeight="\(database.productArray[numberOfRow].weight)g"
+            nextVC.productImageName=database.product.productArray[numberOfRow].pictureName ?? "question-mark"
+            nextVC.productTitle=database.product.productArray[numberOfRow].productName ?? "no product"
+            nextVC.productSubtitle=database.product.productArray[numberOfRow].producent ?? "no producent"
+            nextVC.productWeight="\(database.product.productArray[numberOfRow].weight)g"
         }
     }
 
