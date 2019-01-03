@@ -11,7 +11,14 @@ import UIKit
 class TakePhotoViewController: UIViewController, UINavigationControllerDelegate ,UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     let imagePicker = UIImagePickerController()
     var currentSource : UIImagePickerController.SourceType = .camera
+    
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var eanCodeLabel: UILabel!
+    
+
+    
+   
+    
     //var currentSourceType UIImagePickerController.SourceType
     
     @IBAction func takePhotoTap(_ sender: Any) {
@@ -48,6 +55,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         imageTapGesture.numberOfTapsRequired = 1
         photoImageView.addGestureRecognizer(imageTapGesture)
         photoImageView.isUserInteractionEnabled=true
+        eanCodeLabel.text=database.scanerCodebarValue
 
         // Do any additional setup after loading the view.
     }

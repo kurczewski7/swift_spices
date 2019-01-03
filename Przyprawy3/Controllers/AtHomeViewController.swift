@@ -42,9 +42,15 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         if numberOfRecords == 0  && eanMode{
-            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database", preferredStyle: .alert)
-            let actionOK = UIAlertAction(title: "OK", style: .default)
-            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel)
+            let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database. Do you want add new product?", preferredStyle: .alert)
+            let actionOK = UIAlertAction(title: "OK", style: .default) { (action:      UIAlertAction) in
+                print("OK")
+                self.addProductWithEan(ean: database.scanerCodebarValue)
+            }
+            
+            let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel) { (action: UIAlertAction) in
+                print("cancel")
+            }
             alertController.addAction(actionCanel)
             alertController.addAction(actionOK)
             present(alertController, animated: true)
@@ -119,6 +125,37 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func addProductWithEan(ean: String) {
+        print("Adding product \(ean)")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController=storyBoard.instantiateViewController(withIdentifier: "takePhoto")  //as! TakePhotoViewController
+        self.present(newViewController, animated: true, completion: nil)
+ 
+        
+        
+        
+        
+        
+        
+        
+        
+        //self.prepare(for: newViewController, sender: self)
+        
+        
+        //self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+
+        
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as NextViewController
+//        self.presentViewController(nextViewController, animated:true, completion:nil)
+        
+        //performSegue(withIdentifier: "gotoTakephoto", sender: self)
+        
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let newViewController = storyBoard.instantiateViewController(withIdentifier: "newViewController") as! NewViewController
+//        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     
     // MARK: SearchBar metod
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
