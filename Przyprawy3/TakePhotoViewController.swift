@@ -15,9 +15,34 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var eanCodeLabel: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let imageTapGesture=UITapGestureRecognizer(target: self, action: #selector(tapUserPhoto(_:)))
+        imageTapGesture.delegate = self
+        imageTapGesture.numberOfTapsRequired = 1
+        photoImageView.addGestureRecognizer(imageTapGesture)
+        photoImageView.isUserInteractionEnabled=true
+        eanCodeLabel.text=database.scanerCodebarValue
+        
+        
+        // Do any additional setup after loading the view.
+    }
+
     @IBAction func cancelBarButtonTap(_ sender: UIBarButtonItem) {
         print("cancel presed")
-        dismiss(animated: true, completion: nil) 
+        let allertController=UIAlertController(title: "New product", message: "Do you want add new Product", preferredStyle: .alert)
+        let allertActionOk=UIAlertAction(title: "Ok", style: .default) { (action) in
+            print("OK prress")
+            self.dismiss(animated: true, completion: nil)
+        }
+        let allertActionCancel=UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+          self.dismiss(animated: true, completion: nil)
+        }
+        allertController.addAction(allertActionOk)
+        allertController.addAction(allertActionCancel)
+        present(allertController, animated: true)
+        
+        //dismiss(animated: true, completion: nil)
     }
     
     @IBAction func setupBarButtonTap(_ sender: UIBarButtonItem) {
@@ -37,6 +62,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
             self.currentSource = .camera
         }
         let actionCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         alertController.addAction(actionCamera)
         alertController.addAction(actionPhotoLibrary)
         alertController.addAction(actionPhotoAlbum)
@@ -47,9 +73,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     
     @IBAction func keyboardBarButtonTap(_ sender: UIBarButtonItem) {
         print("keyboard")
-        //eanCodeLabel.resignFirstResponder()
-        eanCodeLabel.endEditing(true)
-        
+        self.view.endEditing(true)
     }
     func getPhoto() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -87,17 +111,6 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         photoImageView.image=selectedImage
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let imageTapGesture=UITapGestureRecognizer(target: self, action: #selector(tapUserPhoto(_:)))
-        imageTapGesture.delegate = self
-        imageTapGesture.numberOfTapsRequired = 1
-        photoImageView.addGestureRecognizer(imageTapGesture)
-        photoImageView.isUserInteractionEnabled=true
-        eanCodeLabel.text=database.scanerCodebarValue
-
-        // Do any additional setup after loading the view.
-    }
     @objc func tapUserPhoto(_ sender: UITapGestureRecognizer) {
         print("photo touch")
         getPhoto()
