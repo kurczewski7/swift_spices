@@ -15,19 +15,58 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var eanCodeLabel: UILabel!
     
+    @IBAction func cancelBarButtonTap(_ sender: UIBarButtonItem) {
+        print("cancel presed")
+        dismiss(animated: true, completion: nil) 
+    }
+    
+    @IBAction func setupBarButtonTap(_ sender: UIBarButtonItem) {
+        print("setup")
+        let alertController=UIAlertController(title: "Warning", message: "You can change default photo source", preferredStyle: .alert)
+        let actionPhotoLibrary=UIAlertAction(title: "Photo Library", style:
+        .default) { (action) in
+            print("Photo Library")
+            self.currentSource = .photoLibrary
+        }
+        let actionPhotoAlbum=UIAlertAction(title: "Photo Album", style: .default) { (action) in
+            print("Photo Album")
+            self.currentSource = .savedPhotosAlbum
+        }
+        let actionCamera=UIAlertAction(title: "Camera", style: .default) { (action) in
+            print("Photo Camera")
+            self.currentSource = .camera
+        }
+        let actionCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(actionCamera)
+        alertController.addAction(actionPhotoLibrary)
+        alertController.addAction(actionPhotoAlbum)
+        alertController.addAction(actionCancel)
+        present(alertController, animated: true)
 
+    }
     
-   
-    
-    //var currentSourceType UIImagePickerController.SourceType
-    
-    @IBAction func takePhotoTap(_ sender: Any) {
+    @IBAction func keyboardBarButtonTap(_ sender: UIBarButtonItem) {
+        print("keyboard")
+        //eanCodeLabel.resignFirstResponder()
+        eanCodeLabel.endEditing(true)
+        
+    }
+    func getPhoto() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             selectImageFrom(.photoLibrary)
             return
         }
         selectImageFrom(currentSource)
         present(imagePicker, animated: true)
+    }
+    @IBAction func takePhotoBarButtonTap(_ sender: UIBarButtonItem) {
+        getPhoto()
+    }
+    
+    //var currentSourceType UIImagePickerController.SourceType
+    
+    @IBAction func takePhotoTap(_ sender: Any) {
+        getPhoto()
     }
     @IBAction func cancelTap(_ sender: UIBarButtonItem) {
          dismiss(animated: true)
@@ -60,37 +99,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         // Do any additional setup after loading the view.
     }
     @objc func tapUserPhoto(_ sender: UITapGestureRecognizer) {
-        print("tapUserPhoto")
-        let alertController=UIAlertController(title: "Warning", message: "You can change default photo source", preferredStyle: .alert)
-        let actionPhotoLibrary=UIAlertAction(title: "Photo Library", style:
-        .default) { (action) in
-            print("Photo Library")
-            self.currentSource = .photoLibrary
-        }
-        let actionPhotoAlbum=UIAlertAction(title: "Photo Album", style: .default) { (action) in
-            print("Photo Album")
-            self.currentSource = .savedPhotosAlbum
-        }
-        let actionCamera=UIAlertAction(title: "Camera", style: .default) { (action) in
-            print("Photo Camera")
-            self.currentSource = .camera
-        }
-        let actionCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(actionCamera)
-        alertController.addAction(actionPhotoLibrary)
-        alertController.addAction(actionPhotoAlbum)
-        alertController.addAction(actionCancel)
-        present(alertController, animated: true)
+        print("photo touch")
+        getPhoto()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
