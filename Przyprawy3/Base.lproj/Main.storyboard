@@ -350,14 +350,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EAN codebar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Il4-FW-NcZ">
-                                <rect key="frame" x="10" y="74" width="355" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rw1-Ya-ieb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="grn-xm-5Kc"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Take Photo" id="ryV-79-QQg">
                                         <leftBarButtonItems>
@@ -388,46 +385,42 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraCanon" translatesAutoresizingMaskIntoConstraints="NO" id="jji-uW-gRB">
-                                <rect key="frame" x="5" y="153.5" width="365" height="360"/>
+                                <rect key="frame" x="16" y="168" width="343" height="331"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="TSu-bg-3Ad"/>
+                                    <constraint firstAttribute="width" secondItem="jji-uW-gRB" secondAttribute="height" multiplier="343:331" id="WQS-Lx-vXI"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write product description" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kgV-pr-HNy">
-                                <rect key="frame" x="5" y="521" width="365" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write product description" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kgV-pr-HNy">
+                                <rect key="frame" x="5" y="86" width="365" height="36"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IXX-Jy-Fvw">
-                                <rect key="frame" x="138" y="617" width="99" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="📷">
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhotoTap:" destination="xj8-M5-K4c" eventType="touchUpInside" id="XW8-vK-PZa"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EAN codebar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Il4-FW-NcZ">
+                                <rect key="frame" x="5" y="557" width="365" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="S2c-Bb-1Bh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="leading" secondItem="nmA-jB-NQx" secondAttribute="leading" id="2Vq-Ar-RpM"/>
-                            <constraint firstItem="Il4-FW-NcZ" firstAttribute="top" secondItem="Rw1-Ya-ieb" secondAttribute="bottom" constant="10" id="5sO-6h-QeF"/>
-                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="trailing" secondItem="Il4-FW-NcZ" secondAttribute="trailing" constant="10" id="808-d4-IOo"/>
-                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="centerX" secondItem="Il4-FW-NcZ" secondAttribute="centerX" id="98v-eT-iRB"/>
-                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="trailing" secondItem="kgV-pr-HNy" secondAttribute="trailing" constant="5" id="AIa-aU-eR8"/>
-                            <constraint firstItem="jji-uW-gRB" firstAttribute="firstBaseline" secondItem="Il4-FW-NcZ" secondAttribute="baseline" constant="15" symbolType="layoutAnchor" id="E7M-Hw-c12"/>
-                            <constraint firstItem="kgV-pr-HNy" firstAttribute="top" secondItem="jji-uW-gRB" secondAttribute="bottom" constant="7.5" id="GUO-fU-IEk"/>
-                            <constraint firstItem="jji-uW-gRB" firstAttribute="centerY" secondItem="nmA-jB-NQx" secondAttribute="centerY" id="Hap-mI-vIR"/>
-                            <constraint firstItem="Il4-FW-NcZ" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="10" id="O2Y-8N-yIF"/>
-                            <constraint firstItem="jji-uW-gRB" firstAttribute="centerX" secondItem="6Ac-uk-rbf" secondAttribute="centerX" id="Q2Y-q9-QeD"/>
-                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="trailing" secondItem="jji-uW-gRB" secondAttribute="trailing" constant="5" id="R4X-LX-FwT"/>
-                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="top" secondItem="6Ac-uk-rbf" secondAttribute="top" id="bHV-WH-dfm"/>
-                            <constraint firstItem="jji-uW-gRB" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="5" id="iUW-nZ-6zW"/>
-                            <constraint firstItem="jji-uW-gRB" firstAttribute="centerX" secondItem="IXX-Jy-Fvw" secondAttribute="centerX" id="j3J-UF-l4K"/>
-                            <constraint firstItem="kgV-pr-HNy" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="5" id="rpL-yj-CR5"/>
-                            <constraint firstItem="IXX-Jy-Fvw" firstAttribute="top" secondItem="jji-uW-gRB" secondAttribute="bottom" constant="103.5" id="usg-pa-6dK"/>
+                            <constraint firstItem="kgV-pr-HNy" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="5" id="5DC-bD-hD9"/>
+                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="centerX" secondItem="kgV-pr-HNy" secondAttribute="centerX" id="6EB-br-epP"/>
+                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="centerX" secondItem="jji-uW-gRB" secondAttribute="centerX" id="BbN-eJ-pUS"/>
+                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="bottom" secondItem="Il4-FW-NcZ" secondAttribute="bottom" constant="40" id="Ebk-6r-5CY"/>
+                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="trailing" secondItem="kgV-pr-HNy" secondAttribute="trailing" constant="5" id="NZ1-QD-Fde"/>
+                            <constraint firstItem="kgV-pr-HNy" firstAttribute="top" secondItem="6Ac-uk-rbf" secondAttribute="top" constant="66" id="OIT-3K-Ue7"/>
+                            <constraint firstItem="6Ac-uk-rbf" firstAttribute="trailing" secondItem="Il4-FW-NcZ" secondAttribute="trailing" constant="5" id="Q1b-ok-kCR"/>
+                            <constraint firstItem="jji-uW-gRB" firstAttribute="centerY" secondItem="nmA-jB-NQx" secondAttribute="centerY" id="Usz-uS-yhv"/>
+                            <constraint firstItem="Il4-FW-NcZ" firstAttribute="top" secondItem="jji-uW-gRB" secondAttribute="bottom" constant="58" id="av6-E4-ym8"/>
+                            <constraint firstItem="Il4-FW-NcZ" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="5" id="dp6-Sm-xSC"/>
+                            <constraint firstItem="Rw1-Ya-ieb" firstAttribute="leading" secondItem="nmA-jB-NQx" secondAttribute="leading" id="lJa-6h-H4k"/>
+                            <constraint firstItem="kgV-pr-HNy" firstAttribute="top" secondItem="Rw1-Ya-ieb" secondAttribute="bottom" constant="22" id="oW7-ER-ho3"/>
+                            <constraint firstItem="jji-uW-gRB" firstAttribute="leading" secondItem="nmA-jB-NQx" secondAttribute="leadingMargin" id="wP5-4x-RJT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Ac-uk-rbf"/>
                     </view>
@@ -439,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AQ-xC-pTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4485.6000000000004" y="14.842578710644679"/>
+            <point key="canvasLocation" x="4648.8000000000002" y="-13.043478260869566"/>
         </scene>
         <!--At Home View Controller-->
         <scene sceneID="QLz-wa-6rm">
@@ -552,14 +545,15 @@
                                     <action selector="searchButton:" destination="kmI-pv-7KX" id="NfG-tY-TDm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="CUR-MQ-fTc">
+                            <barButtonItem systemItem="refresh" id="CUR-MQ-fTc"/>
+                            <barButtonItem title="Item" image="barcode" id="Fsh-M9-Ct7">
                                 <connections>
-                                    <action selector="addButton:" destination="kmI-pv-7KX" id="56g-YA-ioj"/>
+                                    <action selector="eanBarcodeButton:" destination="kmI-pv-7KX" id="qvN-rv-zQx"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="barcode" id="HrQ-9T-O3x">
                                 <connections>
-                                    <action selector="keyboardModeButton:" destination="kmI-pv-7KX" id="VfE-fQ-f7Z"/>
+                                    <action selector="eanCodeBarButton:" destination="kmI-pv-7KX" id="pEj-oO-IKv"/>
                                     <segue destination="0QL-Ds-h0P" kind="show" id="f1O-vw-lg1"/>
                                 </connections>
                             </barButtonItem>

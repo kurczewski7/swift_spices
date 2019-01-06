@@ -16,20 +16,35 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var productMode = true
     var selectedSegmentIndex = 0
     var eanMode: Bool = false
+    var productWasAdded=false
     
     let sg = UISegmentedControl(items: segmentValues)
     var numberOfRecords = -1
-
-    @IBOutlet var searchedBar: UISearchBar!
-    @IBOutlet var table: UITableView!
     
-    // DatabaseDelegate method
+    // MARK: Delegate method
     func updateGUI() {
         table.reloadData()
     }
-    func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool) {
-        self.numberOfRecords=recNo
-        self.eanMode=eanMode
+
+    @IBOutlet var searchedBar: UISearchBar!
+    @IBOutlet var table: UITableView!
+    // MARK : IBAction
+    @IBAction func eanBarcodeButton(_ sender: UIBarButtonItem) {
+        print("eanBarcodeButton")
+    }
+    @IBAction func searchButton(_ sender: UIBarButtonItem) {
+        print("searchButton")
+        database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
+        //table.reloadData()
+    }
+    @IBAction func eanCodeBarButton(_ sender: UIBarButtonItem) {
+        print("EAN code scaner stop ------")
+        productWasAdded=false
+        database.searchEanCode()
+    }
+    @IBAction func keyboardModeButton(_ sender: UIBarButtonItem) {
+        print("keyboard")
+        searchedBar.resignFirstResponder()
     }
 
     override func viewDidLoad() {
@@ -37,19 +52,34 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // DatabaseDelegate method
         super.viewDidLoad()
          initSearchBar(self.searchedBar)
-        database.loadData(tableNameType: .products)
+         database.loadData(tableNameType: .products)
          database.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        if numberOfRecords == 0  && eanMode{
+        print("viewWillAppear")
+        noProductFound()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool) {
+        self.numberOfRecords=recNo
+        self.eanMode=eanMode
+    }
+    func noProductFound() {
+        print("noProductFound")
+        if numberOfRecords == 0  && eanMode && !productWasAdded {
             let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database. Do you want add new product?", preferredStyle: .alert)
             let actionOK = UIAlertAction(title: "OK", style: .default) { (action:      UIAlertAction) in
                 print("OK")
                 self.addProductWithEan(ean: database.scanerCodebarValue)
+                self.productWasAdded = true
             }
             
             let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel) { (action: UIAlertAction) in
                 print("cancel")
+                self.productWasAdded = false
             }
             alertController.addAction(actionCanel)
             alertController.addAction(actionOK)
@@ -57,19 +87,8 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    @IBAction func searchButton(_ sender: UIBarButtonItem) {
-        database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
-        //table.reloadData()
-    }
+
     
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-        database.searchEanCode()
-        //table.reloadData()
-    }
-    
-    @IBAction func keyboardModeButton(_ sender: UIBarButtonItem) {
-        searchedBar.resignFirstResponder()
-    }
     // MARK - TableView metod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return picturesArray.count
@@ -112,32 +131,19 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             currCell?.accessoryType = .none
             database.product.productArray[indexPath.row].checked = false
             database.save()
-    })
-    checkAction.backgroundColor=UIColor(red: 48.0/255, green: 173.0/255, blue: 99.0/255, alpha: 1.0)
-    uncheckAction.backgroundColor=UIColor.red
-    
-    
+        })
+        checkAction.backgroundColor=UIColor(red: 48.0/255, green: 173.0/255, blue: 99.0/255, alpha: 1.0)
+        uncheckAction.backgroundColor=UIColor.red
         return isChecked ? [uncheckAction] : [checkAction]
     }
         
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     func addProductWithEan(ean: String) {
         print("Adding product \(ean)")
+        productWasAdded=false
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController=storyBoard.instantiateViewController(withIdentifier: "takePhoto")  //as! TakePhotoViewController
         self.present(newViewController, animated: true, completion: nil)
- 
-        
-        
-        
-        
-        
-        
-        
         
         //self.prepare(for: newViewController, sender: self)
         
@@ -214,6 +220,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue")
         if segue.identifier=="goToAtHome"
         {
             let nextVC=segue.destination as! DetailAtHomeViewController
