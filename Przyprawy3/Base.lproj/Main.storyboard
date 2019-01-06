@@ -554,7 +554,7 @@
                             <barButtonItem image="barcode" id="HrQ-9T-O3x">
                                 <connections>
                                     <action selector="eanCodeBarButton:" destination="kmI-pv-7KX" id="pEj-oO-IKv"/>
-                                    <segue destination="0QL-Ds-h0P" kind="show" id="f1O-vw-lg1"/>
+                                    <segue destination="0QL-Ds-h0P" kind="show" identifier="goScanning" id="f1O-vw-lg1"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

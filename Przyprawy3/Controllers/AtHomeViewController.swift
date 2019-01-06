@@ -31,6 +31,8 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK : IBAction
     @IBAction func eanBarcodeButton(_ sender: UIBarButtonItem) {
         print("eanBarcodeButton")
+        performSegue(withIdentifier: "goScanning", sender: self)
+       
     }
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         print("searchButton")
