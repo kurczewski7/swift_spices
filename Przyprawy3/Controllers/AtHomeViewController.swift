@@ -112,7 +112,17 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
          //cell.producentLabel?.font.withSize(25)
         cell.producentLabel.text = product.producent?.uppercased()  ?? "No producent"
         cell.descriptionLabel.text =  String(product.weight).lowercased()+"g"                       //picturesArray[indexPath.row]
-        cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
+    
+        //cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
+        let questionPic=UIImage(named: "question-mark")!.pngData()
+        if let pict=UIImage(data: product.fullPicture ?? questionPic!) {
+            cell.productPicture.image = pict
+        }
+        else {
+           cell.productPicture.image = UIImage( named: "question-mark")
+        }
+        
+        
         cell.accessoryType =  product.checked ? .checkmark : .none
         cell.producentLabel?.font.withSize(25)
         return cell
