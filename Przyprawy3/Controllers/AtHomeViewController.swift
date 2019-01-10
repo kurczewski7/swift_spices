@@ -17,9 +17,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedSegmentIndex = 0
     var eanMode: Bool = false
     var productWasAdded=false
+    var numberOfRecords = -1
     
     let sg = UISegmentedControl(items: segmentValues)
-    var numberOfRecords = -1
     
     // MARK: Delegate method
     func updateGUI() {
@@ -30,6 +30,8 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var table: UITableView!
     // MARK : IBAction
     @IBAction func eanBarcodeButton(_ sender: UIBarButtonItem) {
+        self.productWasAdded=false
+        self.numberOfRecords = -1
         print("eanBarcodeButton")
         performSegue(withIdentifier: "goScanning", sender: self)
        
@@ -70,7 +72,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.eanMode=eanMode
     }
     func noProductFound() {
-        print("noProductFound")
+        print("noProductFound: numberOfRecords \(numberOfRecords),eanMode \(eanMode), productWasAdded \(productWasAdded)")
         if numberOfRecords == 0  && eanMode && !productWasAdded {
             let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database. Do you want add new product?", preferredStyle: .alert)
             let actionOK = UIAlertAction(title: "OK", style: .default) { (action:      UIAlertAction) in
@@ -82,6 +84,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let actionCanel=UIAlertAction(title: "Anuluj", style: .cancel) { (action: UIAlertAction) in
                 print("cancel")
                 self.productWasAdded = false
+                //self.numberOfRecords = -1
             }
             alertController.addAction(actionCanel)
             alertController.addAction(actionOK)
