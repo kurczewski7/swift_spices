@@ -7,6 +7,8 @@
 //
 import UIKit
 import CoreData
+import CoreSpotlight
+
 protocol DatabaseDelegate: class {
     func updateGUI()
     func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool)

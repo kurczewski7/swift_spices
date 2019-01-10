@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BasketProductTable" representedClassName="BasketProductTable" syncable="YES" codeGenerationType="class">
         <attribute name="eanCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -19,6 +19,7 @@
         <attribute name="changeDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="checked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="eanCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullPicture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="number1" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="number2" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -27,6 +28,7 @@
         <attribute name="producent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="searchTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="smallPicture" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="basketProductTable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasketProductTable" inverseName="productRelation" inverseEntity="BasketProductTable" syncable="YES"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryTable" inverseName="products" inverseEntity="CategoryTable" syncable="YES"/>
@@ -54,7 +56,7 @@
     <elements>
         <element name="BasketProductTable" positionX="-277.06640625" positionY="-16.4921875" width="128" height="88"/>
         <element name="CategoryTable" positionX="-251.7265625" positionY="-182.3828125" width="128" height="150"/>
-        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="300"/>
+        <element name="ProductTable" positionX="-63" positionY="-18" width="128" height="330"/>
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="118"/>
         <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>

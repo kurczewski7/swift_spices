@@ -8,12 +8,17 @@
 
 import UIKit
 
+//protocol TakePhotoDelegate {
+//
+//}
 class TakePhotoViewController: UIViewController, UINavigationControllerDelegate ,UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
+
     let imagePicker = UIImagePickerController()
     var currentSource : UIImagePickerController.SourceType = .camera
     
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var eanCodeLabel: UILabel!
+     @IBOutlet var productNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +38,8 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         let allertController=UIAlertController(title: "New product", message: "Do you want add new Product", preferredStyle: .alert)
         let allertActionOk=UIAlertAction(title: "Ok", style: .default) { (action) in
             print("OK prress")
-            self.dismiss(animated: true, completion: nil)
-        }
+            self.addProductWithEan(ean: self.eanCodeLabel.text!, productName: self.productNameTextField.text!, picture: self.photoImageView.image)
+            self.dismiss(animated: true, completion: nil)        }
         let allertActionCancel=UIAlertAction(title: "Cancel", style: .cancel) { (action) in
           self.dismiss(animated: true, completion: nil)
         }
@@ -74,6 +79,20 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     @IBAction func keyboardBarButtonTap(_ sender: UIBarButtonItem) {
         print("keyboard")
         self.view.endEditing(true)
+    }
+    func addProductWithEan(ean: String, productName: String, picture: UIImage?) {
+        let categoryNo: Int = Int(database.selectedCategory?.id ?? 0)
+        let productTable=ProductTable(context: database.context)
+        productTable.eanCode=ean
+        productTable.productName=productName
+        productTable.categoryId=Int16(categoryNo)
+        productTable.parentCategory=database.selectedCategory
+        productTable.fullPicture=UIImage(data: <#T##Data#>)
+        productTable.pictureName="cameraCanon"
+        print("\(ean) \(productName)")
+        print("category :: \(categoryNo)")
+        database.addOneRecord(newProduct: productTable)
+       // database.addProduct(withProductId: categoryNo)
     }
     func getPhoto() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {

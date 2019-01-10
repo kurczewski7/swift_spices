@@ -310,7 +310,7 @@
         <!--Scanning now-->
         <scene sceneID="5xg-KY-RAv">
             <objects>
-                <viewController id="0QL-Ds-h0P" customClass="ScanerViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanerViewController" id="0QL-Ds-h0P" customClass="ScanerViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0U1-aO-fXe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,6 +428,7 @@
                     <connections>
                         <outlet property="eanCodeLabel" destination="Il4-FW-NcZ" id="0K2-k9-PdS"/>
                         <outlet property="photoImageView" destination="jji-uW-gRB" id="plY-Uz-2vf"/>
+                        <outlet property="productNameTextField" destination="kgV-pr-HNy" id="crw-SY-tes"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7AQ-xC-pTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,12 +550,6 @@
                             <barButtonItem title="Item" image="barcode" id="Fsh-M9-Ct7">
                                 <connections>
                                     <action selector="eanBarcodeButton:" destination="kmI-pv-7KX" id="qvN-rv-zQx"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="barcode" id="HrQ-9T-O3x">
-                                <connections>
-                                    <action selector="eanCodeBarButton:" destination="kmI-pv-7KX" id="pEj-oO-IKv"/>
-                                    <segue destination="0QL-Ds-h0P" kind="show" identifier="goScanning" id="f1O-vw-lg1"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

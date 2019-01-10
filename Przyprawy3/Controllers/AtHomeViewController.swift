@@ -33,7 +33,11 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.productWasAdded=false
         self.numberOfRecords = -1
         print("eanBarcodeButton")
-        performSegue(withIdentifier: "goScanning", sender: self)
+        goToViewController(controllerName: "scanerViewController")
+        
+        //performSegue(withIdentifier: "goScanning", sender: self)
+        //self.present(newViewController, animated: true, completion: nil)
+        
        
     }
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
@@ -77,7 +81,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let alertController=UIAlertController(title: "Product not found", message: "Product EAN code \(database.scanerCodebarValue) not found in database. Do you want add new product?", preferredStyle: .alert)
             let actionOK = UIAlertAction(title: "OK", style: .default) { (action:      UIAlertAction) in
                 print("OK")
-                self.addProductWithEan(ean: database.scanerCodebarValue)
+                self.addProductWithEan(ean: database.scanerCodebarValue, productName: "ProductName", picture: nil)
                 self.productWasAdded = true
             }
             
@@ -141,20 +145,25 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         uncheckAction.backgroundColor=UIColor.red
         return isChecked ? [uncheckAction] : [checkAction]
     }
-        
+    func goToViewController(controllerName: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController=storyBoard.instantiateViewController(withIdentifier: controllerName)  //as! TakePhotoViewController "takePhoto"
+        self.present(newViewController, animated: true, completion: nil)
+    }
 
-    func addProductWithEan(ean: String) {
+    func addProductWithEan(ean: String, productName: String, picture: UIImage?) {
         print("Adding product \(ean)")
         productWasAdded=false
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController=storyBoard.instantiateViewController(withIdentifier: "takePhoto")  //as! TakePhotoViewController
-        self.present(newViewController, animated: true, completion: nil)
+        goToViewController(controllerName: "takePhoto")
+    }
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let newViewController=storyBoard.instantiateViewController(withIdentifier: "takePhoto")  //as! TakePhotoViewController
+//        self.present(newViewController, animated: true, completion: nil)
         
         //self.prepare(for: newViewController, sender: self)
         
         
         //self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-
         
 //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 //        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as NextViewController
@@ -165,7 +174,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let newViewController = storyBoard.instantiateViewController(withIdentifier: "newViewController") as! NewViewController
 //        self.present(newViewController, animated: true, completion: nil)
-    }
+
     
     
     // MARK: SearchBar metod
