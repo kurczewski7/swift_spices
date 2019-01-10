@@ -87,7 +87,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         productTable.productName=productName
         productTable.categoryId=Int16(categoryNo)
         productTable.parentCategory=database.selectedCategory
-        productTable.fullPicture=UIImage(data: <#T##Data#>)
+        //productTable.fullPicture=UIImage(data: <#T##Data#>)
         productTable.pictureName="cameraCanon"
         print("\(ean) \(productName)")
         print("category :: \(categoryNo)")
