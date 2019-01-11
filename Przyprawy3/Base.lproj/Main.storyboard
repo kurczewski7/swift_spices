@@ -360,7 +360,7 @@
                                 <items>
                                     <navigationItem title="Take Photo" id="ryV-79-QQg">
                                         <leftBarButtonItems>
-                                            <barButtonItem systemItem="rewind" id="MVK-Gh-L9A">
+                                            <barButtonItem image="Cofnij" id="MVK-Gh-L9A">
                                                 <connections>
                                                     <action selector="cancelBarButtonTap:" destination="xj8-M5-K4c" id="V9A-J3-XzA"/>
                                                 </connections>
@@ -947,7 +947,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="compose" id="dLT-pC-CXk">
                                 <connections>
-                                    <segue destination="dnd-Dn-Lwg" kind="show" id="CTL-i5-5pO"/>
+                                    <segue destination="dnd-Dn-Lwg" kind="show" id="I7q-bz-yCy"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
