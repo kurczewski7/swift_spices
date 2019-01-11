@@ -365,7 +365,7 @@
                                                     <action selector="cancelBarButtonTap:" destination="xj8-M5-K4c" id="V9A-J3-XzA"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem systemItem="compose" id="yNk-4g-w41">
+                                            <barButtonItem image="setup" id="yNk-4g-w41">
                                                 <connections>
                                                     <action selector="setupBarButtonTap:" destination="xj8-M5-K4c" id="TDq-Vp-nIl"/>
                                                 </connections>
@@ -377,7 +377,7 @@
                                                     <action selector="takePhotoBarButtonTap:" destination="xj8-M5-K4c" id="YTJ-0b-3Af"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem systemItem="action" id="pA9-Wy-Rk5">
+                                            <barButtonItem image="keyboard_filled" id="pA9-Wy-Rk5">
                                                 <connections>
                                                     <action selector="keyboardBarButtonTap:" destination="xj8-M5-K4c" id="muk-fN-A4X"/>
                                                 </connections>
@@ -1220,5 +1220,7 @@
         <image name="barcode" width="37.5" height="37.5"/>
         <image name="cameraCanon" width="900" height="900"/>
         <image name="heart" width="128" height="128"/>
+        <image name="keyboard_filled" width="25" height="25"/>
+        <image name="setup" width="25" height="25"/>
     </resources>
 </document>

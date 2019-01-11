@@ -18,7 +18,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var eanCodeLabel: UILabel!
-     @IBOutlet var productNameTextField: UITextField!
+    @IBOutlet var productNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,25 +29,37 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
         photoImageView.isUserInteractionEnabled=true
         eanCodeLabel.text=database.scanerCodebarValue
         
-        
+        // Add ScreenEdge gesture
+        let edgeGestute = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeGesture))
+        edgeGestute.edges = .left
+        view.addGestureRecognizer(edgeGestute)
+
         // Do any additional setup after loading the view.
+    }
+    @objc func screenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            print("Screen edge gesture swiped!")
+            showMessageToAdd()
+        }
     }
 
     @IBAction func cancelBarButtonTap(_ sender: UIBarButtonItem) {
         print("cancel presed")
+        showMessageToAdd()
+        //dismiss(animated: true, completion: nil)
+    }
+    func showMessageToAdd() {
         let allertController=UIAlertController(title: "New product", message: "Do you want add new Product", preferredStyle: .alert)
         let allertActionOk=UIAlertAction(title: "Ok", style: .default) { (action) in
             print("OK prress")
             self.addProductWithEan(ean: self.eanCodeLabel.text!, productName: self.productNameTextField.text!, picture: self.photoImageView.image)
             self.dismiss(animated: true, completion: nil)        }
         let allertActionCancel=UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-          self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         allertController.addAction(allertActionOk)
         allertController.addAction(allertActionCancel)
         present(allertController, animated: true)
-        
-        //dismiss(animated: true, completion: nil)
     }
     
     @IBAction func setupBarButtonTap(_ sender: UIBarButtonItem) {
