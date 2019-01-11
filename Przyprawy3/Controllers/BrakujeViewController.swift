@@ -15,10 +15,9 @@ class BrakujeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //database.printPath()
         
+        //database.printPath()
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,6 +82,7 @@ func initialProduct()
         let product = ProductTable(context: database.context)
         product.producent = ""
         product.pictureName = pictureName
+        product.fullPicture = UIImage(named: pictureName)?.pngData()
         product.productName = productName
         product.id = Int32(productId)
         product.parentCategory = category

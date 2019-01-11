@@ -16,7 +16,28 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         collectionView.delegate=self
         collectionView.dataSource=self
+        // Add ScreenEdge gesture
+        let edgeGestute = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeGesture))
+        edgeGestute.edges = .left
+        view.addGestureRecognizer(edgeGestute)
     }
+    @objc func screenEdgeGesture(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .recognized {
+            print("Screen edge gesture swiped!")
+            let allertController=UIAlertController(title: "Exit aplication", message: "Do you want exit from application?", preferredStyle: .actionSheet)
+            let allertOk=UIAlertAction(title: "Exit from this application", style: .default) { (action : UIAlertAction) in
+                print("Exit from application")
+                exit(EXIT_SUCCESS)
+            }
+            let allertCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            
+            allertController.addAction(allertOk)
+            allertController.addAction(allertCancel)
+            present(allertController, animated: true)
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
     }

@@ -62,6 +62,13 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
          initSearchBar(self.searchedBar)
          database.loadData(tableNameType: .products)
          database.delegate = self
+         // change beck icon
+        let imgBackArrow = UIImage(named: "Cofnij")
+        navigationController?.navigationBar.backIndicatorImage = imgBackArrow
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
@@ -250,10 +257,13 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let nextVC=segue.destination as! DetailAtHomeViewController
             nextVC.numberOfRow=numberOfRow
             
-            nextVC.productImageName=database.product.productArray[numberOfRow].pictureName ?? "question-mark"
-            nextVC.productTitle=database.product.productArray[numberOfRow].productName ?? "no product"
-            nextVC.productSubtitle=database.product.productArray[numberOfRow].producent ?? "no producent"
-            nextVC.productWeight="\(database.product.productArray[numberOfRow].weight)g"
+            let currentProduct = database.product.productArray[numberOfRow]
+            nextVC.productImageName = currentProduct.pictureName ?? "question-mark"
+            nextVC.productTitle = currentProduct.productName ?? "no product"
+            nextVC.productSubtitle = currentProduct.producent ?? "no producent"
+            nextVC.productWeight = "\(currentProduct.weight)g"
+            nextVC.eanProduct = currentProduct.eanCode==nil ?  "" :"EAN: \(currentProduct.eanCode!)"
+            nextVC.productImageData = currentProduct.fullPicture
         }
     }
 

@@ -14,22 +14,33 @@ class DetailAtHomeViewController: UIViewController {
     @IBOutlet var productTitleLabel: UILabel!
     @IBOutlet var productSubtitleLabel: UILabel!
     @IBOutlet var productWeightLabel: UILabel!
+    @IBOutlet var eanCodeLabel: UILabel!
     
     
     var productImageName = ""
+    var productImageData: Data? = nil
     var productTitle = ""
     var productSubtitle = ""
     var productWeight = ""
+    var eanProduct = ""
+    
     var numberOfRow = 0
     var aliasOfProductName="moje"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productImageView.image=UIImage(named: productImageName)
-        productTitleLabel.text=productTitle
+        if productImageData == nil {
+            productImageView.image = UIImage(named: "question-mark")
+        }
+        else {
+            productImageView.image = UIImage(data: productImageData!)
+        }
+               //UIImage(named: productImageName)
+        productTitleLabel.text = productTitle
         productSubtitleLabel.text=productSubtitle
         productWeightLabel.text=productWeight
+        eanCodeLabel.text=eanProduct
         if(is3Dtouch)
         {
             registerForPreviewing(with: self, sourceView: view)

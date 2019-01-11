@@ -256,9 +256,6 @@ class Database  {
         //productElem.parentCategory?.categoryName=database.selectedCategory?.categoryName
         productElem.parentCategory=database.selectedCategory
         productElem.categoryId = 1
-        //productElem.fullPicture=UIImage(named: "owoce_20_b")?.pngData()
-        
-        //owoce_20_b
         self.product.productArray.append(productElem)
         if product.productArray[product.productArray.count-1].pictureName == nil
         {
