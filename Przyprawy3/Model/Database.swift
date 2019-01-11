@@ -256,7 +256,8 @@ class Database  {
         //productElem.parentCategory?.categoryName=database.selectedCategory?.categoryName
         productElem.parentCategory=database.selectedCategory
         productElem.categoryId = 1
-        productElem.fullPicture=UIImage(named: "owoce_20_b")?.pngData()
+        //productElem.fullPicture=UIImage(named: "owoce_20_b")?.pngData()
+        
         //owoce_20_b
         self.product.productArray.append(productElem)
         if product.productArray[product.productArray.count-1].pictureName == nil
@@ -331,6 +332,7 @@ class Database  {
             product.productName=String(productName)
             product.eanCode    =  eanCode
             product.pictureName=pictureName
+            product.fullPicture=UIImage(named: pictureName)?.pngData()
             product.number1    = Int32(number1)
             product.number2    = Int32(number2)
             product.number3    = Int32(number3)
