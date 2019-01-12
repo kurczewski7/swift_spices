@@ -47,6 +47,9 @@ class Contacts: UIViewController {
     }
     @IBAction func contactsActions(_ sender: Any) {
     }
+    @IBAction func rewindToContacts(segue:UIStoryboardSegue) {
+    
+    }
     private func openMyUrl(with myStringUrl: String)
     {
         guard let url=URL(string: myStringUrl)    else {
@@ -64,3 +67,4 @@ class Contacts: UIViewController {
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
+

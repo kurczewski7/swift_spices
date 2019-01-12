@@ -302,10 +302,15 @@
                         <viewLayoutGuide key="safeArea" id="0Hl-y2-TA5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Brakuje" id="Wjj-ar-FDx">
-                        <barButtonItem key="leftBarButtonItem" image="Cofnij" id="hE9-yu-VIw"/>
+                        <barButtonItem key="leftBarButtonItem" image="Cofnij" id="hE9-yu-VIw">
+                            <connections>
+                                <segue destination="2oV-ZM-sua" kind="unwind" unwindAction="rewindToContactsWithSegue:" id="rv2-dJ-MzJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EjZ-9c-oMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2oV-ZM-sua" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3250" y="3708"/>
         </scene>
@@ -824,8 +829,12 @@
                             <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="lKd-ic-vWz" kind="unwind" unwindAction="rewindToContactsWithSegue:" id="GHw-yG-s88"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gca-Pb-Ugr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="lKd-ic-vWz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2329" y="3709"/>
         </scene>
