@@ -78,7 +78,7 @@
                                             <outlet property="contentLabel" destination="LXK-8b-LbM" id="geQ-hA-khK"/>
                                             <outlet property="likeButton" destination="7DB-Sl-7mr" id="x3r-OM-xiO"/>
                                             <outlet property="nameLabel" destination="Wwh-I8-MUe" id="fuY-0T-MV4"/>
-                                            <segue destination="AfV-sl-g9n" kind="show" identifier="goToProducts" id="0ss-SL-cxm"/>
+                                            <segue destination="AfV-sl-g9n" kind="show" identifier="goToAtHome" id="0ss-SL-cxm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1217,6 +1217,9 @@
                             <searchBar contentMode="redraw" placeholder="tu pwisz dane" translatesAutoresizingMaskIntoConstraints="NO" id="obE-jx-COW">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="AfV-sl-g9n" id="EFI-QT-flp"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cfp-mR-ve0">
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
@@ -1304,7 +1307,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s4S-cU-ueK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="GKR-Ys-x4T"/>
+                    <navigationItem key="navigationItem" title="Home" id="GKR-Ys-x4T">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="barcode" id="XNQ-Aa-Ftd">
+                                <connections>
+                                    <action selector="eanBarcodeButton:" destination="AfV-sl-g9n" id="x8L-PG-dTY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="pSs-6E-FvO">
+                                <connections>
+                                    <action selector="searchButton:" destination="AfV-sl-g9n" id="Gqa-IZ-jR0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="keyboard_filled" id="xhm-jh-Hrb">
+                                <connections>
+                                    <action selector="keyboardModeButton:" destination="AfV-sl-g9n" id="FC9-Ne-kL1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchedBar" destination="obE-jx-COW" id="dYl-B9-u5r"/>
                         <outlet property="table" destination="Cfp-mR-ve0" id="0Yb-p1-Jt1"/>

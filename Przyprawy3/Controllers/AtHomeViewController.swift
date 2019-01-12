@@ -46,11 +46,6 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         database.filterData(searchText: "aMi", searchTable: .products, searchField: .Producent)
         //table.reloadData()
     }
-    @IBAction func eanCodeBarButton(_ sender: UIBarButtonItem) {
-        print("EAN code scaner stop ------")
-        productWasAdded=false
-        database.searchEanCode()
-    }
     @IBAction func keyboardModeButton(_ sender: UIBarButtonItem) {
         print("keyboard")
         searchedBar.resignFirstResponder()
@@ -134,7 +129,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         numberOfRow=indexPath.row
-        performSegue(withIdentifier: "goToAtHome", sender: self)
+        performSegue(withIdentifier: "goToProducts", sender: self)
     }
     // MARK : Editing style
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -250,7 +245,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("segue")
-        if segue.identifier=="goToAtHome"
+        if segue.identifier=="goToProducts"
         {
             let nextVC=segue.destination as! DetailAtHomeViewController
             nextVC.numberOfRow=numberOfRow
