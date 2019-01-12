@@ -1275,7 +1275,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="descriptionLabel" destination="WoT-Fg-hHR" id="GmN-LJ-Hfl"/>
                                             <outlet property="producentLabel" destination="Cfl-pM-lu1" id="ORS-F1-MTe"/>
+                                            <outlet property="productLabel" destination="Q8e-7o-jmM" id="rAV-YL-mNS"/>
+                                            <outlet property="productPicture" destination="j7H-k8-p27" id="clQ-nF-fb7"/>
                                             <segue destination="enE-9m-W5Y" kind="show" identifier="goToProducts" id="xb3-Ul-PcQ"/>
                                         </connections>
                                     </tableViewCell>

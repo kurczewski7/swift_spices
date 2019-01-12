@@ -113,21 +113,19 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!   AtHomeCell 
         let product=database.product.productArray[indexPath.row]
+        cell.productLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
 
-//        cell.categoryLabel.text = product.productName?.capitalized(with: nil) ?? "No product"
-//        //database.productArray[indexPath.row].pictureName
-//         //cell.producentLabel?.font.withSize(25)
-//        cell.producentLabel.text = product.producent?.uppercased()  ?? "No producent"
-//        cell.descriptionLabel.text =  String(product.weight).lowercased()+"g"                       //picturesArray[indexPath.row]
-    
-//        //cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
-//        let questionPic=UIImage(named: "question-mark")!.pngData()
-//        if let pict=UIImage(data: product.fullPicture ?? questionPic!) {
-//            cell.productPicture.image = pict
-//        }
-//        else {
-//           cell.productPicture.image = UIImage( named: "question-mark")
-//        }
+         //cell.producentLabel?.font.withSize(25)
+        cell.producentLabel.text = product.producent?.uppercased()  ?? "No producent"
+        cell.descriptionLabel.text =  String(product.weight).lowercased()+"g"                    
+        //cell.productPicture.image = UIImage(named:  product.pictureName ?? "question-mark")
+        let questionPic=UIImage(named: "question-mark")!.pngData()
+        if let pict=UIImage(data: product.fullPicture ?? questionPic!) {
+            cell.productPicture.image = pict
+        }
+        else {
+           cell.productPicture.image = UIImage( named: "question-mark")
+        }
         
         
         cell.accessoryType =  product.checked ? .checkmark : .none

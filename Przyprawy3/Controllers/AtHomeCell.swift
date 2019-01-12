@@ -11,9 +11,11 @@ import UIKit
 class AtHomeCell: UITableViewCell {
 // MARK - Outlet variables
     @IBOutlet var producentLabel: UILabel!
-    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var productLabel: UILabel!   
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var productPicture: UIImageView!
+     //@IBOutlet var categoryLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
