@@ -50,7 +50,7 @@ class TakePhotoViewController: UIViewController, UINavigationControllerDelegate 
     }
     func showMessageToAdd() {
         let allertController=UIAlertController(title: "New product", message: "Do you want add new Product", preferredStyle: .alert)
-        let allertActionOk=UIAlertAction(title: "Ok", style: .default) { (action) in
+        let allertActionOk=UIAlertAction(title: "Add prouct", style: .default) { (action) in
             print("OK prress")
             self.addProductWithEan(ean: self.eanCodeLabel.text!, productName: self.productNameTextField.text!, picture: self.photoImageView.image)
             self.dismiss(animated: true, completion: nil)        }

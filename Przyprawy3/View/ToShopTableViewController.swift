@@ -42,15 +42,18 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
         //let toShop=ToShopProductTable(context: database.context)
-        let toShop=database.toShopProductArray[indexPath.row]
-        cell.producentLabel.text = toShop.productRelation?.producent
-        cell.productNameLabel.text = toShop.productRelation?.productName
-        cell.detailLabel.text = "\(toShop.productRelation?.weight ?? 0)g"
-        cell.picture.image = UIImage(named: toShop.productRelation?.pictureName ?? "question-mark")
-       // cell.producentLabel.text="aaa:\(indexPath.row)"
-        //cell.textLabel?.text="aaa:\(indexPath.row)"
-
-        // Configure the cell...
+        let toShop=database.toShopProductArray[indexPath.row].productRelation
+        cell.producentLabel.text = toShop?.producent
+        cell.productNameLabel.text = toShop?.productName
+        let grams="\(toShop?.weight ?? 0)g"
+        cell.detailLabel.text = grams.count==2 ? "" : grams
+        if let img=toShop?.fullPicture {
+            cell.picture.image = UIImage(data: img)
+        }
+        else {
+            cell.picture.image = UIImage(named: "question-mark")
+        }
+        
         return cell
     }
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
