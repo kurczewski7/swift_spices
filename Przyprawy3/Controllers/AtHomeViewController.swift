@@ -121,15 +121,14 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
            cell.productPicture.image = UIImage( named: "question-mark")
         }
-        
-        
         cell.accessoryType =  product.checked ? .checkmark : .none
         cell.producentLabel?.font.withSize(25)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt performSegue goToProducts")
         numberOfRow=indexPath.row
-        performSegue(withIdentifier: "goToProducts", sender: self)
+        //performSegue(withIdentifier: "goToProducts", sender: self)
     }
     // MARK : Editing style
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -160,33 +159,11 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let newViewController=storyBoard.instantiateViewController(withIdentifier: controllerName)  //as! TakePhotoViewController "takePhoto"
         self.present(newViewController, animated: true, completion: nil)
     }
-
     func addProductWithEan(ean: String, productName: String, picture: UIImage?) {
         print("Adding product \(ean)")
         productWasAdded=false
         goToViewController(controllerName: "takePhoto")
     }
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newViewController=storyBoard.instantiateViewController(withIdentifier: "takePhoto")  //as! TakePhotoViewController
-//        self.present(newViewController, animated: true, completion: nil)
-        
-        //self.prepare(for: newViewController, sender: self)
-        
-        
-        //self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-        
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as NextViewController
-//        self.presentViewController(nextViewController, animated:true, completion:nil)
-        
-        //performSegue(withIdentifier: "gotoTakephoto", sender: self)
-        
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let newViewController = storyBoard.instantiateViewController(withIdentifier: "newViewController") as! NewViewController
-//        self.present(newViewController, animated: true, completion: nil)
-
-    
-    
     // MARK: SearchBar metod
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("clicked \(searchBar.text!)")
@@ -244,12 +221,11 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue")
+        print("prepare for segue goToProducts")
         if segue.identifier=="goToProducts"
         {
             let nextVC=segue.destination as! DetailAtHomeViewController
-            nextVC.numberOfRow=numberOfRow
-            
+            nextVC.numberOfRow = numberOfRow
             let currentProduct = database.product.productArray[numberOfRow]
             nextVC.productImageName = currentProduct.pictureName ?? "question-mark"
             nextVC.productTitle = currentProduct.productName ?? "no product"
@@ -264,9 +240,6 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        searchBar.scopeButtonTitles=["name", "Producenr","gggg"]
 //        searchBar.selectedScopeButtonIndex=0
         
-    
-
-
     /*
     // MARK: - Navigation
 

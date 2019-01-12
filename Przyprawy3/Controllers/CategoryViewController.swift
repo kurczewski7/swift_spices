@@ -30,23 +30,18 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
                 exit(EXIT_SUCCESS)
             }
             let allertCancel=UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            
             allertController.addAction(allertOk)
             allertController.addAction(allertCancel)
             present(allertController, animated: true)
         }
     }
-
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
     }
-    
-    //
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return database.category.categoryArray.count 
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "cellCategories", for: indexPath) as! CategoryCollectionViewCell
         cell.backgroundColor=UIColor.lightGray
@@ -57,7 +52,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.likeButton.isEnabled = (database.category.categoryArray[indexPath.row].selectedCategory ? true : false)
         cell.nameLabel.text=database.category.categoryArray[indexPath.row].categoryName
         return cell
-
     }
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         return true
@@ -65,18 +59,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("wybrano kategorię \(indexPath.row)")
         database.selectedCategory=database.findSelestedCategory(categoryId : indexPath.row)
-        performSegue(withIdentifier: "goToAtHome", sender: self)
         //performSegue(withIdentifier: "goToAtHome", sender: self)
     }
-    //database.categoryArray[indexPath.row].categoryName
-
-    //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ShopingListCellView
-    //
-    //        // Configure the cell
-    //        cell.backgroundView?.backgroundColor = UIColor.brown
-    //        cell.productName.text = "aaa"
-    //        cell.productPicture.image = UIImage(named: picturesArray[indexPath.row])
-
 
     /*
     // MARK: - Navigation

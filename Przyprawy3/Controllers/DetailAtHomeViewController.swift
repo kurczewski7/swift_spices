@@ -29,6 +29,7 @@ class DetailAtHomeViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        print("DetailAtHomeViewController")
         super.viewDidLoad()
         if productImageData == nil {
             productImageView.image = UIImage(named: "question-mark")
