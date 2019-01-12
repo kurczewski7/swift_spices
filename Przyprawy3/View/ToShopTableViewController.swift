@@ -8,18 +8,34 @@
 
 import UIKit
 
-class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
+    var keyboarActive = false
+    
+    
+    
     @IBOutlet var tabView: UITableView!
+    @IBOutlet var searchedBar: UISearchBar!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         database.loadData(tableNameType: .toShop)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        let longTap:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(goToNextViwecontroller))
+        tap.cancelsTouchesInView = true
+        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(longTap)
+        
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    @objc func hideKeyboard() {
+        print("keyboarActive \(keyboarActive), view.isFocused \(view.isFocused),isFirstResponder \(view.isFirstResponder) ")
+        view.endEditing(true)
+    }
+    @objc func goToNextViwecontroller() {
+        print("goToNextViwecontroller")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         database.loadData(tableNameType: .toShop)
         tabView.reloadData()
@@ -73,6 +89,16 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
+        //tap.cancelsTouchesInView = true
+        if !keyboarActive {
+            print("GO TO ...")
+        }
+        else {
+            print("No to GO ...")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -118,5 +144,34 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Pass the selected object to the new view controller.
     }
     */
-
+ // Serach bar delegate
+    //searchBarTextDidBeginEditin
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("clicked \(searchBar.text!)")
+        //database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
+        DispatchQueue.main.async {
+            self.searchedBar.resignFirstResponder()
+        }
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("changed \(searchBar.text!)")
+        //database.filterData(searchText: searchBar.text!, searchTable: .products, searchField: (self.selectedSegmentIndex==0 ? .Product : .Producent))
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        keyboarActive = true
+        print("searchBarTextDidBeginEditing \(keyboarActive)")
+    }
+//    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+//        keyboarActive = false
+//        print("searchBarShouldEndEditing \(keyboarActive)")
+//        return true
+//    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        keyboarActive = false
+        print("searchBarTextDidEndEditing \(keyboarActive)")
+        view.endEditing(true)
+        //view.resignFirstResponder()
+    }
 }

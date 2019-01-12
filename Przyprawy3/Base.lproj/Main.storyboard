@@ -994,6 +994,9 @@
                             <searchBar contentMode="redraw" placeholder="tu pwisz dane" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-ud-Gxn">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xdy-XS-FUA" id="vPp-SB-RnK"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nqc-c2-ob8">
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
@@ -1082,6 +1085,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="To shop" id="AQk-iK-Alz"/>
                     <connections>
+                        <outlet property="searchedBar" destination="TgN-ud-Gxn" id="822-a1-221"/>
                         <outlet property="tabView" destination="Nqc-c2-ob8" id="KQI-6Z-eBy"/>
                     </connections>
                 </viewController>
