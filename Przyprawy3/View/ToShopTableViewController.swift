@@ -83,9 +83,18 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 //    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-             tableView.deleteRows(at: [indexPath], with: .fade)
-            database.toShopProductArray.remove(at: 0)
-            tableView.reloadData()
+            
+//            arrStudentName.remove(at: indexPath.row)
+//            tableView.beginUpdates()
+//            tableView.deleteRows(at: [indexPath], with: .middle)
+//            tableView.endUpdates()
+            
+              database.toShopProductArray.remove(at: indexPath.row)
+              tableView.beginUpdates()
+              tableView.deleteRows(at: [indexPath], with: .fade)
+              tableView.endUpdates()
+            
+             //tableView.reloadData()
             
         }
     }
