@@ -397,7 +397,7 @@
                                     <constraint firstAttribute="width" secondItem="jji-uW-gRB" secondAttribute="height" multiplier="343:331" id="WQS-Lx-vXI"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write product description" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kgV-pr-HNy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write product description" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kgV-pr-HNy">
                                 <rect key="frame" x="5" y="86" width="365" height="36"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -415,7 +415,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kgV-pr-HNy" firstAttribute="leading" secondItem="6Ac-uk-rbf" secondAttribute="leading" constant="5" id="5DC-bD-hD9"/>
                             <constraint firstItem="Rw1-Ya-ieb" firstAttribute="centerX" secondItem="kgV-pr-HNy" secondAttribute="centerX" id="6EB-br-epP"/>
                             <constraint firstItem="Rw1-Ya-ieb" firstAttribute="centerX" secondItem="jji-uW-gRB" secondAttribute="centerX" id="BbN-eJ-pUS"/>
                             <constraint firstItem="6Ac-uk-rbf" firstAttribute="bottom" secondItem="Il4-FW-NcZ" secondAttribute="bottom" constant="40" id="Ebk-6r-5CY"/>
@@ -797,7 +796,7 @@
                                 </state>
                                 <connections>
                                     <action selector="contactsActions:" destination="PRb-pf-nmK" eventType="touchUpInside" id="lEi-HR-P9V"/>
-                                    <segue destination="Hn3-iw-zDm" kind="show" id="t1G-ky-lh7"/>
+                                    <segue destination="Hn3-iw-zDm" kind="show" identifier="goToPhoneContact" id="t1G-ky-lh7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -823,14 +822,14 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="compose" id="dLT-pC-CXk">
                                 <connections>
-                                    <segue destination="dnd-Dn-Lwg" kind="show" id="I7q-bz-yCy"/>
+                                    <segue destination="dnd-Dn-Lwg" kind="show" identifier="goToBrakuje" id="I7q-bz-yCy"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="barcode" id="N2p-ZL-tQo"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="lKd-ic-vWz" kind="unwind" unwindAction="rewindToContactsWithSegue:" id="GHw-yG-s88"/>
+                        <segue destination="lKd-ic-vWz" kind="unwind" identifier="mySegue" unwindAction="rewindToContactsWithSegue:" id="GHw-yG-s88"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gca-Pb-Ugr" userLabel="First Responder" sceneMemberID="firstResponder"/>
