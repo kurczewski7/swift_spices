@@ -128,7 +128,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt performSegue goToProducts")
         numberOfRow=indexPath.row
-        //performSegue(withIdentifier: "goToProducts", sender: self)
+        performSegue(withIdentifier: "goToProducts", sender: self)
     }
     // MARK : Editing style
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
