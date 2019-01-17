@@ -115,8 +115,8 @@
 		2C158CBD2186106F00C3438B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C31B32421383A4900B7581D /* Database.swift */,
 				2CE2756D210237AF001C046B /* DataModel.xcdatamodeld */,
+				2C31B32421383A4900B7581D /* Database.swift */,
 				2C158CD7218623B300C3438B /* CoreDataStack.swift */,
 				2C70579B2139ED4300B99FEA /* Product.swift */,
 			);

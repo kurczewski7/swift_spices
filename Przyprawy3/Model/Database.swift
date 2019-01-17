@@ -64,7 +64,7 @@ class Database  {
     //var shopingProductTable : ShopingProductTable(context: context)
 
     // variable for ToShopProductTable
-    var toShopForCategorries=[[0,1,2], [3,4,5], [2,4,5]]
+    
     var toShopProductArray = [ToShopProductTable]()
     let featchResultCtrlToShopProduct: NSFetchedResultsController<ToShopProductTable>
     var feachToShopProductRequest:NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()
@@ -501,6 +501,7 @@ class Database  {
     func searchEanCode() {
         database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
     }
+
     
 }
 // New Class
@@ -510,13 +511,43 @@ class CategorySeting {
     //var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
     let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
     var sortCategoryDescriptor:NSSortDescriptor
+    var categoryGroups : [[Int]] = [[0,1,2], [3,4,5], [6],[],[],[],[],[]]
+    
     init(context: NSManagedObjectContext)
     {
         self.context=context
         categoryArray=[]
         sortCategoryDescriptor=NSSortDescriptor(key: "categoryName", ascending: true)
     }
-}
+    // Method for section in coredata for Tableviw - ToShopTableviewController
+    func getNoEmptySectionCount() -> Int {
+        var result = 0
+        for subArray in categoryGroups  {
+            if subArray.count > 0 {
+                result += 1
+            }
+        }
+        print("result: \(result)")
+        return result
+    }
+    func  clearToShopForCategorries() {
+        categoryGroups = [[], [], [],[],[],[],[],[]]
+    }
+    func getCurrentSectionCount(forCategories section: Int) -> Int {
+        return categoryGroups[section].count
+    }
+    func crateCategoryGroups(forToShopProduct: [ToShopProductTable] ) {
+        var categoryId: Int16 = 0
+        //var categoryTmp: Int16?
+        clearToShopForCategorries()
+        for i in 0..<forToShopProduct.count {
+            categoryId = forToShopProduct[i].productRelation?.categoryId ?? 0
+            if categoryId > 0 {
+                categoryGroups[Int(categoryId)-1].append(i)
+            }
+        }
+    }
+} // end of class CategorySeting
 
 class ProductSeting {
     var context: NSManagedObjectContext

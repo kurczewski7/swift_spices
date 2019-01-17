@@ -38,6 +38,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         database.loadData(tableNameType: .toShop)
+        database.category.crateCategoryGroups(forToShopProduct: database.toShopProductArray)
         tabView.reloadData()
         print("viewWillAppear")
     }
@@ -46,15 +47,15 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 8 //database.category.getNoEmptySectionCount()
      }
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return database.toShopForCategorries[section].count                         //database.toShopProductArray.count
+        return database.category.categoryGroups[section].count
     }
     func getToShopProduct(forCategoryNumber categoryNo: Int, indexPath: IndexPath) -> ProductTable?  {
         //let rowNumber = indexPath.row
-        let rowNumber = Int(database.toShopForCategorries[indexPath.section][indexPath.row])
+        let rowNumber = Int(database.category.categoryGroups[indexPath.section][indexPath.row])
         let toShopProduct = database.toShopProductArray[rowNumber].productRelation
         if toShopProduct?.categoryId == Int16(categoryNo+1) {
            return toShopProduct
@@ -91,6 +92,13 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         label.text="\(sectionName)"
         label.textAlignment = .center
         label.backgroundColor=UIColor.lightGray
+        if section==5 {
+            label.isEnabled=false
+        }
+        if section==6 {
+            return nil
+        }
+
         return label
     }
     
