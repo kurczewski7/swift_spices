@@ -28,6 +28,7 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet var searchedBar: UISearchBar!
     @IBOutlet var table: UITableView!
+    @IBOutlet var keyboradBarBatonIcon: UIBarButtonItem!
     
     // MARK : IBAction
     @IBAction func eanBarcodeButton(_ sender: UIBarButtonItem) {
@@ -55,6 +56,8 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // DatabaseDelegate method
         super.viewDidLoad()
+        keyboradBarBatonIcon.isEnabled=true
+
         initSearchBar(self.searchedBar)
          database.loadData(tableNameType: .products)
          database.delegate = self
@@ -196,6 +199,10 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //self.table.tableHeaderView?.backgroundColor=UIColor.yellow
         //let ssgg = self.table.tableHeaderView as! UISegmentedControl
+    }
+    func searchBarTextDidBeginEditing(){
+        print("searchBarTextDidBeginEditing")
+        
     }
     @objc func segmentedControlValueChanged(segment: UISegmentedControl)
     {

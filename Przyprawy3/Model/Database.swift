@@ -64,6 +64,7 @@ class Database  {
     //var shopingProductTable : ShopingProductTable(context: context)
 
     // variable for ToShopProductTable
+    var toShopForCategorries=[[0,1,2], [3,4,5], [2,4,5]]
     var toShopProductArray = [ToShopProductTable]()
     let featchResultCtrlToShopProduct: NSFetchedResultsController<ToShopProductTable>
     var feachToShopProductRequest:NSFetchRequest<ToShopProductTable> = ToShopProductTable.fetchRequest()

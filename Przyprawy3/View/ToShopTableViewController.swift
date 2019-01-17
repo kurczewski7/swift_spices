@@ -46,32 +46,54 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+        return 2
+     }
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return database.toShopProductArray.count
+        return database.toShopForCategorries[section].count                         //database.toShopProductArray.count
     }
-
-    
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
-        //let toShop=ToShopProductTable(context: database.context)
-        let toShop=database.toShopProductArray[indexPath.row].productRelation
-        cell.producentLabel.text = toShop?.producent
-        cell.productNameLabel.text = toShop?.productName
-        let grams="\(toShop?.weight ?? 0)g"
-        cell.detailLabel.text = grams.count==2 ? "" : grams
-        if let img=toShop?.fullPicture {
-            cell.picture.image = UIImage(data: img)
+    func getToShopProduct(forCategoryNumber categoryNo: Int, indexPath: IndexPath) -> ProductTable?  {
+        //let rowNumber = indexPath.row
+        let rowNumber = Int(database.toShopForCategorries[indexPath.section][indexPath.row])
+        let toShopProduct = database.toShopProductArray[rowNumber].productRelation
+        if toShopProduct?.categoryId == Int16(categoryNo+1) {
+           return toShopProduct
         }
         else {
-            cell.picture.image = UIImage(named: "question-mark")
+            return nil
+        }
+    }
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
+        let toShop=getToShopProduct(forCategoryNumber: indexPath.section, indexPath: indexPath)
+        if toShop != nil {
+            cell.producentLabel.text = toShop?.producent
+            cell.productNameLabel.text = toShop?.productName
+            let grams="\(toShop?.weight ?? 0)g"
+            cell.detailLabel.text = grams.count==2 ? "" : grams
+            if let img=toShop?.fullPicture {
+                cell.picture.image = UIImage(data: img)
+            }
+            else {
+                cell.picture.image = UIImage(named: "question-mark")
+            }
+        }
+        else {
+            cell.producentLabel.text="Brak produktu"
+            cell.picture.image=nil
         }
         
         return cell
     }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label=UILabel()
+        let sectionName = database.category.categoryArray[section].categoryName ?? "category \(section)"
+        label.text="\(sectionName)"
+        label.textAlignment = .center
+        label.backgroundColor=UIColor.lightGray
+        return label
+    }
+    
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        let checkAction=UITableViewRowAction(style: .default, title: "🛍\nKup") { (action, indexPath) in
 //        }

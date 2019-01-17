@@ -596,7 +596,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WRz-FB-Mgt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WRz-FB-Mgt">
                                                     <rect key="frame" x="5" y="2" width="120" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="A93-Xa-enh"/>
@@ -1215,6 +1215,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="keyboradBarBatonIcon" destination="xhm-jh-Hrb" id="kst-J0-Rb0"/>
                         <outlet property="searchedBar" destination="obE-jx-COW" id="dYl-B9-u5r"/>
                         <outlet property="table" destination="Cfp-mR-ve0" id="0Yb-p1-Jt1"/>
                         <segue destination="enE-9m-W5Y" kind="show" identifier="goToProducts" id="t1u-pt-4Sb"/>
