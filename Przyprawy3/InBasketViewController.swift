@@ -29,10 +29,9 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                               managedObjectContext: context,
                                                               sectionNameKeyPath: "categoryId",
-                                                              cacheName: "SectionCache")
+                                                              cacheName: "SectionCache")        
+        fetchedResultsController.delegate =  self
         
-        fetchedResultsController.delegate =  self           // self as! NSFetchedResultsControllerDelegate
-            //as! NSFetchedResultsControllerDelegate
         
         do {
             try fetchedResultsController.performFetch()
@@ -55,7 +54,8 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
                    numberOfRowsInSection section: Int) -> Int {
         let sectionInfo =
             fetchedResultsController.sections![section]
-        print(sectionInfo.numberOfObjects)
+        print("numb: \(sectionInfo.numberOfObjects) index: \(sectionInfo.indexTitle!) name: \(sectionInfo.name), count: \(sectionInfo.objects?.count)")
+        
         return sectionInfo.numberOfObjects
     }
     
@@ -66,11 +66,13 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InBasketTableViewCell
-        let tmp = database.product.productArray[indexPath.row]
+        let dlugosc = database.product.productArray.count
+        print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
+        //let tmp = database.product.productArray[indexPath.row < dlugosc  ? indexPath.row: 0]
         cell.producentLabel.text="aaa\(indexPath.row)"
         return cell
     }
-    func firstRunSetupSections(forEntityName entityName : String) {    
+    func firstRunSetupSections(forEntityName entityName : String) {
     }
     /*
     // MARK: - Navigation
