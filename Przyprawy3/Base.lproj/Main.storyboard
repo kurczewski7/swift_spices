@@ -567,10 +567,10 @@
             </objects>
             <point key="canvasLocation" x="4649" y="777"/>
         </scene>
-        <!--To shop2222-->
+        <!--In Basket-->
         <scene sceneID="Gjb-as-UvW">
             <objects>
-                <viewController id="449-9N-d5u" customClass="ToShopTableViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="449-9N-d5u" customClass="InBasketViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sq5-ic-DiP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -583,7 +583,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="124" id="FmZ-pv-Zaq" customClass="ToShopTableViewCell" customModule="Przyprawy3" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="124" id="FmZ-pv-Zaq" customClass="InBasketTableViewCell" customModule="Przyprawy3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FmZ-pv-Zaq" id="VbF-hn-bMX">
@@ -644,8 +644,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="449-9N-d5u" id="brp-Kn-5gp"/>
-                                    <outlet property="delegate" destination="449-9N-d5u" id="csc-0w-Xzx"/>
+                                    <outlet property="dataSource" destination="449-9N-d5u" id="ApV-RS-UV9"/>
+                                    <outlet property="delegate" destination="449-9N-d5u" id="vsD-tk-rLT"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -664,10 +664,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DBb-0a-Jq0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="To shop2222" id="7oS-dW-UmE"/>
-                    <connections>
-                        <outlet property="tabView" destination="qvL-gs-PTY" id="KnM-yD-F8q"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="In Basket" id="7oS-dW-UmE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Coc-yU-k5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -939,7 +936,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="449-9N-d5u" kind="relationship" relationship="rootViewController" id="4lR-Ht-o5Z"/>
+                        <segue destination="449-9N-d5u" kind="relationship" relationship="rootViewController" id="Jvh-cO-wsR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoG-5k-xHV" userLabel="First Responder" sceneMemberID="firstResponder"/>

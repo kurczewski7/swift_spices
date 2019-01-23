@@ -13,49 +13,17 @@ protocol DatabaseDelegate: class {
     func updateGUI()
     func getNumberOfRecords(numbersOfRecords recNo: Int, eanMode: Bool)
     }
+
 class Database  {
-    var context: NSManagedObjectContext
-    var eanMode: Bool = false
-    var scanerCodebarValue: String {
-        didSet {
-            print("Codebar was read :\(scanerCodebarValue)")
-            // let xx="49443310"
-            self.eanMode = true
-            self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN)
-            if database.product.productArray.count == 0 {
-                print("Not found this product")
-            }
-        }
-    }
-    
     // seting delegate
     var delegate: DatabaseDelegate?
+    var context: NSManagedObjectContext
+    var eanMode: Bool = false
+    
     //Entitis of project
     var category: CategorySeting!  //  = CategorySeting(context: context)
     var product: ProductSeting!    //   = ProductSeting(context: context)
-    
-    //
-    @objc var selectedCategory:CategoryTable? {
-        didSet {
-            print("Seting Category: \(selectedCategory?.categoryName ?? "")")
-            let catArray=database.category.categoryArray
-            for el in catArray {
-                el.selectedCategory = selectedCategory?.categoryName == el.categoryName ? true : false
-            }
-            database.save()
-        }
-    }
-//    typealias CategorySetingType = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
-//    var categorySeting: CategorySetingType?
-//    let categorySeting = (fetchedResultsArray: [CategoryTable], featchResultCtrl: NSFetchedResultsController<CategoryTable>, feachRequest :NSFetchRequest<CategoryTable>, sortDescriptor : NSSortDescriptor)
-
-//    // variable for ProductTable
-//    var productArray : [ProductTable] = []
-//    var featchResultCtrlProduct: NSFetchedResultsController<ProductTable>
-//    let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
-//    let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
-//    //var productTable = ProductTable(context: context)
-    
+ 
     // variable for ShopingProductTable
     var shopingProductArray = [ShopingProductTable]()
     let featchResultCtrlShopingProduct: NSFetchedResultsController<ShopingProductTable>
@@ -77,48 +45,29 @@ class Database  {
     var feachBasketProductRequest:NSFetchRequest<BasketProductTable> = BasketProductTable.fetchRequest()
     let sortBasketProductDescriptor = NSSortDescriptor(key: "id", ascending: true)
     //var shopingProductTable : ShopingProductTable(context: context)
-    
     var usersArray=[UsersTable]()
-
-    func getParam(tableArrayWith dbName: DbTableNames) -> [AnyObject] {
-        var myArray: [AnyObject]?
-        switch dbName {
-        case .products:
-            myArray  = category.categoryArray
-        case .categories:
-            myArray  = product.productArray
-        case .shopingProduct:
-            myArray  = shopingProductArray
-        case .toShop:
-            myArray  = toShopProductArray
-        case .basket:
-            myArray  = basketProductArray
-        case .users:
-            print("ERROR: myArray  = userArray")
+    var scanerCodebarValue: String {
+        didSet {
+            print("Codebar was read :\(scanerCodebarValue)")
+            // let xx="49443310"
+            self.eanMode = true
+            self.filterData(searchText: scanerCodebarValue, searchTable: .products, searchField: .EAN)
+            if database.product.productArray.count == 0 {
+                print("Not found this product")
+            }
         }
-        return myArray!
     }
-//    func getParam(feachRequestlWith dbName: DbTableNames) -> NSFetchedResultsController<NSFetchRequestResult> {
-//        //var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
-//        //feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
-//        var feachRequest: NSFetchRequest<NSFetchRequestResult>
-//        switch dbName {
-//            case .products:
-//                feachRequest  = feachToShopProductRequest as! NSFetchRequest<NSFetchRequestResult>
-//            case .categories:
-//                feachRequest  = CategoryTable.fetchRequest()
-//            case .toShop:
-//                feachRequest  = ToShopProductTable.fetchRequest()
-//            case .basket:
-//                feachRequest  = BasketProductTable.fetchRequest()
-//            case .shopingProduct:
-//                feachRequest  = ShopingProductTable.fetchRequest()
-//            case .users:
-//                feachRequest = UsersTable.fetchRequest()
-//        }
-//        return feachRequest
-//        }
-
+    @objc var selectedCategory:CategoryTable? {
+        didSet {
+            print("Seting Category: \(selectedCategory?.categoryName ?? "")")
+            let catArray=database.category.categoryArray
+            for el in catArray {
+                el.selectedCategory = selectedCategory?.categoryName == el.categoryName ? true : false
+            }
+            database.save()
+        }
+    }
+    // initialising class Database
     init(context: NSManagedObjectContext) {
         self.context = context
         category  = CategorySeting(context: context)
@@ -145,6 +94,26 @@ class Database  {
         //featchResultCtrlCategory=NSFetchedResultsController(fetchRequest: feachCategoryRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.scanerCodebarValue = ""
     }
+    
+    func getParam(tableArrayWith dbName: DbTableNames) -> [AnyObject] {
+        var myArray: [AnyObject]?
+        switch dbName {
+        case .products:
+            myArray  = category.categoryArray
+        case .categories:
+            myArray  = product.productArray
+        case .shopingProduct:
+            myArray  = shopingProductArray
+        case .toShop:
+            myArray  = toShopProductArray
+        case .basket:
+            myArray  = basketProductArray
+        case .users:
+            print("ERROR: myArray  = userArray")
+        }
+        return myArray!
+    }
+
     func setSelectedCategory() {
         if category.categoryArray.count>0 {
             for elem in category.categoryArray {
