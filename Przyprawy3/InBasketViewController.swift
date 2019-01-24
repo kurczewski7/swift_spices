@@ -74,14 +74,14 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         let dlugosc = database.product.productArray.count
         print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
         //let tmp = database.product.productArray[indexPath.row < dlugosc  ? indexPath.row: 0]
-        let obj=fetchedResultsController.object(at: indexPath)
-        cell.detailLabel.text=obj.description
-        cell.producentLabel.text="aaa\(indexPath.row)"
-        //cell.productNameLabel.text="cobj"
-        configureCell(cell: cell, withEntity: obj as! ProductTable)
+        let obj=fetchedResultsController.object(at: indexPath) as! ProductTable
+        configureCell(cell: cell, withEntity: obj, row: indexPath.row, section: indexPath.section )
         return cell
     }
-    func configureCell(cell: InBasketTableViewCell, withEntity product: ProductTable) {
+    func configureCell(cell: InBasketTableViewCell, withEntity product: ProductTable, row: Int, section: Int) {
+        cell.detailLabel.text=product.description
+        cell.producentLabel.text="aaa\(row),\(section)"
+        //cell.productNameLabel.text="cobj"
         cell.productNameLabel.text = product.productName
         cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
     }
