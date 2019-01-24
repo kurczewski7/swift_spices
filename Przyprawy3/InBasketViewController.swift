@@ -17,22 +17,16 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         super.viewDidLoad()
         // categoryId   productName
         
-        
         let context = database.context
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProductTable")
-        
-        let letterSort = NSSortDescriptor(key: "categoryId", ascending: true)
-        let letterSort2=NSSortDescriptor(key: "productName", ascending: true)
-        fetchRequest.sortDescriptors = [letterSort,letterSort2]
-        
+        let sort1 = NSSortDescriptor(key: "categoryId", ascending: true)
+        let sort2=NSSortDescriptor(key: "productName", ascending: true)
+        fetchRequest.sortDescriptors = [sort1, sort2]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                               managedObjectContext: context,
                                                               sectionNameKeyPath: "categoryId",
-                                                              cacheName: "SectionCache")        
+                                                              cacheName: "SectionCache")
         fetchedResultsController.delegate =  self
-        
-        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
@@ -41,27 +35,38 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     func numberOfSectionsInTableView
         (tableView: UITableView) -> Int {
+        let sectionInfo =  fetchedResultsController.sections![0]
+        
+        print("ind: \(sectionInfo.indexTitle ?? "brak")")
+        print("name: \(sectionInfo.name)")
+        print("obj: \(sectionInfo.numberOfObjects)")
+        print("count: \(sectionInfo.objects?.count ?? -1)")
+
         return fetchedResultsController.sections!.count
     }
     
-    func tableView(tableView: UITableView,
+    func tableView(_ tableView: UITableView,
                    titleForHeaderInSection section: Int) -> String? {
         let sectionInfo =
             fetchedResultsController.sections![section]
+        
         return sectionInfo.name
     }
     func tableView(tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         let sectionInfo =
             fetchedResultsController.sections![section]
-        print("numb: \(sectionInfo.numberOfObjects) index: \(sectionInfo.indexTitle!) name: \(sectionInfo.name), count: \(sectionInfo.objects?.count)")
-        
-        return sectionInfo.numberOfObjects
+            print("numb: \(sectionInfo.numberOfObjects)")
+            print("index: \(sectionInfo.indexTitle)")
+            print("name: \(sectionInfo.name)")
+            print("count: \(sectionInfo.objects?.count)")
+        return fetchedResultsController.sections?.count  ?? 0  //sectionInfo.numberOfObjects
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,8 +74,16 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         let dlugosc = database.product.productArray.count
         print("dlugosc \(dlugosc) indexPath.row \(indexPath.row)")
         //let tmp = database.product.productArray[indexPath.row < dlugosc  ? indexPath.row: 0]
+        let obj=fetchedResultsController.object(at: indexPath)
+        cell.detailLabel.text=obj.description
         cell.producentLabel.text="aaa\(indexPath.row)"
+        //cell.productNameLabel.text="cobj"
+        configureCell(cell: cell, withEntity: obj as! ProductTable)
         return cell
+    }
+    func configureCell(cell: InBasketTableViewCell, withEntity product: ProductTable) {
+        cell.productNameLabel.text = product.productName
+        cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
     }
     func firstRunSetupSections(forEntityName entityName : String) {
     }
