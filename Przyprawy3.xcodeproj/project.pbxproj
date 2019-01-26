@@ -153,7 +153,6 @@
 				2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */,
 				2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */,
 				2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */,
-				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +191,7 @@
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
+				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C158CBD2186106F00C3438B /* Model */,
 				2C158CC1218610BB00C3438B /* Controllers */,
 				2C158CBF2186109800C3438B /* View */,

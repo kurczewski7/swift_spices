@@ -473,37 +473,27 @@ class Database  {
 
     
 }
-// New Class
+// New Class ------------------------------------------
 class CategorySeting {
+    struct SectionsData {
+        var sectionId: Int = 0
+        var sectionTitle: String = "No title"
+        var groupId: Int = 0
+        var objects: [Int] = []
+    }
+    let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
+    var sectionsData: [SectionsData] = [SectionsData]()
     var context: NSManagedObjectContext
     var categoryArray: [CategoryTable] = []
-    //var featchResultCtrlCategory: NSFetchedResultsController<CategoryTable>
-    let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
     var sortCategoryDescriptor:NSSortDescriptor
-    var categoryGroups : [[Int]] = [[0,1,2], [3,4,5], [6],[],[],[],[],[]]
-    
+    var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[]]
+    var categorySectionHeader: [Int] = [Int]()     //[1,2,3]
+
     init(context: NSManagedObjectContext)
     {
         self.context=context
         categoryArray=[]
         sortCategoryDescriptor=NSSortDescriptor(key: "categoryName", ascending: true)
-    }
-    // Method for section in coredata for Tableviw - ToShopTableviewController
-    func getNoEmptySectionCount() -> Int {
-        var result = 0
-        for subArray in categoryGroups  {
-            if subArray.count > 0 {
-                result += 1
-            }
-        }
-        print("result: \(result)")
-        return result
-    }
-    func  clearToShopForCategorries() {
-        categoryGroups = [[], [], [],[],[],[],[],[]]
-    }
-    func getCurrentSectionCount(forCategories section: Int) -> Int {
-        return categoryGroups[section].count
     }
     func crateCategoryGroups(forToShopProduct: [ToShopProductTable] ) {
         var categoryId: Int16 = 0
@@ -515,9 +505,43 @@ class CategorySeting {
                 categoryGroups[Int(categoryId)-1].append(i)
             }
         }
+        createSectionsData()
+    }
+    func createSectionsData() {
+//     var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[7]]   //polishLanguage
+        //var currSection = SectionsData()
+        sectionsData.removeAll()
+        var i: Int = 0
+        var sectionNo: Int = 0
+        var sectionTitle = ""
+        
+        for tmp in categoryGroups {
+            if tmp.count > 0 {
+                sectionTitle = polishLanguage ? categoriesData[i].name : categoriesData[i].nameEN
+                addElementToSectionData(sectionId: sectionNo+1, sectionTitle: sectionTitle, groupId: i, objects: tmp)
+                i += 1
+            }
+            sectionNo += 1
+        }
+    }
+    func addElementToSectionData(sectionId: Int, sectionTitle: String, groupId: Int, objects: [Int])
+    {
+        let newElement = SectionsData(sectionId: sectionId, sectionTitle: sectionTitle, groupId: groupId, objects: objects)
+        print("newElement \(newElement)")
+         sectionsData.append(newElement)
+    }
+    func  clearToShopForCategorries() {
+        categoryGroups = [[], [], [],[],[],[],[],[]]
+    }
+    func getCurrentSectionCount(forSection section: Int) -> Int {
+        return self.sectionsData[section].objects.count //categoryGroups[section].count
+    }
+    func getCategorySectionHeader(forSection section: Int) -> String {
+        return self.sectionsData[section].sectionTitle
     }
 } // end of class CategorySeting
 
+// New Class ------------------------------------------
 class ProductSeting {
     var context: NSManagedObjectContext
         // variable for ProductTable
@@ -542,10 +566,10 @@ class ProductSeting {
     //    let feachProductRequest: NSFetchRequest<ProductTable> = ProductTable.fetchRequest()
     //    let sortProductDescriptor = NSSortDescriptor(key: "productName", ascending: true)
     //    //var productTable = ProductTable(context: context)
-
     
         //var productTable = ProductTable(context: context)
-}
+    
+} // end of class ProductSeting
 
 
 

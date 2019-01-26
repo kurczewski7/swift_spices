@@ -11,11 +11,8 @@ import UIKit
 class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     var keyboarActive = false
     
-    
-    
     @IBOutlet var tabView: UITableView!
     @IBOutlet var searchedBar: UISearchBar!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +36,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         database.loadData(tableNameType: .toShop)
         database.category.crateCategoryGroups(forToShopProduct: database.toShopProductArray)
+        //database.category.createSectionsData()
         tabView.reloadData()
         print("viewWillAppear")
     }
@@ -47,27 +45,36 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 8 //database.category.getNoEmptySectionCount()
+         print("numberOfSections \(database.category.sectionsData.count))")
+        return  database.category.sectionsData.count
      }
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return database.category.categoryGroups[section].count
+        print("numberOfRowsInSection \(database.category.getCurrentSectionCount(forSection: section))")
+        return   database.category.getCurrentSectionCount(forSection: section)
+    
     }
-    func getToShopProduct(forCategoryNumber categoryNo: Int, indexPath: IndexPath) -> ProductTable?  {
-        //let rowNumber = indexPath.row
-        let rowNumber = Int(database.category.categoryGroups[indexPath.section][indexPath.row])
-        let toShopProduct = database.toShopProductArray[rowNumber].productRelation
-        if toShopProduct?.categoryId == Int16(categoryNo+1) {
-           return toShopProduct
-        }
-        else {
-            return nil
-        }
+    func getToShopProduct(indexPath: IndexPath) -> ProductTable?  {
+        let prodNumber=database.category.sectionsData[indexPath.section].objects[indexPath.row]
+        let  xxx = prodNumber < database.toShopProductArray.count ? prodNumber : database.toShopProductArray.count-1
+        let toShopProduct = database.toShopProductArray[xxx].productRelation
+        return toShopProduct
     }
+        //??????????????????
+//        if toShopProduct?.categoryId == Int16(categoryNo+1) {
+//           return toShopProduct
+//        }
+//        else {
+//            return nil
+//        }
+
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("section:\(indexPath.section) row:\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
-        let toShop=getToShopProduct(forCategoryNumber: indexPath.section, indexPath: indexPath)
+        //let noEmptSectionNumber=database.category.getActiveSection(section: indexPath.section)
+       
+        let toShop=getToShopProduct(indexPath: indexPath) //(forCategoryNumber: indexPath.section, indexPath: indexPath)  //let toShop=getToShopProduct(forCategoryNumber: indexPath.section, indexPath: indexPath)
         if toShop != nil {
+            
             cell.producentLabel.text = toShop?.producent
             cell.productNameLabel.text = toShop?.productName
             let grams="\(toShop?.weight ?? 0)g"
@@ -88,17 +95,16 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label=UILabel()
-        let sectionName = database.category.categoryArray[section].categoryName ?? "category \(section)"
+        let sectionName = database.category.getCategorySectionHeader(forSection: section)
         label.text="\(sectionName)"
         label.textAlignment = .center
         label.backgroundColor=UIColor.lightGray
-        if section==5 {
-            label.isEnabled=false
-        }
-        if section==6 {
-            return nil
-        }
-
+//        if section==5 {
+//            label.isEnabled=false
+//        }
+//        if section==6 {
+//            return nil
+//        }
         return label
     }
     
@@ -123,9 +129,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
               tableView.beginUpdates()
               tableView.deleteRows(at: [indexPath], with: .fade)
               tableView.endUpdates()
-            
              //tableView.reloadData()
-            
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
