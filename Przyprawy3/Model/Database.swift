@@ -470,8 +470,6 @@ class Database  {
     func searchEanCode() {
         database.filterData(searchText: self.scanerCodebarValue, searchTable: .products, searchField: .EAN)
     }
-
-    
 }
 // New Class ------------------------------------------
 class CategorySeting {
@@ -487,7 +485,6 @@ class CategorySeting {
     var categoryArray: [CategoryTable] = []
     var sortCategoryDescriptor:NSSortDescriptor
     var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[]]
-    var categorySectionHeader: [Int] = [Int]()     //[1,2,3]
 
     init(context: NSManagedObjectContext)
     {
@@ -517,7 +514,7 @@ class CategorySeting {
         
         for tmp in categoryGroups {
             if tmp.count > 0 {
-                sectionTitle = polishLanguage ? categoriesData[i].name : categoriesData[i].nameEN
+                sectionTitle = polishLanguage ? categoriesData[sectionNo].name : categoriesData[sectionNo].nameEN
                 addElementToSectionData(sectionId: sectionNo+1, sectionTitle: sectionTitle, groupId: i, objects: tmp)
                 i += 1
             }
@@ -556,7 +553,6 @@ class ProductSeting {
         sortProductDescriptor=NSSortDescriptor(key: "productName", ascending: true)
         feachProductRequest.sortDescriptors = [sortProductDescriptor]
         featchResultCtrlProduct=NSFetchedResultsController(fetchRequest: feachProductRequest, managedObjectContext:  context, sectionNameKeyPath: nil, cacheName: nil)
-        
     }
 
     
