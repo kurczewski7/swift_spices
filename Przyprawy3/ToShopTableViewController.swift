@@ -51,7 +51,6 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowsInSection \(database.category.getCurrentSectionCount(forSection: section))")
         return   database.category.getCurrentSectionCount(forSection: section)
-    
     }
     func getToShopProduct(indexPath: IndexPath) -> ProductTable?  {
         let prodNumber=database.category.sectionsData[indexPath.section].objects[indexPath.row]
@@ -59,20 +58,10 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         let toShopProduct = database.toShopProductArray[xxx].productRelation
         return toShopProduct
     }
-        //??????????????????
-//        if toShopProduct?.categoryId == Int16(categoryNo+1) {
-//           return toShopProduct
-//        }
-//        else {
-//            return nil
-//        }
-
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("section:\(indexPath.section) row:\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! ToShopTableViewCell
-        //let noEmptSectionNumber=database.category.getActiveSection(section: indexPath.section)
-       
-        let toShop=getToShopProduct(indexPath: indexPath) //(forCategoryNumber: indexPath.section, indexPath: indexPath)  //let toShop=getToShopProduct(forCategoryNumber: indexPath.section, indexPath: indexPath)
+        let toShop=getToShopProduct(indexPath: indexPath)
         if toShop != nil {
             
             cell.producentLabel.text = toShop?.producent
@@ -90,7 +79,6 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
             cell.producentLabel.text="Brak produktu"
             cell.picture.image=nil
         }
-        
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -99,12 +87,6 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         label.text="\(sectionName)"
         label.textAlignment = .center
         label.backgroundColor=UIColor.lightGray
-//        if section==5 {
-//            label.isEnabled=false
-//        }
-//        if section==6 {
-//            return nil
-//        }
         return label
     }
     
@@ -119,17 +101,14 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
 //    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-//            arrStudentName.remove(at: indexPath.row)
-//            tableView.beginUpdates()
-//            tableView.deleteRows(at: [indexPath], with: .middle)
-//            tableView.endUpdates()
-            
-              database.toShopProductArray.remove(at: indexPath.row)
+              print("Kasowanie")
+              //database.toShopProductArray.remove(at: indexPath.row)
+              database.category.deleteElement(forIndexpath: indexPath) 
               tableView.beginUpdates()
               tableView.deleteRows(at: [indexPath], with: .fade)
+              
               tableView.endUpdates()
-             //tableView.reloadData()
+              //tableView.reloadData()
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

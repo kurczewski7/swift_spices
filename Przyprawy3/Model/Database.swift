@@ -527,6 +527,11 @@ class CategorySeting {
         print("newElement \(newElement)")
          sectionsData.append(newElement)
     }
+    func deleteElement(forIndexpath indexpath: IndexPath) {
+        let secton = indexpath.section
+        let row = indexpath.row
+        sectionsData[secton].objects.remove(at: row)
+    }
     func  clearToShopForCategorries() {
         categoryGroups = [[], [], [],[],[],[],[],[]]
     }
