@@ -18,6 +18,8 @@ class WebCreator {
     
     var i = 0
     var lp = 0
+    var pictWidth  = 50
+    var pictHeight = 50
     var headHtml = ""
     var bodyHtml = ""
     var footerHtml = ""
@@ -26,35 +28,38 @@ class WebCreator {
     let polishLanguage: Bool
     var tableHeaderHtml = ""
     var mainTitle = "Rachunek za filmy"
-    var footerTitle = "AAAAA"
+    var footerTitle = "Footer of page"
     var endHtml = ""
     var adresatHtml = ""
+    var pictHtml = ""
     
     let headers     = ["Lp", "Tytul filmu", "Cena"]
     let sizes       = ["5", "75", "*"]
     var rowContents  = ["aaa", "bbb", "ccc"]
     var footContents = ["ddd", "eee", "fff"]
-    
-    
-    
+    var sectionTitles = ["Przyprawy","Warzywa","Owoce"]
    
     init(polishLanguage: Bool) {
         self.i = 0
         self.lp = 0
         self.polishLanguage = polishLanguage
-        self.mainTitle      = "Rachunek za filmy \(lp)"
-        self.footerTitle    = "Suma za filmy \(lp)"
-        self.rowContents     = ["Lp", "Tytul filmu\(lp)", "Cena \(lp)"]
-        self.footContents    = ["-", "Suma za filmy \(footerTitle)", "\(lp)"]
+        self.mainTitle      = "Koszyk produktów"
+        self.footerTitle    = " \(sectionTitles[0])"
+        self.rowContents     = ["Lp", sectionTitles[0], "Cena \(lp)"]
+        self.footContents    = ["-", "Razem produktów \(footerTitle)", "\(lp)"]
         
         for i in 0..<headers.count {
             self.addWebCol(header: headers[i], size: sizes[i], rowContent: rowContents[i], footContent: footContents[i])
         }
+        //<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+        //<img src="programming.gif" alt="Computer man" style="width:48px;height:48px;">
+        //pictHtml="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
         
         headHtml="<!DOCTYPE html><html>\n<head>\n<style>\n"
         headHtml+="table {width:100%;} \ntable, th, td {  border: 1px solid black;   border-collapse: collapse;  text-align: center;  }\n"
         headHtml+="th {padding: 5px;text-align: center;}\n"
         headHtml+="td {padding: 5px;text-align: left;}\n"
+        headHtml+="img {width: 100px; height: 100px;}\n"
         headHtml+="table#t01 tr:nth-child(even) {   background-color: #eee;  }\n"
         headHtml+="table#t01 tr:nth-child(odd)  {   background-color:#fff;   }\n"
         headHtml+="table#t01 th                 {   background-color: gray;  }\n"
@@ -68,7 +73,7 @@ class WebCreator {
         headHtml+="</style>\n"
         headHtml+="</head>\n"
         headHtml+="<body>\n"
-        
+        headHtml+="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
         tableHeaderHtml="<table id=\"t01\">\n"
         tableHeaderHtml+="<caption>\(mainTitle): <b>77</b></caption>\n"
         tableHeaderHtml+="<tr>"
@@ -79,7 +84,7 @@ class WebCreator {
 
 
         footerHtml+="<tfoot>\n"
-        footerHtml+="1111<tr>2222\n"
+        footerHtml+="<tr>\n"
         for tmp in webColsDescription {
            footerHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.footContent)</th>\n"
         }
@@ -98,39 +103,25 @@ class WebCreator {
         let value: WebColDescription = WebColDescription(header: header, size: size, rowContent: rowContent, footContent: footContent)
         webColsDescription.append(value)
     }
-    //---------------------------------------
-    //        footerHtml+="<tr>"
-    //        footerHtml+="<td></td>"
-    //        footerHtml+="<td>\(2+2)</td>"
-    //        footerHtml+="<td></td>"
-    //        footerHtml+="</tr>"
-
-    //        footerHtml+="<th style=\"width:\(sizes[0])%\">\(footContent[0])</th>\n"
-    //        footerHtml+="<th style=\"width:\(sizes[1])%\">\(footContent[2])/th>\n"
-    //        footerHtml+="<th style=\"width:\(sizes[1])%\">\(footContent[3])</th>\n"
-    //footerHtml+="<tr>"
-    //tableHewaderHtml+="<th style=\"width:5%\">\(headers[0])</th>"
-    //tableHewaderHtml+="<th style=\"width:75%\">\(headers[1])</th>"
-    //tableHewaderHtml+="<th>\(headers[1])</th>"
-
-    
     
 func getRowData() {
     
-    let rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
-    //headHtml+="<tr>"
+    var rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
+    //rowData.removeAll()
+    //
+    rowData.append("<#T##Sequence#>")
     
     for i in 0..<10 {
         bodyHtml+="<tr>"
         bodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
         bodyHtml+="<td>\(rowData[0])</td>"
-        bodyHtml+="<td>\(rowData[1])</td>"
+        bodyHtml+="<td>\(rowData[0])</td>"
         bodyHtml+="</tr>\n"
         }
     }
     func getFullHtml() {
         getRowData()
-        let value = headHtml+tableHeaderHtml+bodyHtml+footerHtml+adresatHtml
+        let value = headHtml+pictHtml+tableHeaderHtml+bodyHtml+footerHtml+adresatHtml
         print(value)
         //print("headHtml:\(headHtml)")
         //print("tableHewaderHtml:\(tableHeaderHtml)")
