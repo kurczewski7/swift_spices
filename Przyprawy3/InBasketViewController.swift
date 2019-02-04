@@ -85,6 +85,12 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
         cell.productNameLabel.text = product.productName
         cell.picture.image=UIImage(named: product.pictureName ?? "cameraCanon")
     }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("<#T##items: Any...##Any#>")
+    }
     func firstRunSetupSections(forEntityName entityName : String) {
     }
     /*

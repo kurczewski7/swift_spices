@@ -46,7 +46,7 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
          print("numberOfSections \(database.category.sectionsData.count))")
-        return  database.category.sectionsData.count
+        return database.category.sectionsData.count
      }
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowsInSection \(database.category.getCurrentSectionCount(forSection: section))")
@@ -103,12 +103,13 @@ class ToShopTableViewController: UIViewController, UITableViewDelegate, UITableV
         if editingStyle == .delete {
               print("Kasowanie")
               //database.toShopProductArray.remove(at: indexPath.row)
-              database.category.deleteElement(forIndexpath: indexPath) 
               tableView.beginUpdates()
-              tableView.deleteRows(at: [indexPath], with: .fade)
-              
+            
+            database.category.deleteElement(forIndexpath: indexPath)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
               tableView.endUpdates()
-              //tableView.reloadData()
+              tableView.reloadData()
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

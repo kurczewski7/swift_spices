@@ -14,6 +14,7 @@
 		2C1B7940219C7DE300A7BD63 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */; };
 		2C1EB36121A46ADA00426F61 /* ToShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */; };
 		2C1EB36321A46B4B00426F61 /* ToShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */; };
+		2C1F1D6722072CD3004665DD /* WebCretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F1D6622072CD3004665DD /* WebCretor.swift */; };
 		2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */; };
 		2C31B32521383A4900B7581D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31B32421383A4900B7581D /* Database.swift */; };
 		2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38921F2122FE5300257476 /* AtHomeCell.swift */; };
@@ -62,6 +63,7 @@
 		2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToShopTableViewController.swift; sourceTree = "<group>"; };
 		2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToShopTableViewCell.swift; sourceTree = "<group>"; };
+		2C1F1D6622072CD3004665DD /* WebCretor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCretor.swift; sourceTree = "<group>"; };
 		2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAtHomeViewController.swift; sourceTree = "<group>"; };
 		2C31B32421383A4900B7581D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		2C38921F2122FE5300257476 /* AtHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeCell.swift; sourceTree = "<group>"; };
@@ -145,11 +147,11 @@
 				2C0A1D2721355BFF006FA312 /* PhoneContactsViewController.swift */,
 				2C7CB577212FEB57005F6304 /* Contacts.swift */,
 				2C7888DC212C492D00225A52 /* ShopingListViewController.swift */,
-				2C8C528C2122E135006D8099 /* AtHomeViewController.swift */,
 				2CE27568210237AF001C046B /* ViewController.swift */,
 				2C2C2BBF2107B5E600A19C4A /* DetailAtHomeViewController.swift */,
-				2C1B3BDC21B7D12000B53ABA /* TakePhotoViewController.swift */,
+				2C8C528C2122E135006D8099 /* AtHomeViewController.swift */,
 				2C38921F2122FE5300257476 /* AtHomeCell.swift */,
+				2C1B3BDC21B7D12000B53ABA /* TakePhotoViewController.swift */,
 				2C1EB36221A46B4B00426F61 /* ToShopTableViewCell.swift */,
 				2C1B793F219C7DE300A7BD63 /* CategoryCollectionViewCell.swift */,
 				2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */,
@@ -190,6 +192,7 @@
 				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
+				2C1F1D6622072CD3004665DD /* WebCretor.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C158CBD2186106F00C3438B /* Model */,
@@ -369,6 +372,7 @@
 				2CE27567210237AF001C046B /* AppDelegate.swift in Sources */,
 				2CF73B042135D97700FEA34C /* BrakujeViewController.swift in Sources */,
 				2C1EB36121A46ADA00426F61 /* ToShopTableViewController.swift in Sources */,
+				2C1F1D6722072CD3004665DD /* WebCretor.swift in Sources */,
 				2C31B32521383A4900B7581D /* Database.swift in Sources */,
 				2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */,
 				2C2C2BC02107B5E600A19C4A /* DetailAtHomeViewController.swift in Sources */,

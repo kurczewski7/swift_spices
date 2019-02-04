@@ -505,8 +505,6 @@ class CategorySeting {
         createSectionsData()
     }
     func createSectionsData() {
-//     var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[7]]   //polishLanguage
-        //var currSection = SectionsData()
         sectionsData.removeAll()
         var i: Int = 0
         var sectionNo: Int = 0
@@ -531,6 +529,13 @@ class CategorySeting {
         let secton = indexpath.section
         let row = indexpath.row
         sectionsData[secton].objects.remove(at: row)
+        if sectionsData[secton].objects.count == 0 {
+            print("befor \(sectionsData[0])")
+            print("      \(sectionsData[1])")
+            sectionsData.remove(at: secton)
+            print("aftyer \(sectionsData[0])")
+            print("       \(sectionsData[1])")
+}
     }
     func  clearToShopForCategorries() {
         categoryGroups = [[], [], [],[],[],[],[],[]]

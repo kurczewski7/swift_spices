@@ -26,6 +26,12 @@ func initialProduct()
 {
     
     }
+   
+    @IBAction func WebCreate(_ sender: UIButton) {
+        let web=WebCreator(polishLanguage: true)
+        web.getFullHtml()
+    }
+    
     
     // MARK: - IBAction
     @IBAction func analizaTap(_ sender: Any) {
