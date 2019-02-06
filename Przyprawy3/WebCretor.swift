@@ -15,6 +15,7 @@ class WebCreator {
         let footContent: String
     }
     var webColsDescription: [WebColDescription] = []
+    var db : [ProductTable] = []
     
     var i = 0
     var lp = 0
@@ -38,11 +39,15 @@ class WebCreator {
     var rowContents  = ["aaa", "bbb", "ccc"]
     var footContents = ["ddd", "eee", "fff"]
     var sectionTitles = ["Przyprawy","Warzywa","Owoce"]
-   
+    var lang = "en"
+    
     init(polishLanguage: Bool) {
+        self.polishLanguage = polishLanguage
+        lang = polishLanguage ? "pl" : "en"
+        db=database.product.productArray
         self.i = 0
         self.lp = 0
-        self.polishLanguage = polishLanguage
+        
         self.mainTitle      = "Koszyk produktów"
         self.footerTitle    = " \(sectionTitles[0])"
         self.rowContents     = ["Lp", sectionTitles[0], "Cena \(lp)"]
@@ -55,7 +60,7 @@ class WebCreator {
         //<img src="programming.gif" alt="Computer man" style="width:48px;height:48px;">
         //pictHtml="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
         
-        headHtml="<!DOCTYPE html><html>\n<head>\n<style>\n"
+        headHtml="<!DOCTYPE html><html lang=\"\(lang)\">\n<head><meta charset=\"utf-8\">\n<style>\n"
         headHtml+="table {width:100%;} \ntable, th, td {  border: 1px solid black;   border-collapse: collapse;  text-align: center;  }\n"
         headHtml+="th {padding: 5px;text-align: center;}\n"
         headHtml+="td {padding: 5px;text-align: left;}\n"
@@ -73,6 +78,7 @@ class WebCreator {
         headHtml+="</style>\n"
         headHtml+="</head>\n"
         headHtml+="<body>\n"
+        headHtml+="<img src=\"owoce_08_b.jpg\" alt=\"HTML5 Icon\">"
         headHtml+="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
         tableHeaderHtml="<table id=\"t01\">\n"
         tableHeaderHtml+="<caption>\(mainTitle): <b>77</b></caption>\n"
@@ -111,11 +117,11 @@ func getRowData() {
     //
     rowData.append("<#T##Sequence#>")
     
-    for i in 0..<10 {
+    for i in 0..<30 {
         bodyHtml+="<tr>"
         bodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
-        bodyHtml+="<td>\(rowData[0])</td>"
-        bodyHtml+="<td>\(rowData[0])</td>"
+        bodyHtml+="<td>\(db[i].productName ?? "brak")</td>"
+        bodyHtml+="<td>\(db[i].producent ?? "nie ma")</td>"
         bodyHtml+="</tr>\n"
         }
     }
