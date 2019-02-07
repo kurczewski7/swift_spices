@@ -7,6 +7,9 @@
 //
 
 import Foundation
+protocol WebCreatorDelegate {
+    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable
+}
 class WebCreator {
     struct WebColDescription {
         let header:      String
@@ -14,6 +17,8 @@ class WebCreator {
         let rowContent:  String
         let footContent: String
     }
+    var delegate: WebCreatorDelegate?
+    
     var webColsDescription: [WebColDescription] = []
     var db : [ProductTable] = []
     
@@ -44,6 +49,7 @@ class WebCreator {
     init(polishLanguage: Bool) {
         self.polishLanguage = polishLanguage
         lang = polishLanguage ? "pl" : "en"
+        
         db=database.product.productArray
         self.i = 0
         self.lp = 0
@@ -118,18 +124,20 @@ func getRowData() {
     rowData.append("<#T##Sequence#>")
     
     for i in 0..<30 {
+        let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: 0)
         bodyHtml+="<tr>"
         bodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
-        bodyHtml+="<td>\(db[i].productName ?? "brak")</td>"
-        bodyHtml+="<td>\(db[i].producent ?? "nie ma")</td>"
+        bodyHtml+="<td>\(prod?.productName ?? "brak")</td>"
+        bodyHtml+="<td>\(prod?.producent ?? "nie ma")</td>"
         bodyHtml+="</tr>\n"
         }
     }
-    func getFullHtml() {
+    func getFullHtml() -> String{
         getRowData()
         let value = headHtml+pictHtml+tableHeaderHtml+bodyHtml+footerHtml+adresatHtml
         print(value)
         //print("headHtml:\(headHtml)")
         //print("tableHewaderHtml:\(tableHeaderHtml)")
+        return value
     }
 }
