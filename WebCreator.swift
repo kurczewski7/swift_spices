@@ -8,8 +8,8 @@
 
 import Foundation
 protocol WebCreatorDelegate {
-    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable
-    func webCreatorNumberOfRows() -> Int
+    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
+    func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
 }
 class WebCreator {
@@ -93,8 +93,6 @@ class WebCreator {
         
         endHtml+="</body>"
         endHtml+="</html>"
-
-
     }
     func addWebCol(header: String, size: String, rowContent: String, footContent: String) {
         let value: WebColDescription = WebColDescription(header: header, size: size, rowContent: rowContent, footContent: footContent)
@@ -130,22 +128,30 @@ class WebCreator {
     //var rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
     //rowData.append("<#T##Sequence#>")
     var tableBodyHtml = ""
-    let numOfRows = self.delegate?.webCreatorNumberOfRows()
+        let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
     for i in 0..<numOfRows! {
-        let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section)
-        tableBodyHtml+="<tr>"
-        tableBodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
-        tableBodyHtml+="<td>\(prod?.productName ?? "brak")</td>"
-        tableBodyHtml+="<td>\(prod?.producent ?? "nie ma")</td>"
-        tableBodyHtml+="</tr>\n"
+        if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
+            tableBodyHtml+="<tr>"
+            tableBodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
+            tableBodyHtml+="<td>\(prod.productName ?? "brak")</td>"
+            tableBodyHtml+="<td>\(prod.producent ?? "nie ma")</td>"
+            tableBodyHtml+="</tr>\n"
+            }
         }
         return tableBodyHtml
     }
     func getFullHtml() -> String{
         //getRowData(forSection: 0)
-        craateHtmlTable(idTable: 1, aTitle: "Pierwsza", forSection: 0)
-         craateHtmlTable(idTable: 1, aTitle: "Druga", forSection: 0)
-        let value = headHtml+pictHtml+tableHeaderHtml + htmlTablesCollection[0] + htmlTablesCollection[1] + footerHtml+adresatHtml
+        craateHtmlTable(idTable: 1, aTitle: "Pierwsza", forSection: 1)
+        craateHtmlTable(idTable: 2, aTitle: "Druga"   , forSection: 0)
+        craateHtmlTable(idTable: 3, aTitle: "Trzecia" , forSection: 2)
+        
+        var value = headHtml+pictHtml+tableHeaderHtml
+        for tmp in htmlTablesCollection {
+            value += tmp
+        }
+        value += footerHtml+adresatHtml
+    
         print(value)
         //print("headHtml:\(headHtml)")
         //print("tableHewaderHtml:\(tableHeaderHtml)")

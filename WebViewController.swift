@@ -10,16 +10,24 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
-    func webCreatorNumberOfRows() -> Int {
-        return database.product.productArray.count
+ 
+    //var product: [ProductTable] = [ProductTable]()
+    let sectionsGrups = database.category.categoryGroups
+    // categoryGroups
+    
+    // MARK: WebCreatorDelegate method
+    func webCreatorNumberOfRows(forSection section: Int) -> Int {
+        return  sectionsGrups[section].count  //4 //database.product.productArray.count
     }
     func webCreatorNumberOfSections() -> Int {
-        return 1
+        return sectionsGrups.count
     }
-    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable {
-        let product=database.product.productArray[row]
+    func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
+        let  prodNumber=database.category.sectionsData[section].objects[row]
+        let product = database.toShopProductArray[prodNumber].productRelation
         return product
     }
+
     //var delegate: WebCreatorDelegate?
     //database.delegate = self
     var webView: WKWebView!
