@@ -10,6 +10,12 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
+    func webCreatorNumberOfRows() -> Int {
+        return database.product.productArray.count
+    }
+    func webCreatorNumberOfSections() -> Int {
+        return 1
+    }
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable {
         let product=database.product.productArray[row]
         return product

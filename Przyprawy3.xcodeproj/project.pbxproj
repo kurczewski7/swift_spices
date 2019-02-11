@@ -172,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2C22CF2A220CBB4100F6B53B /* WebViewController.swift */,
+				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2CE27565210237AF001C046B /* Przyprawy3 */,
 				2CE2757D210237B1001C046B /* Przyprawy3Tests */,
 				2CE27588210237B1001C046B /* Przyprawy3UITests */,
@@ -195,7 +196,6 @@
 				2CE2756A210237AF001C046B /* Main.storyboard */,
 				2CE27566210237AF001C046B /* AppDelegate.swift */,
 				2CB2281821F24BD8008A3292 /* InBasketViewController.swift */,
-				2C1F1D6622072CD3004665DD /* WebCreator.swift */,
 				2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */,
 				2C1EB36021A46ADA00426F61 /* ToShopTableViewController.swift */,
 				2C158CBD2186106F00C3438B /* Model */,

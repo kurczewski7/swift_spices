@@ -9,6 +9,8 @@
 import Foundation
 protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable
+    func webCreatorNumberOfRows() -> Int
+    func webCreatorNumberOfSections() -> Int
 }
 class WebCreator {
     struct WebColDescription {
@@ -38,6 +40,7 @@ class WebCreator {
     var endHtml = ""
     var adresatHtml = ""
     var pictHtml = ""
+    var ccsStyleExt = ""
     
     let headers     = ["Lp", "Tytul filmu", "Cena"]
     let sizes       = ["5", "75", "*"]
@@ -45,6 +48,7 @@ class WebCreator {
     var footContents = ["ddd", "eee", "fff"]
     var sectionTitles = ["Przyprawy","Warzywa","Owoce"]
     var lang = "en"
+    var htmlTablesCollection: [String] = [String]()
     
     init(polishLanguage: Bool) {
         self.polishLanguage = polishLanguage
@@ -86,58 +90,69 @@ class WebCreator {
         headHtml+="<body>\n"
         headHtml+="<img src=\"owoce_08_b.jpg\" alt=\"HTML5 Icon\">"
         headHtml+="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
-        tableHeaderHtml="<table id=\"t01\">\n"
-        tableHeaderHtml+="<caption>\(mainTitle): <b>77</b></caption>\n"
-        tableHeaderHtml+="<tr>"
-        for tmp in webColsDescription {
-           tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.rowContent)</th>"
-        }
-        tableHeaderHtml+="</tr>\n"
-
-
-        footerHtml+="<tfoot>\n"
-        footerHtml+="<tr>\n"
-        for tmp in webColsDescription {
-           footerHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.footContent)</th>\n"
-        }
-        footerHtml+="</tr>\n"
-        footerHtml+="</tfoot>\n"
-        footerHtml+="</table>"
-        
-        
         
         endHtml+="</body>"
         endHtml+="</html>"
 
-        
+
     }
     func addWebCol(header: String, size: String, rowContent: String, footContent: String) {
         let value: WebColDescription = WebColDescription(header: header, size: size, rowContent: rowContent, footContent: footContent)
         webColsDescription.append(value)
     }
-    
-func getRowData() {
-    
-    var rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
-    //rowData.removeAll()
-    //
-    rowData.append("<#T##Sequence#>")
-    
-    for i in 0..<30 {
-        let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: 0)
-        bodyHtml+="<tr>"
-        bodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
-        bodyHtml+="<td>\(prod?.productName ?? "brak")</td>"
-        bodyHtml+="<td>\(prod?.producent ?? "nie ma")</td>"
-        bodyHtml+="</tr>\n"
+    func craateHtmlTable(idTable: Int, aTitle: String, forSection section: Int) {
+        var tableHeaderHtml = ""
+        var tableBodyHtml = ""
+        var tableFooterHtml = ""
+
+        tableHeaderHtml="<table id=\"t\(idTable)\">\n"
+        tableHeaderHtml+="<caption>\(aTitle): <b>77</b></caption>\n"
+        tableHeaderHtml+="<tr>"
+        for tmp in webColsDescription {
+            tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.rowContent)</th>"
         }
+        tableHeaderHtml+="</tr>\n"
+        
+        tableBodyHtml = getRowData(forSection: section)
+        
+        tableFooterHtml+="<tfoot>\n"
+        tableFooterHtml+="<tr>\n"
+        for tmp in webColsDescription {
+            tableFooterHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.footContent)</th>\n"
+        }
+        tableFooterHtml+="</tr>\n"
+        tableFooterHtml+="</tfoot>\n"
+        tableFooterHtml+="</table>"
+        self.htmlTablesCollection.append(tableHeaderHtml + tableBodyHtml + tableFooterHtml)
+    }
+
+    func getRowData(forSection section: Int) -> String {
+    //var rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
+    //rowData.append("<#T##Sequence#>")
+    var tableBodyHtml = ""
+    let numOfRows = self.delegate?.webCreatorNumberOfRows()
+    for i in 0..<numOfRows! {
+        let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section)
+        tableBodyHtml+="<tr>"
+        tableBodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
+        tableBodyHtml+="<td>\(prod?.productName ?? "brak")</td>"
+        tableBodyHtml+="<td>\(prod?.producent ?? "nie ma")</td>"
+        tableBodyHtml+="</tr>\n"
+        }
+        return tableBodyHtml
     }
     func getFullHtml() -> String{
-        getRowData()
-        let value = headHtml+pictHtml+tableHeaderHtml+bodyHtml+footerHtml+adresatHtml
+        //getRowData(forSection: 0)
+        craateHtmlTable(idTable: 1, aTitle: "Pierwsza", forSection: 0)
+         craateHtmlTable(idTable: 1, aTitle: "Druga", forSection: 0)
+        let value = headHtml+pictHtml+tableHeaderHtml + htmlTablesCollection[0] + htmlTablesCollection[1] + footerHtml+adresatHtml
         print(value)
         //print("headHtml:\(headHtml)")
         //print("tableHewaderHtml:\(tableHeaderHtml)")
         return value
+    }
+    func setCcsStyle(newStyleExtension style: String) {
+        self.ccsStyleExt = style
+    
     }
 }
