@@ -29,7 +29,7 @@ func initialProduct()
    
     @IBAction func WebCreate(_ sender: UIButton) {
         let web=WebCreator(polishLanguage: true)
-        web.getFullHtml()
+        _ = web.getFullHtml()
     }
     
     

@@ -11,6 +11,7 @@ protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
+    
 }
 class WebCreator {
     struct WebColDescription {
@@ -19,8 +20,17 @@ class WebCreator {
         let rowContent:  String
         let footContent: String
     }
+    struct SectionsDescription {
+        var mainTitle = ""
+        var sectionTitles = [String]()
+        init() {
+            mainTitle = "Koszyk produktów"
+            sectionTitles = ["Przyprawy","Warzywa","Owoce"]
+        }
+    }
     var delegate: WebCreatorDelegate?
     
+    var sectionInfo: SectionsDescription = SectionsDescription()
     var webColsDescription: [WebColDescription] = []
     var db : [ProductTable] = []
     
@@ -35,34 +45,43 @@ class WebCreator {
     let contentField = {}
     let polishLanguage: Bool
     var tableHeaderHtml = ""
-    var mainTitle = "Rachunek za filmy"
+    
     var footerTitle = "Footer of page"
     var endHtml = ""
     var adresatHtml = ""
     var pictHtml = ""
     var ccsStyleExt = ""
     
-    let headers     = ["Lp", "Tytul filmu", "Cena"]
+    let headers     = ["Lp", "Nazwa produktu", "Cena"]
     let sizes       = ["5", "75", "*"]
-    var rowContents  = ["aaa", "bbb", "ccc"]
-    var footContents = ["ddd", "eee", "fff"]
-    var sectionTitles = ["Przyprawy","Warzywa","Owoce"]
+    var rowContents  = ["col1", "col2", "col3"]
+    var footContents = ["-", "Razem", ""]  //["-", "Razem produktów \(footerTitle)", "\(lp)"]
+   
     var lang = "en"
     var htmlTablesCollection: [String] = [String]()
+    
+    func setSectionsTitles()  -> [String] {
+        var value: [String] = [String]()
+        let sectionCount=database.category.getTotalNumberOfSection()
+        for i in 0..<sectionCount {
+                let sectionName = database.category.getCategorySectionHeader(forSection: i)
+                value.append(sectionName)
+            }
+        return value
+    }
     
     init(polishLanguage: Bool) {
         self.polishLanguage = polishLanguage
         lang = polishLanguage ? "pl" : "en"
-        
+        sectionInfo.sectionTitles = setSectionsTitles()
         db=database.product.productArray
+
+        //let allTitles = self.delegate?.webCreatorTitlesOfSerctions()
+        //print("allTitles: \(allTitles ?? ["default value"])")
+        //?? ["title0","title1","title2","title3"]
+        
         self.i = 0
         self.lp = 0
-        
-        self.mainTitle      = "Koszyk produktów"
-        self.footerTitle    = " \(sectionTitles[0])"
-        self.rowContents     = ["Lp", sectionTitles[0], "Cena \(lp)"]
-        self.footContents    = ["-", "Razem produktów \(footerTitle)", "\(lp)"]
-        
         for i in 0..<headers.count {
             self.addWebCol(header: headers[i], size: sizes[i], rowContent: rowContents[i], footContent: footContents[i])
         }
@@ -85,6 +104,9 @@ class WebCreator {
         headHtml+="}\n"
         headHtml+="table#t01 thead {  color:black;}\n"
         headHtml+="table#t01 tfoot {  color:blue; }\n"
+        if ccsStyleExt.count > 0 {
+            headHtml+="\n\(ccsStyleExt)\n"
+        }
         headHtml+="</style>\n"
         headHtml+="</head>\n"
         headHtml+="<body>\n"
@@ -98,21 +120,23 @@ class WebCreator {
         let value: WebColDescription = WebColDescription(header: header, size: size, rowContent: rowContent, footContent: footContent)
         webColsDescription.append(value)
     }
-    func craateHtmlTable(idTable: Int, aTitle: String, forSection section: Int) {
+    func craateHtmlTable(idTable: Int,  forSection section: Int, extraTitle: String = "") {
+        var aTitle: String = "Section title"
         var tableHeaderHtml = ""
         var tableBodyHtml = ""
         var tableFooterHtml = ""
-
+        
+        aTitle = sectionInfo.sectionTitles[section]
         tableHeaderHtml="<table id=\"t\(idTable)\">\n"
-        tableHeaderHtml+="<caption>\(aTitle): <b>77</b></caption>\n"
+        tableHeaderHtml+="<caption>\(aTitle) <b>\(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr>"
         for tmp in webColsDescription {
-            tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.rowContent)</th>"
+            tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.header)</th>"
         }
         tableHeaderHtml+="</tr>\n"
         
         tableBodyHtml = getRowData(forSection: section)
-        
+        // ["-", "Razem produktów \(footerTitle)", "\(lp)"]
         tableFooterHtml+="<tfoot>\n"
         tableFooterHtml+="<tr>\n"
         for tmp in webColsDescription {
@@ -125,10 +149,9 @@ class WebCreator {
     }
 
     func getRowData(forSection section: Int) -> String {
-    //var rowData=["AAAA BBBB\(100+1)","\(2+2)","\(2+200)"]
-    //rowData.append("<#T##Sequence#>")
     var tableBodyHtml = ""
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
+        print("getRowData:\(numOfRows!), section:\(section)")
     for i in 0..<numOfRows! {
         if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
             tableBodyHtml+="<tr>"
@@ -141,10 +164,13 @@ class WebCreator {
         return tableBodyHtml
     }
     func getFullHtml() -> String{
-        //getRowData(forSection: 0)
-        craateHtmlTable(idTable: 1, aTitle: "Pierwsza", forSection: 1)
-        craateHtmlTable(idTable: 2, aTitle: "Druga"   , forSection: 0)
-        craateHtmlTable(idTable: 3, aTitle: "Trzecia" , forSection: 2)
+        let sectionsCount = self.delegate?.webCreatorNumberOfSections() ?? 1
+        for i in 0..<sectionsCount {
+            craateHtmlTable(idTable: i+1, forSection: i)
+        }
+//        craateHtmlTable(idTable: 1, forSection: 0)
+//        craateHtmlTable(idTable: 2, forSection: 1)
+//        craateHtmlTable(idTable: 3, forSection: 2)
         
         var value = headHtml+pictHtml+tableHeaderHtml
         for tmp in htmlTablesCollection {

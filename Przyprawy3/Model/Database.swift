@@ -480,11 +480,12 @@ class CategorySeting {
         var objects: [Int] = []
     }
     let feachCategoryRequest: NSFetchRequest<CategoryTable> = CategoryTable.fetchRequest()
+    var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[]]
     var sectionsData: [SectionsData] = [SectionsData]()
     var context: NSManagedObjectContext
     var categoryArray: [CategoryTable] = []
     var sortCategoryDescriptor:NSSortDescriptor
-    var categoryGroups : [[Int]] = [[0,1,2], [3,4], [6],[],[],[],[],[]]
+   
 
     init(context: NSManagedObjectContext)
     {
@@ -541,7 +542,16 @@ class CategorySeting {
         categoryGroups = [[], [], [],[],[],[],[],[]]
     }
     func getCurrentSectionCount(forSection section: Int) -> Int {
-        return self.sectionsData[section].objects.count //categoryGroups[section].count
+        let val = self.sectionsData[section].objects.count //categoryGroups[section].count
+         // print("getCurrentSectionCount sec \(section):\(val)")
+         return val
+    }
+    
+    func getTotalNumberOfSection() -> Int {
+        let val = self.sectionsData.count // database.category.getCurrentSectionCount(forSection: section)
+        // print("getTotalNumberOfSection:\(val)")
+        return val
+        
     }
     func getCategorySectionHeader(forSection section: Int) -> String {
         return self.sectionsData[section].sectionTitle

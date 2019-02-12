@@ -10,17 +10,25 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WebCreatorDelegate {
+
  
     //var product: [ProductTable] = [ProductTable]()
-    let sectionsGrups = database.category.categoryGroups
+    //let sectionsGrups = database.category //.categoryGroups
     // categoryGroups
     
     // MARK: WebCreatorDelegate method
+    func webCreatorTitlesOfSerctions() -> [String] {
+        var value: [String] = [String]()
+        for tmp in database.category.categoryArray {
+            value.append(tmp.categoryName ?? "no category")
+        }
+        return ["tyt0","tyt1","tyt2","tyt3"] //value
+    }
     func webCreatorNumberOfRows(forSection section: Int) -> Int {
-        return  sectionsGrups[section].count  //4 //database.product.productArray.count
+        return  database.category.getCurrentSectionCount(forSection: section)
     }
     func webCreatorNumberOfSections() -> Int {
-        return sectionsGrups.count
+        return  database.category.getTotalNumberOfSection()
     }
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable? {
         let  prodNumber=database.category.sectionsData[section].objects[row]
