@@ -95,7 +95,7 @@ class WebCreator {
         headHtml+="img {width: 100px; height: 100px;}\n"
         headHtml+="table tr:nth-child(even) {   background-color: #eee;  }\n"
         headHtml+="table tr:nth-child(odd)  {   background-color:#fff;   }\n"
-        headHtml+="table th                 {   background-color: gray;  }\n"
+        headHtml+="table th                 {   background-color: powderblue;  }\n"
         headHtml+="table#t02 table, th, td, thead, tfoot\n"
         headHtml+="{\n"
         headHtml+="    border: 0px solid black;\n"
@@ -127,7 +127,7 @@ class WebCreator {
         
         aTitle = sectionInfo.sectionTitles[section]
         tableHeaderHtml="<table id=\"t0\(idTable)\">\n"
-        tableHeaderHtml+="<caption>\(aTitle) <b>\(extraTitle)</b></caption>\n"
+        tableHeaderHtml+="<caption><b>\(aTitle) \(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr>"
         for tmp in webColsDescription {
             tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.header)</th>"
