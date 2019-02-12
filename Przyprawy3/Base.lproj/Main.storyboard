@@ -1105,7 +1105,7 @@
             </objects>
             <point key="canvasLocation" x="2990" y="1554"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Lista zakupow-->
         <scene sceneID="0g8-SP-WJz">
             <objects>
                 <viewController id="HD1-DK-cfl" customClass="WebViewController" customModule="Przyprawy3" customModuleProvider="target" sceneMemberID="viewController">
@@ -1115,10 +1115,96 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EAD-FW-Fmd"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Lista zakupow" id="Upd-td-xtt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hGT-vu-cTR">
+                            <connections>
+                                <segue destination="Yha-b8-xHJ" kind="show" id="tVF-O2-wK6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf7-z2-Kkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3855" y="1554"/>
+            <point key="canvasLocation" x="3853.5999999999999" y="1553.9730134932536"/>
+        </scene>
+        <!--Share-->
+        <scene sceneID="2mT-IT-QOr">
+            <objects>
+                <viewController id="Yha-b8-xHJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nzw-gr-6yu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-df-cFi">
+                                <rect key="frame" x="30" y="176" width="315" height="315"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5M-cO-bc9">
+                                        <rect key="frame" x="8" y="66" width="140" height="73"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Xzt-N5-Knu"/>
+                                            <constraint firstAttribute="height" constant="73" id="pT9-9a-L6B"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="eMail 📨">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
+                                        <rect key="frame" x="167" y="66" width="140" height="73"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="SMS 📲">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-bx-ZzV">
+                                        <rect key="frame" x="167" y="174" width="140" height="73"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="PDF🧾">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-Yf-IJ7">
+                                        <rect key="frame" x="8" y="174" width="140" height="73"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Phone 📞">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="R8j-Yf-IJ7" firstAttribute="top" secondItem="D5M-cO-bc9" secondAttribute="bottom" constant="35" id="0No-4t-jwH"/>
+                                    <constraint firstItem="89w-W0-3G5" firstAttribute="leading" secondItem="D5M-cO-bc9" secondAttribute="trailing" constant="19" id="34N-Rk-Qax"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="R8j-Yf-IJ7" secondAttribute="leading" id="NZm-Md-dnQ"/>
+                                    <constraint firstItem="89w-W0-3G5" firstAttribute="leading" secondItem="keh-bx-ZzV" secondAttribute="leading" id="QHk-R3-sLf"/>
+                                    <constraint firstAttribute="bottom" secondItem="R8j-Yf-IJ7" secondAttribute="bottom" constant="68" id="Sf5-eH-v9E"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="baseline" secondItem="89w-W0-3G5" secondAttribute="firstBaseline" id="WCD-VS-ELL"/>
+                                    <constraint firstItem="R8j-Yf-IJ7" firstAttribute="baseline" secondItem="keh-bx-ZzV" secondAttribute="firstBaseline" id="Wxv-4O-4Iz"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="trailing" secondItem="R8j-Yf-IJ7" secondAttribute="trailing" id="dJ5-l0-0Fo"/>
+                                    <constraint firstItem="89w-W0-3G5" firstAttribute="trailing" secondItem="vmc-df-cFi" secondAttribute="trailingMargin" id="fjn-mN-1VY"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leadingMargin" id="gxM-Cu-9hL"/>
+                                    <constraint firstAttribute="width" secondItem="vmc-df-cFi" secondAttribute="height" multiplier="1:1" id="imU-gw-Slk"/>
+                                    <constraint firstItem="R8j-Yf-IJ7" firstAttribute="top" secondItem="keh-bx-ZzV" secondAttribute="top" id="pxK-41-xFO"/>
+                                    <constraint firstItem="89w-W0-3G5" firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" id="rb1-H7-TCT"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="89w-W0-3G5" secondAttribute="top" id="uC1-qN-oaj"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="66" id="ylK-4b-1GT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6XQ-wa-Ops" firstAttribute="trailing" secondItem="vmc-df-cFi" secondAttribute="trailing" constant="30" id="9dk-bJ-4mO"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerY" secondItem="Nzw-gr-6yu" secondAttribute="centerY" id="AUt-ew-u6M"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerX" secondItem="Nzw-gr-6yu" secondAttribute="centerX" id="DZ6-06-6cn"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="leading" secondItem="6XQ-wa-Ops" secondAttribute="leading" constant="30" id="w0M-1B-faM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6XQ-wa-Ops"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Share" id="C1s-2q-tKX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYb-8g-EO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4564" y="1555.7721139430287"/>
         </scene>
         <!--Detail At HomeView Controller-->
         <scene sceneID="vmb-6b-Eec">

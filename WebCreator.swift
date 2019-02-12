@@ -11,7 +11,6 @@ protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
     func webCreatorNumberOfSections() -> Int
-    
 }
 class WebCreator {
     struct WebColDescription {
@@ -94,9 +93,9 @@ class WebCreator {
         headHtml+="th {padding: 5px;text-align: center;}\n"
         headHtml+="td {padding: 5px;text-align: left;}\n"
         headHtml+="img {width: 100px; height: 100px;}\n"
-        headHtml+="table#t01 tr:nth-child(even) {   background-color: #eee;  }\n"
-        headHtml+="table#t01 tr:nth-child(odd)  {   background-color:#fff;   }\n"
-        headHtml+="table#t01 th                 {   background-color: gray;  }\n"
+        headHtml+="table tr:nth-child(even) {   background-color: #eee;  }\n"
+        headHtml+="table tr:nth-child(odd)  {   background-color:#fff;   }\n"
+        headHtml+="table th                 {   background-color: gray;  }\n"
         headHtml+="table#t02 table, th, td, thead, tfoot\n"
         headHtml+="{\n"
         headHtml+="    border: 0px solid black;\n"
@@ -127,7 +126,7 @@ class WebCreator {
         var tableFooterHtml = ""
         
         aTitle = sectionInfo.sectionTitles[section]
-        tableHeaderHtml="<table id=\"t\(idTable)\">\n"
+        tableHeaderHtml="<table id=\"t0\(idTable)\">\n"
         tableHeaderHtml+="<caption>\(aTitle) <b>\(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr>"
         for tmp in webColsDescription {
