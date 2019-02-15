@@ -97,7 +97,7 @@ class WebCreator {
         headHtml+="table th                 {   background-color: powderblue;  }\n"
         headHtml+="table#t02 table, th, td, thead, tfoot\n"
         headHtml+="{\n"
-        headHtml+="    border: 0px solid black;\n"
+        headHtml+="    border: 0px solid yelow;\n"
         headHtml+="    text-align: left;\n"
         headHtml+="}\n"
         headHtml+="table#t01 thead {  color:black;}\n"
@@ -136,7 +136,7 @@ class WebCreator {
         tableFooterHtml+="<tfoot>\n"
         tableFooterHtml+="<tr>\n"
         for tmp in webColsDescription {
-            tableFooterHtml+="<th style=\"width:\(tmp.size)%; background-color:red;\">\(tmp.footContent)</th>\n"
+            tableFooterHtml+="<th style=\"width:\(tmp.size)%; background-color:powderblue;\">\(tmp.footContent)</th>\n"
         }
         tableFooterHtml+="</tr>\n"
         tableFooterHtml+="</tfoot>\n"
@@ -146,11 +146,13 @@ class WebCreator {
 
     func getRowData(forSection section: Int) -> String {
     var tableBodyHtml = ""
+    var evenStyle = ""
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
         print("getRowData:\(numOfRows!), section:\(section)")
     for i in 0..<numOfRows! {
         if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
-            tableBodyHtml+="<tr>"
+            evenStyle = i % 2 == 0 ? "Pale-Blue": "white"
+            tableBodyHtml+="<tr style=\"background-color:\(evenStyle);\">"
             tableBodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
             tableBodyHtml+="<td>\(prod.productName ?? "brak")</td>"
             tableBodyHtml+="<td>\(prod.producent ?? "nie ma")</td>"
