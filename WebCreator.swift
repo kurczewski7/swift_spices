@@ -51,12 +51,14 @@ class WebCreator {
     var pictHtml = ""
     var ccsStyleExt = ""
     
-    let headers     = ["Lp", "Nazwa produktu", "Cena"]
+    let headers     = ["Lp", "Nazwa produktu", "Producent"]
     let sizes       = ["5", "75", "*"]
     var rowContents  = ["col1", "col2", "col3"]
     var footContents = ["-", "Razem", "-"]  //["-", "Razem produktów \(footerTitle)", "\(lp)"]
    
     var lang = "en"
+    var telFrom   = ""   //"512589528"
+    var emailFrom = ""   //"kurczewski7@gmail.com"
     var htmlTablesCollection: [String] = [String]()
     
     func setSectionsTitles()  -> [String] {
@@ -69,8 +71,10 @@ class WebCreator {
         return value
     }
     
-    init(polishLanguage: Bool) {
+    init(polishLanguage: Bool, telFrom: String, emailFrom: String)  {
         self.polishLanguage = polishLanguage
+        self.telFrom = telFrom
+        self.emailFrom = emailFrom
         lang = polishLanguage ? "pl" : "en"
         sectionInfo.sectionTitles = setSectionsTitles()
         db=database.product.productArray
@@ -108,7 +112,14 @@ class WebCreator {
         headHtml+="</style>\n"
         headHtml+="</head>\n"
         headHtml+="<body>\n"
-         
+        
+
+        // <a href="sms:1-111-1111;body=I made it!">Send location via SMS</a>
+        endHtml+="<a href=\"tel:\(telFrom)\">Tel:  \(telFrom)</a><br/>\n"
+        endHtml+="<a href=\"sms://\(telFrom)\">Sms:  \(telFrom)</a><br/>\n"
+        endHtml+="<a href=\"mailto:\(emailFrom)\">eMail:  \(emailFrom)</a><br/>\n"
+        
+        //"mailto://\(email)?cc=\(cc)&subject=\(subject)&body=\(body)"
         endHtml+="</body>"
         endHtml+="</html>"
     }
@@ -125,7 +136,7 @@ class WebCreator {
         aTitle = sectionInfo.sectionTitles[section]
         tableHeaderHtml="<table id=\"t0\(idTable)\" style=\"background-color:powderblue; border-style: solid; border-width: 1px;\">\n"
         tableHeaderHtml+="<caption><b>\(aTitle) \(extraTitle)</b></caption>\n"
-        tableHeaderHtml+="<tr>"
+        tableHeaderHtml+="<tr style=\"background-color:LightSeaGreen;\">"
         for tmp in webColsDescription {
             tableHeaderHtml+="<th style=\"width:\(tmp.size)%; background-color:LightSeaGreen;\">\(tmp.header)</th>" //powderblue
         }

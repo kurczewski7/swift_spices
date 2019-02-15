@@ -14,8 +14,10 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
     var webView: WKWebView!
     var html: String = ""
     var sms:  String = ""
-    let webCreator = WebCreator(polishLanguage: polishLanguage)
-   
+    let webCreator = WebCreator(polishLanguage: polishLanguage, telFrom: "512589528", emailFrom: "kurczewski7@gmail.com")
+//    var telFrom   = ""   //"512589528"
+//    var emailFrom = ""   //"kurczewski7@gmail.com"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         webCreator.delegate = self
