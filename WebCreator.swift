@@ -151,7 +151,7 @@ class WebCreator {
         print("getRowData:\(numOfRows!), section:\(section)")
     for i in 0..<numOfRows! {
         if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
-            evenStyle = i % 2 == 0 ? "Pale-Blue": "white"
+            evenStyle = i % 2 == 0 ? "LightCyan": "white"
             tableBodyHtml+="<tr style=\"background-color:\(evenStyle);\">"
             tableBodyHtml+="<td  style=\"text-align: center;\">\(i+1)</td>"
             tableBodyHtml+="<td>\(prod.productName ?? "brak")</td>"
