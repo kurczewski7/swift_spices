@@ -31,7 +31,7 @@ class Contacts: UIViewController {
         let email = "kurczewski7@gmail.com"
         let cc = "kurczewscy@gmail.com"
         let subject = "E-mail test from iphone"
-        let body = "Test sending e-mail by Sławomir Kurczewski, łódź, śróba, żywiec"
+        let body = "Test <b>sending e-mail</b> by Sławomir \nKurczewski, łódź, śróba, żywiec"
         
         let orginalEmail = "mailto://\(email)?cc=\(cc)&subject=\(subject)&body=\(body)"
         if  let encodedEmail = orginalEmail.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)

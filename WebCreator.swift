@@ -54,7 +54,7 @@ class WebCreator {
     let headers     = ["Lp", "Nazwa produktu", "Cena"]
     let sizes       = ["5", "75", "*"]
     var rowContents  = ["col1", "col2", "col3"]
-    var footContents = ["-", "Razem", ""]  //["-", "Razem produktów \(footerTitle)", "\(lp)"]
+    var footContents = ["-", "Razem", "-"]  //["-", "Razem produktów \(footerTitle)", "\(lp)"]
    
     var lang = "en"
     var htmlTablesCollection: [String] = [String]()
@@ -84,11 +84,10 @@ class WebCreator {
         for i in 0..<headers.count {
             self.addWebCol(header: headers[i], size: sizes[i], rowContent: rowContents[i], footContent: footContents[i])
         }
-        //<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
-        //<img src="programming.gif" alt="Computer man" style="width:48px;height:48px;">
-        //pictHtml="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
         
-        headHtml="<!DOCTYPE html><html lang=\"\(lang)\">\n<head><meta charset=\"utf-8\">\n<style>\n"
+        //<!DOCTYPE html><html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Gmail</title>
+        headHtml+="<!DOCTYPE html><html lang=\"\(lang)\">\n"
+        headHtml+="<head><title>Products</title><meta charset=\"utf-8\">\n<style>\n"
         headHtml+="table {width:100%;} \ntable, th, td {  border: 1px solid black;   border-collapse: collapse;  text-align: center;  }\n"
         headHtml+="th {padding: 5px;text-align: center;}\n"
         headHtml+="td {padding: 5px;text-align: left;}\n"
@@ -109,9 +108,7 @@ class WebCreator {
         headHtml+="</style>\n"
         headHtml+="</head>\n"
         headHtml+="<body>\n"
-        headHtml+="<img src=\"owoce_08_b.jpg\" alt=\"HTML5 Icon\">"
-        headHtml+="<img src=\"https://www.w3schools.com/images/w3schools_green.jpg\" alt=\"HTML5 Icon\">"
-        
+         
         endHtml+="</body>"
         endHtml+="</html>"
     }
@@ -126,11 +123,11 @@ class WebCreator {
         var tableFooterHtml = ""
         
         aTitle = sectionInfo.sectionTitles[section]
-        tableHeaderHtml="<table id=\"t0\(idTable)\">\n"
+        tableHeaderHtml="<table id=\"t0\(idTable)\" style=\"background-color:powderblue; border-style: solid; border-width: 1px;\">\n"
         tableHeaderHtml+="<caption><b>\(aTitle) \(extraTitle)</b></caption>\n"
         tableHeaderHtml+="<tr>"
         for tmp in webColsDescription {
-            tableHeaderHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.header)</th>"
+            tableHeaderHtml+="<th style=\"width:\(tmp.size)%; background-color:LightSeaGreen;\">\(tmp.header)</th>" //powderblue
         }
         tableHeaderHtml+="</tr>\n"
         
@@ -139,7 +136,7 @@ class WebCreator {
         tableFooterHtml+="<tfoot>\n"
         tableFooterHtml+="<tr>\n"
         for tmp in webColsDescription {
-            tableFooterHtml+="<th style=\"width:\(tmp.size)%\">\(tmp.footContent)</th>\n"
+            tableFooterHtml+="<th style=\"width:\(tmp.size)%; background-color:red;\">\(tmp.footContent)</th>\n"
         }
         tableFooterHtml+="</tr>\n"
         tableFooterHtml+="</tfoot>\n"
@@ -167,23 +164,29 @@ class WebCreator {
         for i in 0..<sectionsCount {
             craateHtmlTable(idTable: i+1, forSection: i)
         }
-//        craateHtmlTable(idTable: 1, forSection: 0)
-//        craateHtmlTable(idTable: 2, forSection: 1)
-//        craateHtmlTable(idTable: 3, forSection: 2)
-        
         var value = headHtml+pictHtml+tableHeaderHtml
         for tmp in htmlTablesCollection {
             value += tmp
         }
-        value += footerHtml+adresatHtml
+        value += footerHtml + adresatHtml + endHtml
     
         print(value)
         //print("headHtml:\(headHtml)")
         //print("tableHewaderHtml:\(tableHeaderHtml)")
         return value
     }
+    func getFullSms()  -> String {
+        var smsText = ""
+        let section = 0
+        let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
+        for i in 0..<numOfRows! {
+            if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
+                smsText+="\(i)  \(prod.productName ?? "brak")\n"
+            }
+        }
+        return smsText
+    }
     func setCcsStyle(newStyleExtension style: String) {
         self.ccsStyleExt = style
-    
     }
 }
