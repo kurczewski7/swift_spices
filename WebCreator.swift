@@ -189,8 +189,12 @@ class WebCreator {
         return value
     }
     func getFullSms()  -> String {
-        var smsText = ""
-        let section = 0
+        var fullSmsText = ""
+        fullSmsText = getOneSectionSms(forSection: 0)
+        return fullSmsText
+    }
+    func getOneSectionSms(forSection section: Int) -> String {
+        var smsText = "     \(sectionInfo.sectionTitles[section])\n"
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
         for i in 0..<numOfRows! {
             if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
@@ -198,6 +202,7 @@ class WebCreator {
             }
         }
         return smsText
+
     }
     func setCcsStyle(newStyleExtension style: String) {
         self.ccsStyleExt = style
