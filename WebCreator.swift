@@ -189,8 +189,11 @@ class WebCreator {
         return value
     }
     func getFullSms()  -> String {
+        let sectionsCount = self.delegate?.webCreatorNumberOfSections() ?? 1
         var fullSmsText = ""
-        fullSmsText = getOneSectionSms(forSection: 0)
+        for i in 0..<sectionsCount {
+            fullSmsText += getOneSectionSms(forSection: i)
+        }
         return fullSmsText
     }
     func getOneSectionSms(forSection section: Int) -> String {
@@ -198,7 +201,7 @@ class WebCreator {
         let numOfRows = self.delegate?.webCreatorNumberOfRows(forSection: section)
         for i in 0..<numOfRows! {
             if let prod = self.delegate?.webCreatorDataSource(forRow: i, forSection: section) {
-                smsText+="\(i)  \(prod.productName ?? "brak")\n"
+                smsText+="\(i+1)  \(prod.productName ?? "brak")\n"
             }
         }
         return smsText
