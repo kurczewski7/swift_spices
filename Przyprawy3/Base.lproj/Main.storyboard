@@ -1135,7 +1135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-df-cFi">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-df-cFi">
                                 <rect key="frame" x="12" y="158" width="350" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5M-cO-bc9">
@@ -1153,7 +1153,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-Yf-IJ7">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-Yf-IJ7">
                                         <rect key="frame" x="8" y="202" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1165,7 +1165,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-bx-ZzV">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-bx-ZzV">
                                         <rect key="frame" x="202" y="202" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1179,7 +1179,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
                                         <rect key="frame" x="202" y="8" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1198,10 +1198,10 @@
                                     <constraint firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" constant="8" id="2qG-Yw-cMy"/>
                                     <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="4sh-6s-j7q"/>
                                     <constraint firstAttribute="bottom" secondItem="keh-bx-ZzV" secondAttribute="bottom" constant="8" id="BP3-0V-Hxr"/>
-                                    <constraint firstAttribute="height" constant="350" id="DIu-5x-dns"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="340" id="DIu-5x-dns"/>
                                     <constraint firstItem="89w-W0-3G5" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="DiQ-o4-SiV"/>
                                     <constraint firstAttribute="bottom" secondItem="R8j-Yf-IJ7" secondAttribute="bottom" constant="8" id="FMK-aN-OPV"/>
-                                    <constraint firstAttribute="width" constant="350" id="ghs-Km-6bF"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="340" id="ghs-Km-6bF"/>
                                     <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="r3G-7E-Ixe"/>
                                     <constraint firstItem="R8j-Yf-IJ7" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="snK-zS-63d"/>
                                 </constraints>
@@ -1209,8 +1209,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerY" secondItem="Nzw-gr-6yu" secondAttribute="centerY" constant="-0.5" id="VOh-Qq-EWZ"/>
-                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerX" secondItem="Nzw-gr-6yu" secondAttribute="centerX" constant="-0.5" id="Z8p-TR-csP"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerY" secondItem="Nzw-gr-6yu" secondAttribute="centerY" id="VOh-Qq-EWZ"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerX" secondItem="Nzw-gr-6yu" secondAttribute="centerX" id="Z8p-TR-csP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6XQ-wa-Ops"/>
                     </view>
