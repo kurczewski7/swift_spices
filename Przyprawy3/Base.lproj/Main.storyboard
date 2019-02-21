@@ -1142,14 +1142,12 @@
                                         <rect key="frame" x="8" y="8" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Dp6-Yl-X6b"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="ORt-aA-mba"/>
-                                            <constraint firstAttribute="height" constant="140" id="Y5K-Xz-tar"/>
-                                            <constraint firstAttribute="width" constant="140" id="daT-au-NhV"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="uNm-sX-8Nv"/>
+                                            <constraint firstAttribute="height" constant="140" id="L3U-yx-s4L"/>
+                                            <constraint firstAttribute="width" secondItem="D5M-cO-bc9" secondAttribute="height" multiplier="1:1" id="NjF-rp-86b"/>
+                                            <constraint firstAttribute="width" constant="140" id="ec4-Mi-PVE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="eMail 📨">
+                                        <state key="normal" title="eMail \n📨">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -1157,6 +1155,7 @@
                                         <rect key="frame" x="8" y="202" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="R8j-Yf-IJ7" secondAttribute="height" multiplier="1:1" id="ZJZ-ME-BBu"/>
                                             <constraint firstAttribute="height" constant="140" id="Zm3-66-hGo"/>
                                             <constraint firstAttribute="width" constant="140" id="rRz-r1-wIB"/>
                                         </constraints>
@@ -1169,10 +1168,9 @@
                                         <rect key="frame" x="202" y="202" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="1jd-nT-Ret"/>
-                                            <constraint firstAttribute="width" constant="140" id="FDj-Nn-HhT"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="iJP-pY-Jqj"/>
-                                            <constraint firstAttribute="height" constant="140" id="zBK-GT-TuE"/>
+                                            <constraint firstAttribute="width" constant="140" id="Cud-mm-uef"/>
+                                            <constraint firstAttribute="width" secondItem="keh-bx-ZzV" secondAttribute="height" multiplier="1:1" id="gFt-dL-UF5"/>
+                                            <constraint firstAttribute="height" constant="140" id="o4D-JI-mN2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="PDF🧾">
@@ -1184,6 +1182,7 @@
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Lsj-Wu-BjQ"/>
+                                            <constraint firstAttribute="width" secondItem="89w-W0-3G5" secondAttribute="height" multiplier="1:1" id="lIq-ob-Bhs"/>
                                             <constraint firstAttribute="width" constant="140" id="mId-H2-8lf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1195,14 +1194,14 @@
                                 <color key="backgroundColor" red="1" green="0.80873946929999996" blue="0.48386762100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="89w-W0-3G5" secondAttribute="trailing" constant="8" id="00O-8h-Gkr"/>
-                                    <constraint firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" constant="8" id="2qG-Yw-cMy"/>
-                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="4sh-6s-j7q"/>
-                                    <constraint firstAttribute="bottom" secondItem="keh-bx-ZzV" secondAttribute="bottom" constant="8" id="BP3-0V-Hxr"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="340" id="DIu-5x-dns"/>
+                                    <constraint firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" constant="8" id="BgR-qp-ymH"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="320" id="DIu-5x-dns"/>
                                     <constraint firstItem="89w-W0-3G5" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="DiQ-o4-SiV"/>
                                     <constraint firstAttribute="bottom" secondItem="R8j-Yf-IJ7" secondAttribute="bottom" constant="8" id="FMK-aN-OPV"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="340" id="ghs-Km-6bF"/>
-                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="r3G-7E-Ixe"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="K8J-v2-7fG"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="fNw-ku-808"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="ghs-Km-6bF"/>
+                                    <constraint firstAttribute="bottom" secondItem="keh-bx-ZzV" secondAttribute="bottom" constant="8" id="mFo-lP-niU"/>
                                     <constraint firstItem="R8j-Yf-IJ7" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="snK-zS-63d"/>
                                 </constraints>
                             </view>
