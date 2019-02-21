@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 protocol WebCreatorDelegate {
     func webCreatorDataSource(forRow row: Int, forSection section: Int) -> ProductTable?
     func webCreatorNumberOfRows(forSection section: Int) -> Int
@@ -188,12 +189,16 @@ class WebCreator {
         //print("tableHewaderHtml:\(tableHeaderHtml)")
         return value
     }
-    func getFullSms()  -> String {
+    func getFullSms(myPhoneNumber tel: String, myEmail eMail: String)  -> String {
         let sectionsCount = self.delegate?.webCreatorNumberOfSections() ?? 1
         var fullSmsText = ""
         for i in 0..<sectionsCount {
             fullSmsText += getOneSectionSms(forSection: i)
         }
+        fullSmsText += "tel:\(tel)\n"
+        fullSmsText += "mailto:\(eMail)\n"
+        fullSmsText += "sms:\(tel)\n"
+
         return fullSmsText
     }
     func getOneSectionSms(forSection section: Int) -> String {

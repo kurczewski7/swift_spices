@@ -44,7 +44,7 @@ class WebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, W
         return product
     }
     func displaySms() {
-        sms = webCreator.getFullSms()
+        sms = webCreator.getFullSms(myPhoneNumber: "512589528", myEmail: "kurczewski7@gmail.com")
     }
     func displayHtml() {
         html = webCreator.getFullHtml()
