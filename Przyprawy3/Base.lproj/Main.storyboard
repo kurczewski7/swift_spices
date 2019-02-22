@@ -1148,7 +1148,7 @@
                                             <constraint firstAttribute="width" constant="140" id="qS3-XT-bmh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="PDF🧾">
+                                        <state key="normal" title="   👥 Cont.">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -1160,7 +1160,7 @@
                                             <constraint firstAttribute="height" constant="140" id="ZHH-LY-JU1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="SMS 📲">
+                                        <state key="normal" title=" 📟SMS">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -1172,7 +1172,7 @@
                                             <constraint firstAttribute="height" constant="140" id="gT9-Ng-j6X"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Phone 📞">
+                                        <state key="normal" title="📞Phone ">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -1184,7 +1184,7 @@
                                             <constraint firstAttribute="width" constant="140" id="ysi-SM-odd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="eMail 📨">
+                                        <state key="normal" title=" ✉️ eMail ">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
