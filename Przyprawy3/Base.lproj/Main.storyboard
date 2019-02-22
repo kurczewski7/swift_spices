@@ -253,9 +253,8 @@
                                     <action selector="delToShopButton:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="7I7-Of-7kL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sb-dz-Npk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sb-dz-Npk">
                                 <rect key="frame" x="250" y="482" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="WEB"/>
                                 <connections>
                                     <action selector="WebCreate:" destination="dnd-Dn-Lwg" eventType="touchUpInside" id="7SA-Vl-Wln"/>
@@ -285,7 +284,9 @@
                             <constraint firstItem="tXa-ao-hFK" firstAttribute="top" secondItem="Vzn-gh-ryu" secondAttribute="bottom" constant="21" id="N9t-vI-EhI"/>
                             <constraint firstItem="UKy-7r-QtE" firstAttribute="top" secondItem="tXa-ao-hFK" secondAttribute="bottom" constant="14" id="NyD-Su-JxB"/>
                             <constraint firstItem="o8s-s8-0Wr" firstAttribute="leading" secondItem="OmX-Qf-6kM" secondAttribute="leading" id="OTH-6q-m90"/>
+                            <constraint firstItem="0Hl-y2-TA5" firstAttribute="trailing" secondItem="5sb-dz-Npk" secondAttribute="trailing" constant="92" id="Pk4-Mb-JOR"/>
                             <constraint firstItem="Yln-3m-zdw" firstAttribute="top" secondItem="WRR-MA-7U8" secondAttribute="bottom" constant="24" id="Vm2-qy-Sab"/>
+                            <constraint firstItem="5sb-dz-Npk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8cZ-ed-PZW" secondAttribute="trailing" constant="8" symbolic="YES" id="Wif-XK-ulF"/>
                             <constraint firstItem="Qkf-JA-PxA" firstAttribute="leading" secondItem="7YN-Qi-gw3" secondAttribute="leading" id="aDx-6W-hfl"/>
                             <constraint firstItem="0Hl-y2-TA5" firstAttribute="bottom" secondItem="U4I-YB-A35" secondAttribute="bottom" constant="59" id="aIf-ex-xN3"/>
                             <constraint firstAttribute="bottom" secondItem="Vzn-gh-ryu" secondAttribute="bottom" constant="276" id="bX0-li-t7t"/>
@@ -295,6 +296,7 @@
                             <constraint firstItem="N9R-fn-m3W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vzn-gh-ryu" secondAttribute="trailing" constant="8" symbolic="YES" id="eUf-QR-1P3"/>
                             <constraint firstItem="OmX-Qf-6kM" firstAttribute="top" secondItem="jwu-IS-Qhc" secondAttribute="bottom" constant="15" id="fNX-6a-t8h"/>
                             <constraint firstItem="WRR-MA-7U8" firstAttribute="trailing" secondItem="N9R-fn-m3W" secondAttribute="trailing" id="jDJ-Jn-2vc"/>
+                            <constraint firstItem="5sb-dz-Npk" firstAttribute="top" secondItem="kiT-Rj-qIx" secondAttribute="bottom" constant="16" id="jxA-75-o8D"/>
                             <constraint firstItem="Qkf-JA-PxA" firstAttribute="leading" secondItem="1qv-mw-ySz" secondAttribute="leading" id="kL8-wR-dHE"/>
                             <constraint firstItem="Qkf-JA-PxA" firstAttribute="leading" secondItem="8cZ-ed-PZW" secondAttribute="leading" id="l5i-W6-CEx"/>
                             <constraint firstItem="0Hl-y2-TA5" firstAttribute="trailing" secondItem="o8s-s8-0Wr" secondAttribute="trailing" constant="48" id="lIy-0R-GfV"/>
@@ -1135,81 +1137,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-df-cFi">
-                                <rect key="frame" x="12" y="158" width="350" height="350"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmc-df-cFi">
+                                <rect key="frame" x="25" y="171" width="325" height="325"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5M-cO-bc9">
-                                        <rect key="frame" x="8" y="8" width="140" height="140"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="L3U-yx-s4L"/>
-                                            <constraint firstAttribute="width" secondItem="D5M-cO-bc9" secondAttribute="height" multiplier="1:1" id="NjF-rp-86b"/>
-                                            <constraint firstAttribute="width" constant="140" id="ec4-Mi-PVE"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="eMail \n📨">
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-Yf-IJ7">
-                                        <rect key="frame" x="8" y="202" width="140" height="140"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="R8j-Yf-IJ7" secondAttribute="height" multiplier="1:1" id="ZJZ-ME-BBu"/>
-                                            <constraint firstAttribute="height" constant="140" id="Zm3-66-hGo"/>
-                                            <constraint firstAttribute="width" constant="140" id="rRz-r1-wIB"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Phone 📞">
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-bx-ZzV">
-                                        <rect key="frame" x="202" y="202" width="140" height="140"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-bx-ZzV">
+                                        <rect key="frame" x="175" y="175" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="140" id="Cud-mm-uef"/>
-                                            <constraint firstAttribute="width" secondItem="keh-bx-ZzV" secondAttribute="height" multiplier="1:1" id="gFt-dL-UF5"/>
-                                            <constraint firstAttribute="height" constant="140" id="o4D-JI-mN2"/>
+                                            <constraint firstAttribute="height" constant="140" id="Uoe-39-5Ph"/>
+                                            <constraint firstAttribute="width" constant="140" id="qS3-XT-bmh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="PDF🧾">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
-                                        <rect key="frame" x="202" y="8" width="140" height="140"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89w-W0-3G5">
+                                        <rect key="frame" x="175" y="10" width="140" height="140"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="Lsj-Wu-BjQ"/>
-                                            <constraint firstAttribute="width" secondItem="89w-W0-3G5" secondAttribute="height" multiplier="1:1" id="lIq-ob-Bhs"/>
-                                            <constraint firstAttribute="width" constant="140" id="mId-H2-8lf"/>
+                                            <constraint firstAttribute="width" constant="140" id="GtX-ll-ctJ"/>
+                                            <constraint firstAttribute="height" constant="140" id="ZHH-LY-JU1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="SMS 📲">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-Yf-IJ7">
+                                        <rect key="frame" x="10" y="175" width="140" height="140"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="CQU-fs-Y9V"/>
+                                            <constraint firstAttribute="height" constant="140" id="gT9-Ng-j6X"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Phone 📞">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5M-cO-bc9">
+                                        <rect key="frame" x="10" y="10" width="140" height="140"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="HTa-vR-D2e"/>
+                                            <constraint firstAttribute="width" constant="140" id="ysi-SM-odd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="eMail 📨">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.80873946929999996" blue="0.48386762100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="89w-W0-3G5" secondAttribute="trailing" constant="8" id="00O-8h-Gkr"/>
-                                    <constraint firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" constant="8" id="BgR-qp-ymH"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="320" id="DIu-5x-dns"/>
-                                    <constraint firstItem="89w-W0-3G5" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="DiQ-o4-SiV"/>
-                                    <constraint firstAttribute="bottom" secondItem="R8j-Yf-IJ7" secondAttribute="bottom" constant="8" id="FMK-aN-OPV"/>
-                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="K8J-v2-7fG"/>
-                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="8" id="fNw-ku-808"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="ghs-Km-6bF"/>
-                                    <constraint firstAttribute="bottom" secondItem="keh-bx-ZzV" secondAttribute="bottom" constant="8" id="mFo-lP-niU"/>
-                                    <constraint firstItem="R8j-Yf-IJ7" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="8" id="snK-zS-63d"/>
+                                    <constraint firstAttribute="height" constant="325" id="35M-P7-0Bo"/>
+                                    <constraint firstAttribute="trailing" secondItem="89w-W0-3G5" secondAttribute="trailing" constant="10" id="CHe-a9-16P"/>
+                                    <constraint firstAttribute="bottom" secondItem="R8j-Yf-IJ7" secondAttribute="bottom" constant="10" id="Gwv-eH-fs4"/>
+                                    <constraint firstItem="89w-W0-3G5" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="10" id="QQd-K0-vrc"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="10" id="WdA-R0-xiM"/>
+                                    <constraint firstItem="D5M-cO-bc9" firstAttribute="top" secondItem="vmc-df-cFi" secondAttribute="top" constant="10" id="X2P-kI-OTS"/>
+                                    <constraint firstAttribute="bottom" secondItem="keh-bx-ZzV" secondAttribute="bottom" constant="10" id="a5d-Rg-IhQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="keh-bx-ZzV" secondAttribute="trailing" constant="10" id="dDd-gr-9Vl"/>
+                                    <constraint firstAttribute="width" constant="325" id="gMT-g1-EoA"/>
+                                    <constraint firstItem="R8j-Yf-IJ7" firstAttribute="leading" secondItem="vmc-df-cFi" secondAttribute="leading" constant="10" id="z2P-SI-vcq"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerY" secondItem="Nzw-gr-6yu" secondAttribute="centerY" id="VOh-Qq-EWZ"/>
-                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerX" secondItem="Nzw-gr-6yu" secondAttribute="centerX" id="Z8p-TR-csP"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerX" secondItem="Nzw-gr-6yu" secondAttribute="centerX" id="JiJ-eo-QE6"/>
+                            <constraint firstItem="vmc-df-cFi" firstAttribute="centerY" secondItem="Nzw-gr-6yu" secondAttribute="centerY" id="PRr-Ph-h4D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6XQ-wa-Ops"/>
                     </view>
