@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import CoreData
 
 enum DbTableNames : String {
     case products        = "ProductTable"
@@ -30,6 +29,7 @@ enum SearchField : String {
 
 let coreData = CoreDataStack()
 let database = Database(context: coreData.persistentContainer.viewContext)
+let server   = Server()
 let  categoriesData : [CategoryType]  =
     [(name: "Przyprawy", nameEN: "Spices", pictureName: "🌶🧂", selectedCategory : false),
      (name: "Warzywa", nameEN: "Vegetables", pictureName: "🥬🥕🥒", selectedCategory : false),

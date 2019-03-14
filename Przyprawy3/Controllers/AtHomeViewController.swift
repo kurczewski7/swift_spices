@@ -67,7 +67,9 @@ class AtHomeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = imgBackArrow
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-
+        
+        let sqlText = server.makeSqlTxt(database: database)
+        print(sqlText)
     }
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BasketProductTable" representedClassName="BasketProductTable" syncable="YES" codeGenerationType="class">
         <attribute name="eanCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -13,6 +13,12 @@
         <attribute name="pictureEmoji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="selectedCategory" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductTable" inverseName="parentCategory" inverseEntity="ProductTable" syncable="YES"/>
+    </entity>
+    <entity name="PreferedContacts" representedClassName="PreferedContacts" syncable="YES" codeGenerationType="class">
+        <attribute name="emai" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="ProductTable" representedClassName=".ProductTable" syncable="YES" codeGenerationType="class">
         <attribute name="categoryId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -60,5 +66,6 @@
         <element name="ShopingProductTable" positionX="-521.12109375" positionY="72.01953125" width="128" height="88"/>
         <element name="ToShopProductTable" positionX="-291.75" positionY="198.96875" width="128" height="118"/>
         <element name="UsersTable" positionX="-823.21875" positionY="185.390625" width="128" height="103"/>
+        <element name="PreferedContacts" positionX="-621" positionY="-36" width="128" height="105"/>
     </elements>
 </model>

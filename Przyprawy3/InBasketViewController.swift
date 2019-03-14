@@ -54,7 +54,7 @@ class InBasketViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     func tableView(tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
+       // let sectionInfo = fetchedResultsController.sections![section]
 //            print("numb: \(sectionInfo.numberOfObjects)")
 //            print("index: \(sectionInfo.indexTitle)")
 //            print("name: \(sectionInfo.name)")

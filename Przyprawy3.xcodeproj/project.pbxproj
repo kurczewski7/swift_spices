@@ -26,6 +26,7 @@
 		2C7888DF212C50AF00225A52 /* ShopingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */; };
 		2C7CB578212FEB57005F6304 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7CB577212FEB57005F6304 /* Contacts.swift */; };
 		2C82B33D21B4655600EDB60F /* ScanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B33C21B4655600EDB60F /* ScanerViewController.swift */; };
+		2C82B679223925A900772BF6 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82B678223925A900772BF6 /* Server.swift */; };
 		2C8C528D2122E135006D8099 /* AtHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C528C2122E135006D8099 /* AtHomeViewController.swift */; };
 		2CB2281921F24BD8008A3292 /* InBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281821F24BD8008A3292 /* InBasketViewController.swift */; };
 		2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */; };
@@ -77,6 +78,7 @@
 		2C7888DE212C50AF00225A52 /* ShopingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingListCellView.swift; sourceTree = "<group>"; };
 		2C7CB577212FEB57005F6304 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		2C82B33C21B4655600EDB60F /* ScanerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanerViewController.swift; sourceTree = "<group>"; };
+		2C82B678223925A900772BF6 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		2C8C528C2122E135006D8099 /* AtHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeViewController.swift; sourceTree = "<group>"; };
 		2CB2281821F24BD8008A3292 /* InBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InBasketViewController.swift; sourceTree = "<group>"; };
 		2CB2281A21F2522C008A3292 /* InBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InBasketTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				2C158CC2218610E400C3438B /* Enitties */,
 				2CE27570210237B1001C046B /* Assets.xcassets */,
 				2CE27575210237B1001C046B /* Info.plist */,
+				2C82B678223925A900772BF6 /* Server.swift */,
 			);
 			path = Przyprawy3;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				2C3F37A92216060F00397BD7 /* ShareViewController.swift in Sources */,
 				2CE27569210237AF001C046B /* ViewController.swift in Sources */,
 				2C82B33D21B4655600EDB60F /* ScanerViewController.swift in Sources */,
+				2C82B679223925A900772BF6 /* Server.swift in Sources */,
 				2C1B7940219C7DE300A7BD63 /* CategoryCollectionViewCell.swift in Sources */,
 				2C3892202122FE5300257476 /* AtHomeCell.swift in Sources */,
 				2CB2281B21F2522C008A3292 /* InBasketTableViewCell.swift in Sources */,
